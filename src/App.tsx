@@ -1,43 +1,69 @@
 import { useEffect } from 'react';
+import { BrowserRouter, Routes, Route, useLocation } from 'react-router';
 import Lenis from 'lenis';
 import { Navigation } from '@/components/Navigation';
 import { Footer } from '@/components/Footer';
 import { HeroSection } from '@/sections/HeroSection';
 import { WhatWeDoSection } from '@/sections/WhatWeDoSection';
-import { ToolsSection } from '@/sections/ToolsSection';
-import { ProjectsSection } from '@/sections/ProjectsSection';
+import { AppTeaserSection } from '@/sections/AppTeaserSection';
+import { ProjectsRailSection } from '@/sections/ProjectsRailSection';
 import { ContactSection } from '@/sections/ContactSection';
+import CaseGrandHotel from '@/pages/CaseGrandHotel';
 
-export default function App() {
+/**
+ * App.tsx — updated with routing.
+ *
+ * Routes:
+ *   /                  → home (Hero, WhatWeDo, AppTeaser, ProjectsRail, Contact)
+ *   /case/grand-hotel  → CaseGrandHotel
+ *
+ * react-router is already in package.json — no new dependencies.
+ */
+
+function ScrollToTop() {
+  const { pathname } = useLocation();
   useEffect(() => {
-    const lenis = new Lenis({
-      lerp: 0.08,
-      duration: 1.0,
-    });
+    window.scrollTo({ top: 0, left: 0, behavior: 'instant' as ScrollBehavior });
+  }, [pathname]);
+  return null;
+}
 
-    function raf(time: number) {
-      lenis.raf(time);
-      requestAnimationFrame(raf);
-    }
-
-    requestAnimationFrame(raf);
-
-    return () => {
-      lenis.destroy();
-    };
-  }, []);
-
+function Home() {
   return (
     <div className="min-h-screen bg-bg-primary">
       <Navigation />
       <main>
         <HeroSection />
         <WhatWeDoSection />
-        <ToolsSection />
-        <ProjectsSection />
+        <AppTeaserSection />
+        <ProjectsRailSection />
         <ContactSection />
       </main>
       <Footer />
     </div>
+  );
+}
+
+export default function App() {
+  useEffect(() => {
+    const lenis = new Lenis({ lerp: 0.08, duration: 1.0 });
+    function raf(time: number) {
+      lenis.raf(time);
+      requestAnimationFrame(raf);
+    }
+    requestAnimationFrame(raf);
+    return () => {
+      lenis.destroy();
+    };
+  }, []);
+
+  return (
+    <BrowserRouter>
+      <ScrollToTop />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/case/grand-hotel" element={<CaseGrandHotel />} />
+      </Routes>
+    </BrowserRouter>
   );
 }

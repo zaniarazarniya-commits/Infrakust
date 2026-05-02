@@ -19,17 +19,17 @@ const projects: Project[] = [
   {
     id: 1,
     image: '/images/project-zentai.jpg',
-    name: 'Zentai',
-    description: 'Modern webbplats med fokus på användarupplevelse och konvertering.',
-    tags: 'Webb · Design · SEO',
+    name: 'ZentAi',
+    description: 'Externt teknikteam i Lysekil. Hemsidor, Notion-verksamhetssystem och AI-agenter — byggda och förvaltade som en helhet.',
+    tags: 'HTML · CSS · JS · SEO · Lysekil',
     url: 'https://www.zentai.se',
   },
   {
-    id: 3,
+    id: 2,
     image: '/images/project-lionpaw.jpg',
     name: 'Lionpaw',
-    description: 'Professionell webbnärvaro med stilren design och tydligt varumärke.',
-    tags: 'Webb · Branding · UX',
+    description: 'Premium herbal wellness-varumärke med produktportfölj, ingrediensutforskare och varumärkesstory. Byggd med React, Vite och Tailwind CSS.',
+    tags: 'React · Vite · Tailwind · shadcn/ui',
     url: 'https://www.lionpaw.se',
   },
   {

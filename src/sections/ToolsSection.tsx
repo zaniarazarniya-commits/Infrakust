@@ -123,15 +123,15 @@ function PhoneCarousel({ images, appName, color }: PhoneCarouselProps) {
       <div className="group relative">
         <div className="relative overflow-hidden rounded-[2.2rem] border-[4px] border-text-muted/20 bg-bg-primary shadow-[0_20px_60px_rgba(0,0,0,0.5)] transition-all duration-500 hover:border-text-muted/35 hover:shadow-[0_30px_80px_rgba(0,0,0,0.6)]">
           {/* Notch */}
-          <div className="absolute left-1/2 top-0 z-20 h-[24px] w-[100px] -translate-x-1/2 rounded-b-[12px] bg-bg-primary" />
+          <div className="absolute left-1/2 top-0 z-20 h-[28px] w-[120px] -translate-x-1/2 rounded-b-[14px] bg-bg-primary" />
           
           {/* Side buttons */}
           <div className="absolute -left-[6px] top-[90px] h-[28px] w-[3px] rounded-l bg-text-muted/25" />
           <div className="absolute -left-[6px] top-[130px] h-[40px] w-[3px] rounded-l bg-text-muted/25" />
           <div className="absolute -right-[6px] top-[110px] h-[60px] w-[3px] rounded-r bg-text-muted/25" />
 
-          {/* Screen — aspect 9/16 = standard iPhone */}
-          <div className="relative aspect-[9/16] w-[250px] overflow-hidden bg-bg-primary sm:w-[270px]">
+          {/* Screen — aspect 9/19.5 = modern iPhone */}
+          <div className="relative aspect-[9/19.5] w-[260px] overflow-hidden bg-bg-primary sm:w-[280px]">
             {/* Image slide */}
             <div className="relative h-full w-full cursor-pointer" onClick={next}>
               <AnimatePresence initial={false} custom={direction} mode="wait">

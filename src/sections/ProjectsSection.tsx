@@ -3,7 +3,7 @@ import useEmblaCarousel from 'embla-carousel-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ScrollReveal } from '@/components/ScrollReveal';
 import { ProjectModal } from '@/components/ProjectModal';
-import { ChevronLeft, ChevronRight, Eye } from 'lucide-react';
+import { ChevronLeft, ChevronRight, ExternalLink } from 'lucide-react';
 
 interface Project {
   id: number;
@@ -68,6 +68,16 @@ function ProjectCard({
   onOpen: (project: Project) => void;
 }) {
   const [isHovered, setIsHovered] = useState(false);
+  const hasUrl = project.url && project.url.trim() !== '';
+
+  const handleClick = () => {
+    if (hasUrl) {
+      window.open(project.url, '_blank', 'noopener,noreferrer');
+    } else {
+      onOpen(project);
+    }
+  };
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 40 }}
@@ -82,10 +92,10 @@ function ProjectCard({
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
-      {/* Image Container with Hover Overlay */}
+      {/* Image Container — click goes directly to URL */}
       <div
         className="relative overflow-hidden rounded-lg cursor-pointer"
-        onClick={() => onOpen(project)}
+        onClick={handleClick}
       >
         <div className="aspect-[16/10] overflow-hidden">
           {/* Base Image with zoom */}
@@ -124,10 +134,10 @@ function ProjectCard({
                   className="flex flex-col items-center gap-4"
                 >
                   <div className="flex h-16 w-16 items-center justify-center rounded-full border-2 border-accent-gold text-accent-gold">
-                    <Eye size={28} />
+                    <ExternalLink size={28} />
                   </div>
                   <span className="font-sans text-sm uppercase tracking-nav text-accent-gold">
-                    Klicka för att öppna
+                    Besök webbplats
                   </span>
                 </motion.div>
 

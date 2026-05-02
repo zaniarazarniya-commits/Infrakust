@@ -54,9 +54,9 @@ export function HeroSection() {
         {/* Sub-tagline */}
         <motion.p
           variants={itemVariants}
-          className="mt-3 font-sans text-base text-text-muted"
+          className="mt-3 max-w-[600px] font-sans text-base text-text-muted"
         >
-          Hemsidor som konverterar. SEO för Google & AI.
+          Hemsidor som konverterar. SEO för Google & AI. Skräddarsydda appar & infrastruktur.
         </motion.p>
 
         {/* CTA */}

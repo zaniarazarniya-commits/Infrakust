@@ -429,7 +429,7 @@ export function ToolsSection() {
               Vi bygger ett system som automatiserar just era processer — och ger er tid tillbaka.
             </p>
             <a
-              href="mailto:hello@infrakust.se"
+              href="mailto:info@infrakust.se"
               className="gold-underline mt-8 inline-block font-sans text-lg text-accent-gold transition-colors hover:text-accent-gold-hover"
             >
               Berätta om ditt projekt →

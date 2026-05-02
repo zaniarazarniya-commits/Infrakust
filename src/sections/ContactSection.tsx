@@ -24,10 +24,10 @@ export function ContactSection() {
 
         <ScrollReveal delay={0.45}>
           <a
-            href="mailto:hello@infrakust.se"
+            href="mailto:info@infrakust.se"
             className="gold-underline-center mt-8 font-serif text-[clamp(20px,2.5vw,28px)] text-accent-gold transition-colors hover:text-accent-gold-hover"
           >
-            hello@infrakust.se
+            info@infrakust.se
           </a>
         </ScrollReveal>
       </div>

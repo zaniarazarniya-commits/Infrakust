@@ -18,7 +18,7 @@ interface Project {
 const projects: Project[] = [
   {
     id: 1,
-    image: '/images/project-zentai.jpg',
+    image: '/images/project-zentai.png',
     name: 'ZentAi',
     description: 'Externt teknikteam i Lysekil. Hemsidor, Notion-verksamhetssystem och AI-agenter — byggda och förvaltade som en helhet.',
     tags: 'HTML · CSS · JS · SEO · Lysekil',
@@ -26,7 +26,7 @@ const projects: Project[] = [
   },
   {
     id: 2,
-    image: '/images/project-lionpaw.jpg',
+    image: '/images/project-lionpaw.png',
     name: 'Lionpaw',
     description: 'Premium herbal wellness-varumärke med produktportfölj, ingrediensutforskare och varumärkesstory. Byggd med React, Vite och Tailwind CSS.',
     tags: 'React · Vite · Tailwind · shadcn/ui',

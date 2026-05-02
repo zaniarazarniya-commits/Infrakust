@@ -274,13 +274,6 @@ export function ProjectsRailSection() {
         </div>
       </div>
 
-      {/* Local style: hide scrollbar + dragging cursor.
-          Add to src/App.css or a global stylesheet if you prefer not to inline. */}
-      <style>{`
-        .projects-rail::-webkit-scrollbar { display: none; }
-        .projects-rail.is-dragging { cursor: grabbing; user-select: none; }
-        .projects-rail.is-dragging a { pointer-events: none; }
-      `}</style>
     </section>
   );
 }

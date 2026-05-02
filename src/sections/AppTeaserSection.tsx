@@ -158,7 +158,7 @@ export function AppTeaserSection() {
 
             {/* Indicators */}
             <div className="mt-6 flex items-center gap-1.5">
-              {slides.map((s, i) => (
+              {slides.map((_, i) => (
                 <button
                   key={i}
                   onClick={() => setCurrent(i)}

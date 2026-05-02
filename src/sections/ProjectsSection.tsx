@@ -107,51 +107,25 @@ function ProjectCard({
             draggable={false}
           />
 
-          {/* Hover Overlay - "Wakes to life" */}
+          {/* Hover overlay — subtle darkening + CTA */}
           <AnimatePresence>
             {isHovered && (
               <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
-                transition={{ duration: 0.4 }}
-                className="absolute inset-0 flex flex-col items-center justify-center bg-bg-primary/60 backdrop-blur-sm"
+                transition={{ duration: 0.3 }}
+                className="absolute inset-0 flex flex-col items-center justify-end bg-gradient-to-t from-black/70 via-black/20 to-transparent pb-10"
               >
-                {/* Gold accent line top */}
                 <motion.div
-                  initial={{ scaleX: 0 }}
-                  animate={{ scaleX: 1 }}
-                  transition={{ duration: 0.5, ease: [0.4, 0, 0.2, 1] }}
-                  className="absolute top-0 left-0 right-0 h-[2px] bg-accent-gold origin-left"
-                />
-
-                {/* Open button */}
-                <motion.div
-                  initial={{ scale: 0.8, opacity: 0 }}
-                  animate={{ scale: 1, opacity: 1 }}
-                  exit={{ scale: 0.8, opacity: 0 }}
-                  transition={{ duration: 0.3, delay: 0.1 }}
-                  className="flex flex-col items-center gap-4"
-                >
-                  <div className="flex h-16 w-16 items-center justify-center rounded-full border-2 border-accent-gold text-accent-gold">
-                    <ExternalLink size={28} />
-                  </div>
-                  <span className="font-sans text-sm uppercase tracking-nav text-accent-gold">
-                    Besök webbplats
-                  </span>
-                </motion.div>
-
-                {/* Project info peek */}
-                <motion.div
-                  initial={{ y: 20, opacity: 0 }}
+                  initial={{ y: 10, opacity: 0 }}
                   animate={{ y: 0, opacity: 1 }}
-                  exit={{ y: 20, opacity: 0 }}
-                  transition={{ duration: 0.4, delay: 0.2 }}
-                  className="absolute bottom-6 left-6 right-6"
+                  exit={{ y: 10, opacity: 0 }}
+                  transition={{ duration: 0.3, delay: 0.05 }}
+                  className="flex items-center gap-2 rounded-full bg-accent-gold px-5 py-2.5 font-sans text-xs font-medium uppercase tracking-nav text-bg-primary"
                 >
-                  <p className="font-sans text-xs uppercase tracking-tag text-accent-gold">
-                    {project.tags}
-                  </p>
+                  <ExternalLink size={14} />
+                  Besök webbplats
                 </motion.div>
               </motion.div>
             )}

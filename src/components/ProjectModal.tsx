@@ -157,44 +157,46 @@ export function ProjectModal({ project, isOpen, onClose }: ProjectModalProps) {
               </div>
             </div>
 
-            {/* Iframe Container */}
-            <div id="iframe-container" className="relative flex-1 bg-bg-primary">
-              {/* Loading State */}
-              {!iframeLoaded && (
-                <div className="absolute inset-0 flex flex-col items-center justify-center">
-                  <div className="mb-4 h-8 w-8 animate-spin rounded-full border-2 border-text-muted/20 border-t-accent-gold" />
-                  <p className="font-sans text-sm text-text-secondary">Laddar förhandsvisning...</p>
+            {/* Preview Container */}
+            <div className="relative flex-1 bg-bg-primary">
+              <div className="flex h-full flex-col items-center justify-center gap-8 p-8 md:flex-row md:gap-12 md:p-12">
+                {/* Screenshot */}
+                <div className="w-full max-w-[600px] flex-shrink-0 md:w-[55%]">
+                  <div className="overflow-hidden rounded-lg border border-text-muted/10 shadow-2xl">
+                    <img
+                      src={project.image}
+                      alt={project.name}
+                      className="h-auto w-full object-cover"
+                      draggable={false}
+                    />
+                  </div>
                 </div>
-              )}
 
-              {hasUrl ? (
-                <iframe
-                  src={project.url}
-                  title={project.name}
-                  className={`h-full w-full border-0 transition-opacity duration-500 ${
-                    iframeLoaded ? 'opacity-100' : 'opacity-0'
-                  }`}
-                  onLoad={() => setIframeLoaded(true)}
-                  allow="fullscreen"
-                  sandbox="allow-scripts allow-same-origin allow-forms allow-popups"
-                  loading="lazy"
-                />
-              ) : (
-                <div className="flex h-full flex-col items-center justify-center">
-                  <img
-                    src={project.image}
-                    alt={project.name}
-                    className="mb-6 max-h-[60%] max-w-[80%] rounded-lg object-contain shadow-xl"
-                  />
-                  <p className="font-serif text-2xl text-text-primary">{project.name}</p>
-                  <p className="mt-2 max-w-md text-center font-sans text-sm text-text-secondary">
+                {/* Info + CTA */}
+                <div className="flex w-full flex-col items-center text-center md:w-[45%] md:items-start md:text-left">
+                  <h2 className="font-serif text-[clamp(28px,4vw,48px)] font-normal leading-[1.1] tracking-[-0.01em] text-text-primary">
+                    {project.name}
+                  </h2>
+                  <p className="mt-4 max-w-sm font-sans text-sm leading-relaxed text-text-secondary md:text-base">
                     {project.description}
                   </p>
-                  <p className="mt-4 font-sans text-xs uppercase tracking-tag text-accent-gold-muted">
-                    Live-preview kommer snart
+                  <p className="mt-3 font-sans text-xs uppercase tracking-tag text-text-muted">
+                    {project.tags}
                   </p>
+
+                  {hasUrl && (
+                    <a
+                      href={project.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="mt-8 inline-flex items-center gap-2 rounded-full border border-accent-gold px-8 py-3 font-sans text-sm uppercase tracking-nav text-accent-gold transition-all duration-300 hover:bg-accent-gold hover:text-bg-primary"
+                    >
+                      <ExternalLink size={16} />
+                      Besök webbplats
+                    </a>
+                  )}
                 </div>
-              )}
+              </div>
             </div>
 
             {/* Footer Info */}

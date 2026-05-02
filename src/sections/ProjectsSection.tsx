@@ -18,14 +18,6 @@ interface Project {
 const projects: Project[] = [
   {
     id: 1,
-    image: '/images/web-main.jpg',
-    name: 'Grand Hotel Lysekil',
-    description: 'Komplett hotellwebb med bokningsmotor, Sirvoy-sync och driftapp för städpersonal.',
-    tags: 'Hotell · Bokning · SEO · React',
-    url: 'https://www.zentai.se',
-  },
-  {
-    id: 2,
     image: '/images/project-zentai.jpg',
     name: 'Zentai',
     description: 'Modern webbplats med fokus på användarupplevelse och konvertering.',

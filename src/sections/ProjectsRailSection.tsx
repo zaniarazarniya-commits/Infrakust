@@ -27,12 +27,12 @@ type Project = {
 
 const projects: Project[] = [
   {
-    name: 'ZentAi',
+    name: 'Fjällbacka Fastigheter',
     description:
-      'Externt teknikteam i Lysekil. Hemsidor, Notion-verksamhetssystem och AI-agenter — byggda och förvaltade som en helhet.',
-    tags: 'HTML · CSS · JS · SEO · Lysekil',
-    image: '/images/project-zentai.png',
-    url: 'https://www.zentai.se',
+      'Fastighetswebbplats för Fjällbacka Fastigheter med modern design, tydlig struktur och användarvänlig navigering.',
+    tags: 'Webb · React · Tailwind · Custom',
+    image: '/images/example1.infrakust.png',
+    url: 'https://www.example1.infrakust.se',
     eyebrow: 'WEBB · 2025',
   },
   {
@@ -44,8 +44,24 @@ const projects: Project[] = [
     url: 'https://www.lionpaw.se',
     eyebrow: 'WEBB · 2025',
   },
-  // Add more projects here as the portfolio grows.
-  // Each card stretches the rail naturally — no layout work needed.
+  {
+    name: 'Infrakust Projekt',
+    description:
+      'Skräddarsydd webblösning hostad på infrakust.se med modern teknisk stack och responsiv design.',
+    tags: 'Webb · React · Custom',
+    image: '/images/example.infrakust..png',
+    url: 'https://www.example.infrakust.se',
+    eyebrow: 'WEBB · 2025',
+  },
+  {
+    name: 'ZentAi',
+    description:
+      'Externt teknikteam i Lysekil. Hemsidor, Notion-verksamhetssystem och AI-agenter — byggda och förvaltade som en helhet.',
+    tags: 'HTML · CSS · JS · SEO · Lysekil',
+    image: '/images/project-zentai.png',
+    url: 'https://www.zentai.se',
+    eyebrow: 'WEBB · 2025',
+  },
 ];
 
 const DRAG_THRESHOLD = 6;

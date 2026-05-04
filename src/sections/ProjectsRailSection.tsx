@@ -159,6 +159,9 @@ export function ProjectsRailSection() {
     requestAnimationFrame(() => {
       if (rail) rail.style.scrollSnapType = '';
     });
+    if (dragState.current.moved) {
+      setTimeout(() => { dragState.current.moved = false; }, 150);
+    }
     try {
       rail.releasePointerCapture(e.pointerId);
     } catch {

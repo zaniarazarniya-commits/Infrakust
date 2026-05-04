@@ -9,6 +9,11 @@ import { AppTeaserSection } from '@/sections/AppTeaserSection';
 import { ProjectsRailSection } from '@/sections/ProjectsRailSection';
 import { ContactSection } from '@/sections/ContactSection';
 import CaseGrandHotel from '@/pages/CaseGrandHotel';
+import AboutPage from '@/pages/AboutPage';
+import WebdevPage from '@/pages/WebdevPage';
+import AppdevPage from '@/pages/AppdevPage';
+import NotFoundPage from '@/pages/NotFoundPage';
+import { SEO } from '@/components/SEO';
 
 /**
  * App.tsx — updated with routing.
@@ -31,6 +36,11 @@ function ScrollToTop() {
 function Home() {
   return (
     <div className="min-h-screen bg-bg-primary">
+      <SEO
+        title="Infrakust — Digital byrå från Lysekil"
+        description="Vi bygger hemsidor som konverterar, appar som används och digital infrastruktur som håller. Premium digital byrå i Lysekil, Sverige."
+        canonical="https://www.infrakust.se/"
+      />
       <Navigation />
       <main>
         <HeroSection />
@@ -63,6 +73,10 @@ export default function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/case/grand-hotel" element={<CaseGrandHotel />} />
+        <Route path="/om-oss" element={<AboutPage />} />
+        <Route path="/tjanster/webbutveckling" element={<WebdevPage />} />
+        <Route path="/tjanster/apputveckling" element={<AppdevPage />} />
+        <Route path="*" element={<NotFoundPage />} />
       </Routes>
     </BrowserRouter>
   );

@@ -5,6 +5,19 @@ import { ArrowLeft, ChevronLeft, ChevronRight } from 'lucide-react';
 import { ScrollReveal } from '@/components/ScrollReveal';
 import { Navigation } from '@/components/Navigation';
 import { Footer } from '@/components/Footer';
+import { SEO } from '@/components/SEO';
+
+const caseJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'CreativeWork',
+  name: 'Gästportal och housekeeping-app för hotell — Grand Hotel Lysekil',
+  description: 'Infrakust byggde ett ekosystem av två appar för Grand Hotel Lysekil: Zuve (gästportal från SMS till incheckning) och en housekeeping-app som synkar reception och städpersonal i realtid.',
+  url: 'https://www.infrakust.se/case/grand-hotel',
+  author: { '@type': 'Organization', name: 'Infrakust', url: 'https://www.infrakust.se' },
+  datePublished: '2026-01-01',
+  keywords: ['gästportal hotell', 'housekeeping app', 'app hotell Sverige', 'digital infrastruktur hotell', 'webbutveckling Lysekil'],
+  about: { '@type': 'Thing', name: 'Webbutveckling och app-utveckling för hospitality' },
+};
 
 /**
  * CaseGrandHotel
@@ -16,18 +29,17 @@ import { Footer } from '@/components/Footer';
  */
 
 const zuveFlow = [
-  { src: '/images/zuve-1-sms-opt.jpg', label: 'SMS-bekräftelse', desc: 'Gästen får ett personligt SMS med länk till sin gästportal.' },
-  { src: '/images/zuve-2-welcome-opt.jpg', label: 'Välkomstsida', desc: 'Personlig välkomstsida med gästens namn och bokningsknapp.' },
-  { src: '/images/zuve-3-arrival-opt.jpg', label: 'Ankomstinfo', desc: 'Telefon, e-post, ankomsttid och önskemål — direkt från mobilen.' },
-  { src: '/images/zuve-4-booking-opt.jpg', label: 'Bokningsdetaljer', desc: 'Komplett översikt över rum, datum, gäster och pris.' },
-  { src: '/images/zuve-5-upsell-opt.jpg', label: 'Tillval', desc: 'Upselling av skaldjur, bubbel, spa och upplevelser.' },
-  { src: '/images/zuve-6-explore-opt.jpg', label: 'Utforska Lysekil', desc: 'Lokal guide med aktiviteter, natur och restauranger.' },
+  { src: '/images/z1.png', label: 'Välkomstsida', desc: 'Personlig välkomstsida med gästens namn och bokningsknapp.' },
+  { src: '/images/z2.png', label: 'Ankomstinfo', desc: 'Gästen fyller i uppgifter, ankomsttid och önskemål — direkt från mobilen.' },
+  { src: '/images/z3.png', label: 'Bokningsöversikt', desc: 'Komplett översikt över rum, datum, gäster och totalpris.' },
+  { src: '/images/z5.jpg', label: 'Tillval', desc: 'Upselling av skaldjur, bubbel, spa och upplevelser i Lysekil.' },
 ];
 
 const hkFlow = [
-  { src: '/images/app-hk-reception-opt2.jpg', label: 'Reception', desc: 'Reception ser exakt vilka rum som är klara och när.' },
-  { src: '/images/app-hk-routines-opt2.jpg', label: 'Dagliga rutiner', desc: 'Checklistor och uppgifter för varje tidsblock under dagen.' },
-  { src: '/images/app-hk-breakfast-opt2.jpg', label: 'Frukost & allergier', desc: 'Live frukostlista med allergier hämtade direkt från bokningen.' },
+  { src: '/images/h1.jpg', label: 'Reception', desc: 'Reception ser exakt vilka rum som är klara och när.' },
+  { src: '/images/h2.jpg', label: 'Dagliga rutiner', desc: 'Checklistor och uppgifter för varje tidsblock under dagen.' },
+  { src: '/images/h3.jpg', label: 'Frukost & allergier', desc: 'Live frukostlista med allergier hämtade direkt från bokningen.' },
+  { src: '/images/h4.jpg', label: 'Statistik', desc: 'Produktivitetsstatistik och Excel-export för städpersonal.' },
 ];
 
 const techStack = [
@@ -37,11 +49,11 @@ const techStack = [
 ];
 
 const results = [
-  'Färre samtal till receptionen',
-  'Ökad försäljning av tillval',
-  'Reception ser exakt vilka rum som är klara',
-  'Bildbaserade felanmälningar med full spårbarhet',
-  'Statistik över städtider och produktivitet',
+  'Färre samtal till receptionen om rutinsaker',
+  'Digitalt istället för papperslistor som var inaktuella',
+  'Reception ser exakt vilka rum som är klara och när',
+  'Tydligare kommunikation mellan reception och städpersonal',
+  'Statistik och spårbarhet — bättre ordning varje dag',
   'Allt synkat i realtid mellan alla enheter',
 ];
 
@@ -162,6 +174,12 @@ function PhoneCarousel({
 export default function CaseGrandHotel() {
   return (
     <div className="min-h-screen bg-bg-primary">
+      <SEO
+        title="Gästportal och housekeeping-app för hotell — Infrakust"
+        description="Hur Infrakust byggde två appar som ett ekosystem för Grand Hotel Lysekil: en gästportal och ett realtids-housekeeping-system."
+        canonical="https://www.infrakust.se/case/grand-hotel"
+        jsonLd={caseJsonLd}
+      />
       <Navigation />
 
       <main>
@@ -186,28 +204,28 @@ export default function CaseGrandHotel() {
 
             <ScrollReveal delay={0.18}>
               <h1 className="mt-6 max-w-[920px] font-serif text-[clamp(48px,7vw,108px)] font-normal leading-[0.98] tracking-[-0.025em] text-text-primary">
-                Två appar.<br />
+                Två <span className="text-accent-gold">appar.</span><br />
                 <em className="italic">Ett hotell.</em>
               </h1>
             </ScrollReveal>
 
             <ScrollReveal delay={0.28}>
-              <dl className="mt-16 grid grid-cols-2 gap-x-8 gap-y-6 border-y border-text-muted/15 py-8 sm:grid-cols-4">
+              <dl className="mt-16 grid grid-cols-2 gap-x-8 gap-y-6 border-y border-text-muted/30 py-8 sm:grid-cols-4">
                 <div>
-                  <dt className="font-sans text-[10px] uppercase tracking-section text-text-muted">Klient</dt>
-                  <dd className="mt-2 font-serif text-base text-text-primary">Grand Hotel Lysekil</dd>
+                  <dt className="font-sans text-[10px] uppercase tracking-section text-accent-gold">Klient</dt>
+                  <dd className="mt-2 font-sans text-sm font-medium text-text-primary">Grand Hotel Lysekil</dd>
                 </div>
                 <div>
-                  <dt className="font-sans text-[10px] uppercase tracking-section text-text-muted">Omfattning</dt>
-                  <dd className="mt-2 font-serif text-base text-text-primary">Gästportal + städsystem</dd>
+                  <dt className="font-sans text-[10px] uppercase tracking-section text-accent-gold">Omfattning</dt>
+                  <dd className="mt-2 font-sans text-sm font-medium text-text-primary">Gästportal + städsystem</dd>
                 </div>
                 <div>
-                  <dt className="font-sans text-[10px] uppercase tracking-section text-text-muted">År</dt>
-                  <dd className="mt-2 font-serif text-base text-text-primary">2024–2025</dd>
+                  <dt className="font-sans text-[10px] uppercase tracking-section text-accent-gold">År</dt>
+                  <dd className="mt-2 font-sans text-sm font-medium text-text-primary">2025–2026</dd>
                 </div>
                 <div>
-                  <dt className="font-sans text-[10px] uppercase tracking-section text-text-muted">Roll</dt>
-                  <dd className="mt-2 font-serif text-base text-text-primary">Design + utveckling</dd>
+                  <dt className="font-sans text-[10px] uppercase tracking-section text-accent-gold">Roll</dt>
+                  <dd className="mt-2 font-sans text-sm font-medium text-text-primary">Design + utveckling</dd>
                 </div>
               </dl>
             </ScrollReveal>
@@ -222,7 +240,7 @@ export default function CaseGrandHotel() {
                 UTMANINGEN
               </p>
             </ScrollReveal>
-            <div className="space-y-6 font-sans text-lg leading-relaxed text-text-secondary">
+            <div className="space-y-6 max-w-[60ch] font-sans text-lg leading-relaxed text-text-secondary">
               <ScrollReveal delay={0.1}>
                 <p>
                   Hotellet hade två separata problem: gäster ringde receptionen för
@@ -286,23 +304,6 @@ export default function CaseGrandHotel() {
           </div>
         </section>
 
-        {/* Pull quote */}
-        <section className="px-6 py-32 md:px-12 md:py-40 lg:px-20">
-          <div className="mx-auto max-w-[1080px] text-center">
-            <ScrollReveal>
-              <p className="font-sans text-xs uppercase tracking-section text-text-muted">
-                EN PRINCIP
-              </p>
-            </ScrollReveal>
-            <ScrollReveal delay={0.15}>
-              <blockquote className="mt-8 font-serif text-[clamp(32px,4.5vw,56px)] font-normal leading-[1.15] tracking-[-0.015em] text-text-primary">
-                <em className="italic">&ldquo;Två appar som pratar samma språk&rdquo;</em> är
-                bättre än en app som gör allt.
-              </blockquote>
-            </ScrollReveal>
-          </div>
-        </section>
-
         {/* Housekeeping — mirrored layout */}
         <section className="bg-bg-secondary px-6 py-32 md:px-12 md:py-40 lg:px-20">
           <div className="mx-auto grid max-w-[1280px] items-center gap-16 lg:grid-cols-2 lg:gap-24">
@@ -359,19 +360,27 @@ export default function CaseGrandHotel() {
             </ScrollReveal>
             <ScrollReveal delay={0.12}>
               <h2 className="mt-6 max-w-[860px] font-serif text-[clamp(36px,5vw,64px)] font-normal leading-[1.05] tracking-[-0.02em] text-text-primary">
-                Sex saker som blev annorlunda.
+                Vad systemet <em className="italic">levererade.</em>
               </h2>
             </ScrollReveal>
+            <ScrollReveal delay={0.2}>
+              <p className="mt-4 max-w-[520px] font-sans text-base leading-relaxed text-text-secondary">
+                Sex konkreta förbättringar som personalen märker av varje dag.
+              </p>
+            </ScrollReveal>
 
-            <ol className="mt-16 space-y-6">
+            <ol className="mt-14 divide-y divide-text-muted/10">
               {results.map((r, i) => (
-                <ScrollReveal key={r} delay={0.05 * i}>
-                  <li className="grid gap-6 border-t border-text-muted/15 pt-6 md:grid-cols-[80px_1fr]">
-                    <span className="font-serif text-3xl text-accent-gold">
+                <ScrollReveal key={r} delay={0.06 * i}>
+                  <li className="group flex items-center gap-6 py-5 transition-all duration-300 hover:bg-text-muted/[0.03] md:gap-10 md:px-4">
+                    <span className="w-10 flex-shrink-0 font-serif text-2xl text-accent-gold/50 transition-colors duration-300 group-hover:text-accent-gold">
                       {String(i + 1).padStart(2, '0')}
                     </span>
-                    <span className="font-serif text-[clamp(20px,2.4vw,32px)] font-normal leading-[1.25] text-text-primary">
+                    <span className="flex-1 font-sans text-[clamp(16px,1.8vw,22px)] font-medium leading-[1.3] text-text-primary">
                       {r}
+                    </span>
+                    <span className="translate-x-2 text-accent-gold opacity-0 transition-all duration-300 group-hover:translate-x-0 group-hover:opacity-100">
+                      &rarr;
                     </span>
                   </li>
                 </ScrollReveal>

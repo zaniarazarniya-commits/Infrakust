@@ -45,6 +45,15 @@ const projects: Project[] = [
     eyebrow: 'WEBB · 2025',
   },
   {
+    name: 'Kajmagasinet',
+    description:
+      'Hemsida för Kajmagasinet — en lokal restaurang och bar i Lysekil. En samlingsplats för god mat och goda drinkar vid havet.',
+    tags: 'Webb · React · Design · Tailwind',
+    image: '/images/Kajmagsinet.png',
+    url: 'https://www.kajmagasinet.se',
+    eyebrow: 'WEBB · 2026',
+  },
+  {
     name: 'Infrakust Projekt',
     description:
       'Skräddarsydd webblösning hostad på infrakust.se med modern teknisk stack och responsiv design.',
@@ -178,7 +187,7 @@ export function ProjectsRailSection() {
           </ScrollReveal>
           <ScrollReveal delay={0.15}>
             <h2 className="font-serif text-[clamp(36px,5vw,72px)] font-normal leading-[1.05] tracking-[-0.02em] text-text-primary">
-              Hemsidor som <em className="italic">konverterar</em>
+              Hemsidor som <em className="italic text-accent-gold">konverterar</em>
             </h2>
           </ScrollReveal>
         </div>
@@ -234,7 +243,7 @@ export function ProjectsRailSection() {
                 delay: i * 0.1,
                 ease: [0.4, 0, 0.2, 1],
               }}
-              className="relative aspect-[16/10] w-full overflow-hidden bg-bg-tertiary shadow-[0_50px_120px_rgba(0,0,0,0.55)]"
+              className="relative aspect-[16/10] w-full overflow-hidden bg-bg-tertiary shadow-[0_20px_60px_rgba(0,0,0,0.3)]"
             >
               <img
                 src={project.image}

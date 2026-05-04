@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { Link, useLocation } from 'react-router';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useScrollPosition } from '@/hooks/useScrollPosition';
 import { Menu, X } from 'lucide-react';
@@ -19,10 +20,13 @@ export function Navigation() {
     };
   }, [menuOpen]);
 
+  const { pathname } = useLocation();
+
   const navLinks = [
-    { label: 'Appar', href: '#appar' },
-    { label: 'Projekt', href: '#projekt' },
-    { label: 'Kontakt', href: '#kontakt' },
+    { label: 'Webbutveckling', to: '/tjanster/webbutveckling' },
+    { label: 'App-utveckling', to: '/tjanster/apputveckling' },
+    { label: 'Om oss', to: '/om-oss' },
+    { label: 'Kontakt', to: pathname === '/' ? '#kontakt' : '/#kontakt' },
   ];
 
   return (
@@ -36,24 +40,37 @@ export function Navigation() {
       >
         <div className="mx-auto flex h-[72px] items-center justify-between px-6 md:px-12 lg:px-20">
           {/* Logo */}
-          <a
-            href="#"
+          <Link
+            to="/"
             className="font-serif text-lg tracking-wide text-text-primary transition-colors hover:text-accent-gold"
           >
             Infrakust
-          </a>
+          </Link>
 
           {/* Desktop Nav */}
           <div className="hidden items-center gap-10 md:flex">
             {navLinks.map((link) => (
-              <a
-                key={link.label}
-                href={link.href}
-                className="group relative font-sans text-sm font-medium uppercase tracking-nav text-text-secondary transition-colors hover:text-accent-gold"
-              >
-                {link.label}
-                <span className="absolute -bottom-1 left-0 h-[1px] w-0 bg-accent-gold transition-all duration-300 group-hover:w-full" />
-              </a>
+              link.to.startsWith('#') || link.to.startsWith('/#') ? (
+                <a
+                  key={link.label}
+                  href={link.to}
+                  className="group relative font-sans text-sm font-medium uppercase tracking-nav text-text-secondary transition-colors hover:text-accent-gold"
+                >
+                  {link.label}
+                  <span className="absolute -bottom-1 left-0 h-[1px] w-0 bg-accent-gold transition-all duration-300 group-hover:w-full" />
+                </a>
+              ) : (
+                <Link
+                  key={link.label}
+                  to={link.to}
+                  className={`group relative font-sans text-sm font-medium uppercase tracking-nav transition-colors hover:text-accent-gold ${
+                    pathname === link.to ? 'text-accent-gold' : 'text-text-secondary'
+                  }`}
+                >
+                  {link.label}
+                  <span className="absolute -bottom-1 left-0 h-[1px] w-0 bg-accent-gold transition-all duration-300 group-hover:w-full" />
+                </Link>
+              )
             ))}
           </div>
 
@@ -79,20 +96,38 @@ export function Navigation() {
             className="fixed inset-0 z-40 flex flex-col items-center justify-center bg-bg-primary"
           >
             <nav className="flex flex-col items-center gap-8">
-              {navLinks.map((link, i) => (
-                <motion.a
-                  key={link.label}
-                  href={link.href}
-                  onClick={() => setMenuOpen(false)}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: 20 }}
-                  transition={{ delay: i * 0.08, duration: 0.4, ease: [0.4, 0, 0.2, 1] }}
-                  className="font-serif text-4xl text-text-primary transition-colors hover:text-accent-gold"
-                >
-                  {link.label}
-                </motion.a>
-              ))}
+              {navLinks.map((link, i) =>
+                link.to.startsWith('#') || link.to.startsWith('/#') ? (
+                  <motion.a
+                    key={link.label}
+                    href={link.to}
+                    onClick={() => setMenuOpen(false)}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: 20 }}
+                    transition={{ delay: i * 0.08, duration: 0.4, ease: [0.4, 0, 0.2, 1] }}
+                    className="font-serif text-4xl text-text-primary transition-colors hover:text-accent-gold"
+                  >
+                    {link.label}
+                  </motion.a>
+                ) : (
+                  <motion.div
+                    key={link.label}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: 20 }}
+                    transition={{ delay: i * 0.08, duration: 0.4, ease: [0.4, 0, 0.2, 1] }}
+                  >
+                    <Link
+                      to={link.to}
+                      onClick={() => setMenuOpen(false)}
+                      className="font-serif text-4xl text-text-primary transition-colors hover:text-accent-gold"
+                    >
+                      {link.label}
+                    </Link>
+                  </motion.div>
+                )
+              )}
             </nav>
           </motion.div>
         )}

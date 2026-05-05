@@ -29,10 +29,14 @@ const caseJsonLd = {
  */
 
 const zuveFlow = [
-  { src: '/images/z1.png', label: 'Välkomstsida', desc: 'Personlig välkomstsida med gästens namn och bokningsknapp.' },
-  { src: '/images/z2.png', label: 'Ankomstinfo', desc: 'Gästen fyller i uppgifter, ankomsttid och önskemål — direkt från mobilen.' },
-  { src: '/images/z3.png', label: 'Bokningsöversikt', desc: 'Komplett översikt över rum, datum, gäster och totalpris.' },
+  { src: '/images/zuve-1-sms.jpg', label: 'SMS-länk', desc: 'Gästen får ett personligt SMS med länk till sin bokning — innan ankomst.' },
+  { src: '/images/z1.jpg', label: 'Gästportal', desc: 'Startsida där gästen kan söka fram sin bokning med bokningsnummer.' },
+  { src: '/images/z2.jpg', label: 'Välkomstsida', desc: 'Personlig välkomstsida med gästens namn och bokningsknapp.' },
+  { src: '/images/z3.jpg', label: 'Ankomstinfo', desc: 'Gästen fyller i uppgifter, ankomsttid och önskemål — direkt från mobilen.' },
+  { src: '/images/z4.jpg', label: 'Bokningsöversikt', desc: 'Komplett översikt över rum, datum, gäster och totalpris.' },
   { src: '/images/z5.jpg', label: 'Tillval', desc: 'Upselling av skaldjur, bubbel, spa och upplevelser i Lysekil.' },
+  { src: '/images/z6.jpg', label: 'Bekräftelse', desc: 'Tydlig bekräftelse på att allt är klart inför ankomst.' },
+  { src: '/images/z7.jpg', label: 'Incheckning', desc: 'Incheckning direkt i mobilen — utan att behöva besöka receptionen.' },
 ];
 
 const hkFlow = [

@@ -73,8 +73,6 @@ const projects: Project[] = [
   },
 ];
 
-const DRAG_THRESHOLD = 6;
-
 export function ProjectsRailSection() {
   const railRef = useRef<HTMLDivElement>(null);
   const [progress, setProgress] = useState(0);
@@ -114,58 +112,6 @@ export function ProjectsRailSection() {
     if (!card) return;
     const distance = card.getBoundingClientRect().width + 56; // gap-14
     rail.scrollBy({ left: dir * distance, behavior: 'smooth' });
-  };
-
-  // ---------- Pointer drag ----------
-  const dragState = useRef({
-    isDown: false,
-    startX: 0,
-    startScroll: 0,
-    moved: false,
-  });
-
-  const onPointerDown = (e: React.PointerEvent<HTMLDivElement>) => {
-    if (e.pointerType === 'mouse' && e.button !== 0) return;
-    const rail = railRef.current;
-    if (!rail) return;
-    dragState.current = {
-      isDown: true,
-      startX: e.clientX,
-      startScroll: rail.scrollLeft,
-      moved: false,
-    };
-    rail.style.scrollBehavior = 'auto';
-    rail.style.scrollSnapType = 'none';
-    rail.setPointerCapture(e.pointerId);
-  };
-
-  const onPointerMove = (e: React.PointerEvent<HTMLDivElement>) => {
-    const rail = railRef.current;
-    if (!rail || !dragState.current.isDown) return;
-    const dx = e.clientX - dragState.current.startX;
-    if (Math.abs(dx) > DRAG_THRESHOLD) {
-      dragState.current.moved = true;
-      rail.classList.add('is-dragging');
-    }
-    rail.scrollLeft = dragState.current.startScroll - dx;
-  };
-
-  const endDrag = (e: React.PointerEvent<HTMLDivElement>) => {
-    const rail = railRef.current;
-    if (!rail || !dragState.current.isDown) return;
-    dragState.current.isDown = false;
-    rail.classList.remove('is-dragging');
-    rail.style.scrollBehavior = '';
-    requestAnimationFrame(() => {
-      if (rail) rail.style.scrollSnapType = '';
-    });
-    // Always reset moved flag after a short delay so clicks work after drag
-    setTimeout(() => { dragState.current.moved = false; }, 100);
-    try {
-      rail.releasePointerCapture(e.pointerId);
-    } catch {
-      /* ignore */
-    }
   };
 
 
@@ -209,13 +155,8 @@ export function ProjectsRailSection() {
       {/* Rail */}
       <div
         ref={railRef}
-        onPointerDown={onPointerDown}
-        onPointerMove={onPointerMove}
-        onPointerUp={endDrag}
-        onPointerCancel={endDrag}
-        onPointerLeave={endDrag}
-        className="projects-rail flex cursor-grab snap-x snap-mandatory gap-14 overflow-x-auto overflow-y-hidden px-6 pb-6 md:px-12 lg:px-20"
-        style={{ scrollbarWidth: 'none' }}
+        className="projects-rail flex gap-14 overflow-x-auto overflow-y-hidden px-6 pb-6 md:px-12 lg:px-20"
+        style={{ scrollbarWidth: 'none', scrollBehavior: 'smooth' }}
       >
         {projects.map((project, i) => (
           <a

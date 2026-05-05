@@ -114,7 +114,7 @@
   }
 }
 
-/* Projects rail: disable clicks on links while dragging */
-.projects-rail.is-dragging a {
-  pointer-events: none;
+/* Projects rail: hide scrollbar */
+.projects-rail::-webkit-scrollbar {
+  display: none;
 }

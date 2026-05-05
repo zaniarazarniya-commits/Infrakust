@@ -113,3 +113,8 @@
     transform: scaleX(1);
   }
 }
+
+/* Projects rail: disable clicks on links while dragging */
+.projects-rail.is-dragging a {
+  pointer-events: none;
+}

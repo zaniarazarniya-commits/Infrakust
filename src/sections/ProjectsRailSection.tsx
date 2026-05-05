@@ -159,9 +159,8 @@ export function ProjectsRailSection() {
     requestAnimationFrame(() => {
       if (rail) rail.style.scrollSnapType = '';
     });
-    if (dragState.current.moved) {
-      setTimeout(() => { dragState.current.moved = false; }, 150);
-    }
+    // Always reset moved flag after a short delay so clicks work after drag
+    setTimeout(() => { dragState.current.moved = false; }, 100);
     try {
       rail.releasePointerCapture(e.pointerId);
     } catch {
@@ -169,14 +168,6 @@ export function ProjectsRailSection() {
     }
   };
 
-  // Suppress click after drag (prevents drag-then-release from opening links)
-  const onClickCapture = (e: React.MouseEvent<HTMLDivElement>) => {
-    if (dragState.current.moved) {
-      e.preventDefault();
-      e.stopPropagation();
-      dragState.current.moved = false;
-    }
-  };
 
   return (
     <section id="projekt" className="bg-bg-secondary py-[120px] md:py-[140px]">
@@ -223,7 +214,6 @@ export function ProjectsRailSection() {
         onPointerUp={endDrag}
         onPointerCancel={endDrag}
         onPointerLeave={endDrag}
-        onClickCapture={onClickCapture}
         className="projects-rail flex cursor-grab snap-x snap-mandatory gap-14 overflow-x-auto overflow-y-hidden px-6 pb-6 md:px-12 lg:px-20"
         style={{ scrollbarWidth: 'none' }}
       >

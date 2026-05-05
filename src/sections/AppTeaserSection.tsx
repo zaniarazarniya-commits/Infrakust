@@ -23,13 +23,13 @@ type Slide = {
 };
 
 const slides: Slide[] = [
-  { app: 'Zuve', src: '/images/z1.jpg', label: 'Gästportal', desc: 'Startsida där gästen söker fram sin bokning med bokningsnummer.' },
-  { app: 'Zuve', src: '/images/z2.jpg', label: 'Välkomstsida', desc: 'Personlig välkomstsida med gästens namn och bokningsknapp.' },
-  { app: 'Zuve', src: '/images/z3.jpg', label: 'Ankomstinfo', desc: 'Gästen fyller i uppgifter, ankomsttid och önskemål från mobilen.' },
-  { app: 'Zuve', src: '/images/z4.jpg', label: 'Bokningsöversikt', desc: 'Komplett översikt över rum, datum, gäster och totalpris.' },
-  { app: 'Zuve', src: '/images/z5.jpg', label: 'Tillval', desc: 'Upselling av skaldjur, bubbel, spa och upplevelser i Lysekil.' },
-  { app: 'Zuve', src: '/images/z6.jpg', label: 'Bekräftelse', desc: 'Tydlig bekräftelse på att allt är klart inför ankomst.' },
-  { app: 'Zuve', src: '/images/z7.jpg', label: 'Incheckning', desc: 'Incheckning direkt i mobilen — utan att behöva besöka receptionen.' },
+  { app: 'Zuve', src: '/images/z1.jpg', label: 'Välkomstsida', desc: 'Personlig välkomstsida med gästens namn och knapp till bokningen.' },
+  { app: 'Zuve', src: '/images/z2.jpg', label: 'Förbered ankomst', desc: 'Gästen fyller i telefonnummer, ankomsttid och önskemål — direkt från mobilen.' },
+  { app: 'Zuve', src: '/images/z3.jpg', label: 'Bokningsöversikt', desc: 'Komplett översikt över datum, rum, gäster och totalpris.' },
+  { app: 'Zuve', src: '/images/z4.jpg', label: 'Tillval', desc: 'Upselling av godispaket, bubbel, spa och upplevelser direkt på rummet.' },
+  { app: 'Zuve', src: '/images/z5.jpg', label: 'Restauranger', desc: 'Lokala restauranger och vingårdar — bokas direkt i appen.' },
+  { app: 'Zuve', src: '/images/z6.jpg', label: 'Utforska Lysekil', desc: 'Sevärdheter och utomhusaktiviteter handplockade åt gästen.' },
+  { app: 'Zuve', src: '/images/z7.jpg', label: 'Gästportal', desc: 'Startsida där gästen söker fram sin bokning med bokningsnummer.' },
   { app: 'Housekeeping', src: '/images/h1.jpg', label: 'Reception', desc: 'Reception ser exakt vilka rum som är klara och när.' },
   { app: 'Housekeeping', src: '/images/h2.jpg', label: 'Dagliga rutiner', desc: 'Checklistor och uppgifter för varje tidsblock under dagen.' },
   { app: 'Housekeeping', src: '/images/h3.jpg', label: 'Frukost & allergier', desc: 'Live frukostlista med allergier hämtade direkt från bokningen.' },

@@ -29,14 +29,14 @@ const caseJsonLd = {
  */
 
 const zuveFlow = [
-  { src: '/images/zuve-1-sms.jpg', label: 'SMS-länk', desc: 'Gästen får ett personligt SMS med länk till sin bokning — innan ankomst.' },
-  { src: '/images/z1.jpg', label: 'Gästportal', desc: 'Startsida där gästen kan söka fram sin bokning med bokningsnummer.' },
-  { src: '/images/z2.jpg', label: 'Välkomstsida', desc: 'Personlig välkomstsida med gästens namn och bokningsknapp.' },
-  { src: '/images/z3.jpg', label: 'Ankomstinfo', desc: 'Gästen fyller i uppgifter, ankomsttid och önskemål — direkt från mobilen.' },
-  { src: '/images/z4.jpg', label: 'Bokningsöversikt', desc: 'Komplett översikt över rum, datum, gäster och totalpris.' },
-  { src: '/images/z5.jpg', label: 'Tillval', desc: 'Upselling av skaldjur, bubbel, spa och upplevelser i Lysekil.' },
-  { src: '/images/z6.jpg', label: 'Bekräftelse', desc: 'Tydlig bekräftelse på att allt är klart inför ankomst.' },
-  { src: '/images/z7.jpg', label: 'Incheckning', desc: 'Incheckning direkt i mobilen — utan att behöva besöka receptionen.' },
+  { src: '/images/zuve-1-sms.jpg', label: 'E-postutskick', desc: 'Gästen får ett personligt e-postmeddelande med länk till sin gästportal — innan ankomst.' },
+  { src: '/images/z1.jpg', label: 'Välkomstsida', desc: 'Personlig välkomstsida med gästens namn och knapp till bokningen.' },
+  { src: '/images/z2.jpg', label: 'Förbered ankomst', desc: 'Gästen fyller i telefonnummer, ankomsttid och önskemål — direkt från mobilen.' },
+  { src: '/images/z3.jpg', label: 'Bokningsöversikt', desc: 'Komplett översikt över datum, rum, gäster och totalpris.' },
+  { src: '/images/z4.jpg', label: 'Tillval', desc: 'Upselling av godispaket, bubbel, spa och upplevelser direkt på rummet.' },
+  { src: '/images/z5.jpg', label: 'Restauranger', desc: 'Lokala restauranger och vingårdar — bokas direkt i appen.' },
+  { src: '/images/z6.jpg', label: 'Utforska Lysekil', desc: 'Sevärdheter och utomhusaktiviteter handplockade åt gästen.' },
+  { src: '/images/z7.jpg', label: 'Gästportal', desc: 'Startsida där gästen kan söka fram sin bokning med bokningsnummer.' },
 ];
 
 const hkFlow = [

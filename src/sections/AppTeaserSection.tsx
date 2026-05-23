@@ -1,10 +1,8 @@
-import { useEffect, useRef, useState } from 'react';
+import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Link } from 'react-router';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { ScrollReveal } from '@/components/ScrollReveal';
-import { useReducedMotion } from '@/hooks/useReducedMotion';
-
 /**
  * AppTeaserSection
  * --------------------------------------------------------------
@@ -36,23 +34,8 @@ const slides: Slide[] = [
   { app: 'Housekeeping', src: '/images/h4.jpg', label: 'Statistik', desc: 'Produktivitetsstatistik och Excel-export för städpersonal.' },
 ];
 
-const ROTATE_MS = 4500;
-
 export function AppTeaserSection() {
-  const reducedMotion = useReducedMotion();
   const [current, setCurrent] = useState(0);
-  const [paused, setPaused] = useState(false);
-  const intervalRef = useRef<number | null>(null);
-
-  useEffect(() => {
-    if (reducedMotion || paused) return;
-    intervalRef.current = window.setInterval(() => {
-      setCurrent((c) => (c + 1) % slides.length);
-    }, ROTATE_MS);
-    return () => {
-      if (intervalRef.current) window.clearInterval(intervalRef.current);
-    };
-  }, [paused, reducedMotion]);
 
   const advance = () => setCurrent((c) => (c + 1) % slides.length);
 
@@ -134,11 +117,7 @@ export function AppTeaserSection() {
 
         {/* Phone column */}
         <ScrollReveal delay={0.2} direction="left">
-          <div
-            className="relative flex flex-col items-center"
-            onMouseEnter={() => setPaused(true)}
-            onMouseLeave={() => setPaused(false)}
-          >
+          <div className="relative flex flex-col items-center">
             {/* Per-phone soft glow ring */}
             <div
               className="pointer-events-none absolute inset-x-[-60px] inset-y-[-40px] -z-0 rounded-full blur-[80px]"
@@ -176,14 +155,14 @@ export function AppTeaserSection() {
                   {/* Hover arrows */}
                   <button
                     onClick={(e) => { e.stopPropagation(); setCurrent((c) => (c - 1 + slides.length) % slides.length); }}
-                    className="absolute left-2 top-1/2 z-10 flex h-8 w-8 -translate-y-1/2 items-center justify-center rounded-full bg-bg-primary/40 text-white/60 opacity-0 transition-all hover:bg-bg-primary/70 hover:text-white group-hover:opacity-100"
+                    className="absolute left-2 top-1/2 z-10 flex h-8 w-8 -translate-y-1/2 items-center justify-center rounded-full bg-bg-primary/60 text-white/70 transition-all hover:bg-bg-primary/90 hover:text-white"
                     aria-label="Föregående"
                   >
                     <ChevronLeft size={16} />
                   </button>
                   <button
                     onClick={(e) => { e.stopPropagation(); advance(); }}
-                    className="absolute right-2 top-1/2 z-10 flex h-8 w-8 -translate-y-1/2 items-center justify-center rounded-full bg-bg-primary/40 text-white/60 opacity-0 transition-all hover:bg-bg-primary/70 hover:text-white group-hover:opacity-100"
+                    className="absolute right-2 top-1/2 z-10 flex h-8 w-8 -translate-y-1/2 items-center justify-center rounded-full bg-bg-primary/60 text-white/70 transition-all hover:bg-bg-primary/90 hover:text-white"
                     aria-label="Nästa"
                   >
                     <ChevronRight size={16} />

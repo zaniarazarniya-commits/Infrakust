@@ -1,6 +1,4 @@
 import { ScrollReveal } from '@/components/ScrollReveal';
-import { ContactForm } from '@/components/ContactForm';
-import { site } from '@/lib/site';
 
 export function ContactSection() {
   return (
@@ -20,44 +18,17 @@ export function ContactSection() {
 
         <ScrollReveal delay={0.3}>
           <p className="mt-6 font-sans text-base text-text-secondary">
-            Skicka ett meddelande, så tar vi en kaffe — digitalt eller i Lysekil.
+            Skicka ett mail, så tar vi en kaffe — digitalt eller i Lysekil.
           </p>
         </ScrollReveal>
 
         <ScrollReveal delay={0.45}>
-          <ContactForm />
-        </ScrollReveal>
-
-        <ScrollReveal delay={0.6}>
-          <div className="mt-12 flex flex-col items-center gap-4">
-            {site.bookingUrl && (
-              <a
-                href={site.bookingUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="font-sans text-sm uppercase tracking-section text-text-secondary transition-colors hover:text-accent-gold"
-              >
-                Boka 20 min →
-              </a>
-            )}
-            <p className="font-sans text-sm text-text-muted">
-              Eller maila direkt:{' '}
-              <a
-                href={`mailto:${site.email}`}
-                className="gold-underline-center font-serif text-base text-accent-gold transition-colors hover:text-accent-gold-hover"
-              >
-                {site.email}
-              </a>
-            </p>
-            {site.phone && (
-              <p className="font-sans text-sm text-text-muted">
-                Ring:{' '}
-                <a href={`tel:${site.phone}`} className="text-accent-gold">
-                  {site.phone}
-                </a>
-              </p>
-            )}
-          </div>
+          <a
+            href="mailto:hello@infrakust.se"
+            className="gold-underline-center mt-8 font-serif text-[clamp(20px,2.5vw,28px)] text-accent-gold transition-colors hover:text-accent-gold-hover"
+          >
+            hello@infrakust.se
+          </a>
         </ScrollReveal>
       </div>
     </section>

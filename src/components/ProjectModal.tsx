@@ -120,7 +120,7 @@ export function ProjectModal({ project, isOpen, onClose }: ProjectModalProps) {
                   <div className="overflow-hidden rounded-lg border border-text-muted/10 shadow-2xl">
                     <img
                       src={project.image}
-                      alt={project.name}
+                      alt={`${project.name} – webbprojekt av Infrakust`}
                       className="h-auto w-full object-cover"
                       draggable={false}
                     />

@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, lazy, Suspense } from 'react';
 import { BrowserRouter, Routes, Route, useLocation } from 'react-router';
 import Lenis from 'lenis';
 import { Navigation } from '@/components/Navigation';
@@ -8,12 +8,16 @@ import { WhatWeDoSection } from '@/sections/WhatWeDoSection';
 import { AppTeaserSection } from '@/sections/AppTeaserSection';
 import { ProjectsRailSection } from '@/sections/ProjectsRailSection';
 import { ContactSection } from '@/sections/ContactSection';
-import CaseGrandHotel from '@/pages/CaseGrandHotel';
-import AboutPage from '@/pages/AboutPage';
-import WebdevPage from '@/pages/WebdevPage';
-import AppdevPage from '@/pages/AppdevPage';
-import NotFoundPage from '@/pages/NotFoundPage';
 import { SEO } from '@/components/SEO';
+import { Analytics } from '@vercel/analytics/react';
+
+// Route-baserad code splitting: undersidorna laddas först när de besöks,
+// så startsidans bundle hålls liten (bättre LCP).
+const CaseGrandHotel = lazy(() => import('@/pages/CaseGrandHotel'));
+const AboutPage = lazy(() => import('@/pages/AboutPage'));
+const WebdevPage = lazy(() => import('@/pages/WebdevPage'));
+const AppdevPage = lazy(() => import('@/pages/AppdevPage'));
+const NotFoundPage = lazy(() => import('@/pages/NotFoundPage'));
 
 /**
  * App.tsx — updated with routing.
@@ -70,14 +74,17 @@ export default function App() {
   return (
     <BrowserRouter>
       <ScrollToTop />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/case/grand-hotel" element={<CaseGrandHotel />} />
-        <Route path="/om-oss" element={<AboutPage />} />
-        <Route path="/tjanster/webbutveckling" element={<WebdevPage />} />
-        <Route path="/tjanster/apputveckling" element={<AppdevPage />} />
-        <Route path="*" element={<NotFoundPage />} />
-      </Routes>
+      <Suspense fallback={<div className="min-h-screen bg-bg-primary" />}>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/case/grand-hotel" element={<CaseGrandHotel />} />
+          <Route path="/om-oss" element={<AboutPage />} />
+          <Route path="/tjanster/webbutveckling" element={<WebdevPage />} />
+          <Route path="/tjanster/apputveckling" element={<AppdevPage />} />
+          <Route path="*" element={<NotFoundPage />} />
+        </Routes>
+      </Suspense>
+      <Analytics />
     </BrowserRouter>
   );
 }

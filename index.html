@@ -11,14 +11,14 @@
     <meta property="og:title" content="Infrakust — Digital byrå från Lysekil" />
     <meta property="og:description" content="Vi bygger hemsidor som konverterar, appar som används och digital infrastruktur som håller. Premium digital byrå i Lysekil, Sverige." />
     <meta property="og:locale" content="sv_SE" />
-    <meta property="og:image" content="https://www.infrakust.se/og-image.svg" />
+    <meta property="og:image" content="https://www.infrakust.se/og-image.png" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
     <meta property="og:image:alt" content="Infrakust — Digital byrå från Lysekil" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="Infrakust — Digital byrå från Lysekil" />
     <meta name="twitter:description" content="Vi bygger hemsidor som konverterar, appar som används och digital infrastruktur som håller." />
-    <meta name="twitter:image" content="https://www.infrakust.se/og-image.svg" />
+    <meta name="twitter:image" content="https://www.infrakust.se/og-image.png" />
     <!-- Canonical -->
     <link rel="canonical" href="https://www.infrakust.se/" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
@@ -26,17 +26,29 @@
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "ProfessionalService",
+      "@type": ["ProfessionalService", "LocalBusiness"],
+      "@id": "https://www.infrakust.se/#business",
       "name": "Infrakust",
       "url": "https://www.infrakust.se",
+      "image": "https://www.infrakust.se/og-image.png",
       "description": "Digital byrå från Lysekil som bygger hemsidor, appar och digital infrastruktur för företag som vill växa.",
+      "email": "hello@infrakust.se",
+      "priceRange": "$$",
       "address": {
         "@type": "PostalAddress",
         "addressLocality": "Lysekil",
         "addressRegion": "Västra Götaland",
         "addressCountry": "SE"
       },
-      "areaServed": { "@type": "Country", "name": "Sverige" },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 58.2747,
+        "longitude": 11.4357
+      },
+      "areaServed": [
+        { "@type": "Country", "name": "Sverige" },
+        { "@type": "AdministrativeArea", "name": "Västra Götaland" }
+      ],
       "knowsAbout": ["Webbutveckling", "App-utveckling", "SEO", "Digital infrastruktur", "UX-design", "Next.js", "React"],
       "hasOfferCatalog": {
         "@type": "OfferCatalog",

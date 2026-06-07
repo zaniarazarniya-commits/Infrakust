@@ -22,31 +22,57 @@
     <!-- Canonical -->
     <link rel="canonical" href="https://www.infrakust.se/" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <!-- JSON-LD: Organization -->
+    <!-- JSON-LD: Organization + WebSite -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "ProfessionalService",
-      "name": "Infrakust",
-      "url": "https://www.infrakust.se",
-      "description": "Digital byrå från Lysekil som bygger hemsidor, appar och digital infrastruktur för företag som vill växa.",
-      "address": {
-        "@type": "PostalAddress",
-        "addressLocality": "Lysekil",
-        "addressRegion": "Västra Götaland",
-        "addressCountry": "SE"
-      },
-      "areaServed": { "@type": "Country", "name": "Sverige" },
-      "knowsAbout": ["Webbutveckling", "App-utveckling", "SEO", "Digital infrastruktur", "UX-design", "Next.js", "React"],
-      "hasOfferCatalog": {
-        "@type": "OfferCatalog",
-        "name": "Tjänster",
-        "itemListElement": [
-          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Webbutveckling", "description": "Skräddarsydda hemsidor i Next.js och React som konverterar besökare till kunder." } },
-          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "App-utveckling", "description": "Mobilanpassade webbappar och interna system för hospitality och servicebranschen." } },
-          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Digital infrastruktur", "description": "SEO, integrationer och teknisk infrastruktur som håller över tid." } }
-        ]
-      }
+      "@graph": [
+        {
+          "@type": "ProfessionalService",
+          "@id": "https://www.infrakust.se/#organization",
+          "name": "Infrakust",
+          "url": "https://www.infrakust.se",
+          "image": "https://www.infrakust.se/og-image.svg",
+          "logo": "https://www.infrakust.se/favicon.svg",
+          "email": "info@infrakust.se",
+          "description": "Digital byrå från Lysekil som bygger hemsidor, appar och digital infrastruktur för företag som vill växa.",
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Lysekil",
+            "addressRegion": "Västra Götaland",
+            "postalCode": "453 30",
+            "addressCountry": "SE"
+          },
+          "geo": {
+            "@type": "GeoCoordinates",
+            "latitude": 58.2746,
+            "longitude": 11.4357
+          },
+          "areaServed": [
+            { "@type": "City", "name": "Lysekil" },
+            { "@type": "AdministrativeArea", "name": "Bohuslän" },
+            { "@type": "Country", "name": "Sverige" }
+          ],
+          "knowsAbout": ["Webbutveckling", "App-utveckling", "SEO", "Digital infrastruktur", "UX-design", "Next.js", "React"],
+          "hasOfferCatalog": {
+            "@type": "OfferCatalog",
+            "name": "Tjänster",
+            "itemListElement": [
+              { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Webbutveckling", "description": "Skräddarsydda hemsidor i Next.js och React som konverterar besökare till kunder." } },
+              { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "App-utveckling", "description": "Mobilanpassade webbappar och interna system för hospitality och servicebranschen." } },
+              { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Digital infrastruktur", "description": "SEO, integrationer och teknisk infrastruktur som håller över tid." } }
+            ]
+          }
+        },
+        {
+          "@type": "WebSite",
+          "@id": "https://www.infrakust.se/#website",
+          "url": "https://www.infrakust.se",
+          "name": "Infrakust",
+          "inLanguage": "sv-SE",
+          "publisher": { "@id": "https://www.infrakust.se/#organization" }
+        }
+      ]
     }
     </script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />

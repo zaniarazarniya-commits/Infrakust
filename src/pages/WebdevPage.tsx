@@ -18,9 +18,32 @@ export default function WebdevPage() {
   return (
     <div className="min-h-screen bg-bg-primary">
       <SEO
-        title="Webbutveckling — Infrakust"
-        description="Vi bygger skräddarsydda hemsidor i Next.js och React som konverterar besökare till kunder. SEO-optimerade, snabba och långsiktiga."
+        title="Webbutveckling i Lysekil — Hemsidor som konverterar | Infrakust"
+        description="Vi bygger skräddarsydda hemsidor i Next.js och React som konverterar besökare till kunder. SEO-optimerade, snabba och långsiktiga. Digital byrå i Lysekil."
         canonical="https://www.infrakust.se/tjanster/webbutveckling"
+        jsonLd={{
+          '@context': 'https://schema.org',
+          '@graph': [
+            {
+              '@type': 'Service',
+              name: 'Webbutveckling',
+              serviceType: 'Webbutveckling',
+              description:
+                'Skräddarsydda hemsidor i Next.js och React som konverterar besökare till kunder. SEO-optimerade, snabba och långsiktiga.',
+              provider: { '@id': 'https://www.infrakust.se/#organization' },
+              areaServed: { '@type': 'Country', name: 'Sverige' },
+              url: 'https://www.infrakust.se/tjanster/webbutveckling',
+            },
+            {
+              '@type': 'BreadcrumbList',
+              itemListElement: [
+                { '@type': 'ListItem', position: 1, name: 'Hem', item: 'https://www.infrakust.se/' },
+                { '@type': 'ListItem', position: 2, name: 'Tjänster', item: 'https://www.infrakust.se/#projekt' },
+                { '@type': 'ListItem', position: 3, name: 'Webbutveckling', item: 'https://www.infrakust.se/tjanster/webbutveckling' },
+              ],
+            },
+          ],
+        }}
       />
       <Navigation />
 

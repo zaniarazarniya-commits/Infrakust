@@ -1,13 +1,14 @@
-import { useEffect } from 'react';
+import { useContext, useEffect } from 'react';
+import { ServerHeadContext, type HeadData } from '@/lib/head';
 
-interface SEOProps {
-  title: string;
-  description: string;
-  canonical: string;
-  jsonLd?: object;
-}
+export function SEO({ title, description, canonical, jsonLd }: HeadData) {
+  // Server-side (SSG): samla head-data så prerender-skriptet kan baka in den.
+  const sink = useContext(ServerHeadContext);
+  if (sink) {
+    sink.push({ title, description, canonical, jsonLd });
+  }
 
-export function SEO({ title, description, canonical, jsonLd }: SEOProps) {
+  // Klient-side: uppdatera document.head vid route-byten i SPA:t.
   useEffect(() => {
     document.title = title;
 

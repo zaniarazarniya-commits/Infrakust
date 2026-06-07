@@ -33,6 +33,38 @@ function ScrollToTop() {
   return null;
 }
 
+/**
+ * AppShell — router-agnostiskt innehåll (routes + smooth scroll).
+ * Renderas under <BrowserRouter> på klienten och <StaticRouter> vid prerendering.
+ */
+export function AppShell() {
+  useEffect(() => {
+    const lenis = new Lenis({ lerp: 0.08, duration: 1.0 });
+    function raf(time: number) {
+      lenis.raf(time);
+      requestAnimationFrame(raf);
+    }
+    requestAnimationFrame(raf);
+    return () => {
+      lenis.destroy();
+    };
+  }, []);
+
+  return (
+    <>
+      <ScrollToTop />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/case/grand-hotel" element={<CaseGrandHotel />} />
+        <Route path="/om-oss" element={<AboutPage />} />
+        <Route path="/tjanster/webbutveckling" element={<WebdevPage />} />
+        <Route path="/tjanster/apputveckling" element={<AppdevPage />} />
+        <Route path="*" element={<NotFoundPage />} />
+      </Routes>
+    </>
+  );
+}
+
 function Home() {
   return (
     <div className="min-h-screen bg-bg-primary">
@@ -55,29 +87,9 @@ function Home() {
 }
 
 export default function App() {
-  useEffect(() => {
-    const lenis = new Lenis({ lerp: 0.08, duration: 1.0 });
-    function raf(time: number) {
-      lenis.raf(time);
-      requestAnimationFrame(raf);
-    }
-    requestAnimationFrame(raf);
-    return () => {
-      lenis.destroy();
-    };
-  }, []);
-
   return (
     <BrowserRouter>
-      <ScrollToTop />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/case/grand-hotel" element={<CaseGrandHotel />} />
-        <Route path="/om-oss" element={<AboutPage />} />
-        <Route path="/tjanster/webbutveckling" element={<WebdevPage />} />
-        <Route path="/tjanster/apputveckling" element={<AppdevPage />} />
-        <Route path="*" element={<NotFoundPage />} />
-      </Routes>
+      <AppShell />
     </BrowserRouter>
   );
 }

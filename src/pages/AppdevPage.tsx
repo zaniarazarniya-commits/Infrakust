@@ -18,9 +18,32 @@ export default function AppdevPage() {
   return (
     <div className="min-h-screen bg-bg-primary">
       <SEO
-        title="App-utveckling — Infrakust"
-        description="Vi bygger skräddarsydda appar för hospitality och servicebranschen — realtidssystem, gästportaler och interna verktyg som faktiskt används."
+        title="App-utveckling i Lysekil — System som används | Infrakust"
+        description="Vi bygger skräddarsydda appar för hospitality och servicebranschen — realtidssystem, gästportaler och interna verktyg som faktiskt används. Digital byrå i Lysekil."
         canonical="https://www.infrakust.se/tjanster/apputveckling"
+        jsonLd={{
+          '@context': 'https://schema.org',
+          '@graph': [
+            {
+              '@type': 'Service',
+              name: 'App-utveckling',
+              serviceType: 'App-utveckling',
+              description:
+                'Skräddarsydda appar för hospitality och servicebranschen — realtidssystem, gästportaler och interna verktyg som faktiskt används.',
+              provider: { '@id': 'https://www.infrakust.se/#organization' },
+              areaServed: { '@type': 'Country', name: 'Sverige' },
+              url: 'https://www.infrakust.se/tjanster/apputveckling',
+            },
+            {
+              '@type': 'BreadcrumbList',
+              itemListElement: [
+                { '@type': 'ListItem', position: 1, name: 'Hem', item: 'https://www.infrakust.se/' },
+                { '@type': 'ListItem', position: 2, name: 'Tjänster', item: 'https://www.infrakust.se/#projekt' },
+                { '@type': 'ListItem', position: 3, name: 'App-utveckling', item: 'https://www.infrakust.se/tjanster/apputveckling' },
+              ],
+            },
+          ],
+        }}
       />
       <Navigation />
 

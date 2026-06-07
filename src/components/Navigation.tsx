@@ -7,7 +7,8 @@ import { Menu, X } from 'lucide-react';
 export function Navigation() {
   const scrollY = useScrollPosition();
   const [menuOpen, setMenuOpen] = useState(false);
-  const isScrolled = scrollY > window.innerHeight * 0.5;
+  const isScrolled =
+    typeof window !== 'undefined' && scrollY > window.innerHeight * 0.5;
 
   useEffect(() => {
     if (menuOpen) {

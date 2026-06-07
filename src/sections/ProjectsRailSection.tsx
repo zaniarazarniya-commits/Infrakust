@@ -27,15 +27,6 @@ type Project = {
 
 const projects: Project[] = [
   {
-    name: 'Fjällbacka Fastigheter',
-    description:
-      'Fastighetswebbplats för Fjällbacka Fastigheter med modern design, tydlig struktur och användarvänlig navigering.',
-    tags: 'Webb · React · Tailwind · Custom',
-    image: '/images/example1.infrakust.png',
-    url: 'https://www.example1.infrakust.se',
-    eyebrow: 'WEBB · 2025',
-  },
-  {
     name: 'Lionpaw',
     description:
       'Premium herbal wellness-varumärke med produktportfölj, ingrediensutforskare och varumärkesstory.',
@@ -52,6 +43,15 @@ const projects: Project[] = [
     image: '/images/Kajmagsinet.png',
     url: 'https://www.kajmagasinet.se',
     eyebrow: 'WEBB · 2026',
+  },
+  {
+    name: 'Fjällbacka Fastigheter',
+    description:
+      'Fastighetswebbplats för Fjällbacka Fastigheter med modern design, tydlig struktur och användarvänlig navigering.',
+    tags: 'Webb · React · Tailwind · Custom',
+    image: '/images/example1.infrakust.png',
+    url: 'https://www.example1.infrakust.se',
+    eyebrow: 'WEBB · 2025',
   },
   {
     name: 'Infrakust Projekt',

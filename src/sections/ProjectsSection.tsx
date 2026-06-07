@@ -101,7 +101,7 @@ function ProjectCard({
           {/* Base Image with zoom */}
           <img
             src={project.image}
-            alt={project.name}
+            alt={`${project.name} – webbprojekt av Infrakust`}
             className="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.05]"
             loading="lazy"
             draggable={false}

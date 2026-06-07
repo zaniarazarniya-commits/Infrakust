@@ -181,7 +181,7 @@ export function ProjectsRailSection() {
             >
               <img
                 src={project.image}
-                alt={project.name}
+                alt={`${project.name} – webbprojekt av Infrakust`}
                 draggable={false}
                 loading="lazy"
                 className="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.04]"

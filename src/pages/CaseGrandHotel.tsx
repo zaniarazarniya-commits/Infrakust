@@ -432,7 +432,7 @@ export default function CaseGrandHotel() {
             </ScrollReveal>
             <ScrollReveal delay={0.25}>
               <a
-                href="mailto:info@infrakust.se"
+                href="mailto:hello@infrakust.se"
                 className="gold-underline mt-10 inline-block font-sans text-lg text-accent-gold transition-colors hover:text-accent-gold-hover"
               >
                 Berätta om ditt projekt →

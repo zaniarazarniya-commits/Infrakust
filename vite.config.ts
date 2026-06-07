@@ -11,6 +11,8 @@ export default defineConfig(({ command }) => {
   const enableInspect = command === 'serve' && !process.env.PRERENDER
 
   return {
+    // Absolute base so hashed assets resolve from the domain root on every
+    // route depth. Relative ('./') breaks nested routes like /case/grand-hotel.
     base: '/',
     plugins: [...(enableInspect ? [inspectAttr()] : []), react()],
     server: {

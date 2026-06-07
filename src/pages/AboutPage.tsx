@@ -117,10 +117,10 @@ export default function AboutPage() {
             </ScrollReveal>
             <ScrollReveal delay={0.3}>
               <a
-                href="mailto:info@infrakust.se"
+                href="mailto:hello@infrakust.se"
                 className="gold-underline mt-8 inline-block font-sans text-lg text-accent-gold transition-colors hover:text-accent-gold-hover"
               >
-                info@infrakust.se
+                hello@infrakust.se
               </a>
             </ScrollReveal>
           </div>

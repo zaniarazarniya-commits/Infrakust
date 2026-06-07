@@ -3,15 +3,14 @@ import { fileURLToPath } from 'node:url';
 import path from 'node:path';
 import fs from 'node:fs/promises';
 
-// Signalera till vite.config att inspektions-pluginet ska vara av vid prerendering.
 process.env.PRERENDER = '1';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const root = path.resolve(__dirname, '..');
 const distDir = path.join(root, 'dist');
+const ORIGIN = 'https://www.infrakust.se';
+const TODAY = new Date().toISOString().slice(0, 10);
 
-// Routes som ska prerenderas. '/404' renderas till dist/404.html (Vercel serverar
-// den automatiskt med 404-status för okända adresser).
 const routes = [
   '/',
   '/om-oss',
@@ -19,6 +18,14 @@ const routes = [
   '/tjanster/apputveckling',
   '/case/grand-hotel',
   '/404',
+];
+
+const sitemapMeta = [
+  { path: '/', priority: '1.0', changefreq: 'weekly' },
+  { path: '/tjanster/webbutveckling', priority: '0.9', changefreq: 'monthly' },
+  { path: '/tjanster/apputveckling', priority: '0.9', changefreq: 'monthly' },
+  { path: '/case/grand-hotel', priority: '0.8', changefreq: 'monthly' },
+  { path: '/om-oss', priority: '0.7', changefreq: 'monthly' },
 ];
 
 const escAttr = (s) =>
@@ -35,7 +42,6 @@ function setMeta(html, kind, key, content) {
   if (re.test(html)) {
     return html.replace(re, `$1${escAttr(content)}$2`);
   }
-  // Saknas i mallen → injicera före </head>.
   return html.replace(
     /<\/head>/,
     `  <meta ${kind}="${key}" content="${escAttr(content)}" />\n  </head>`,
@@ -83,6 +89,25 @@ function outPathFor(route) {
   return path.join(distDir, route.replace(/^\//, ''), 'index.html');
 }
 
+async function writeSitemap() {
+  const xml = `<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+${sitemapMeta
+  .map(
+    (u) => `  <url>
+    <loc>${ORIGIN}${u.path}</loc>
+    <lastmod>${TODAY}</lastmod>
+    <changefreq>${u.changefreq}</changefreq>
+    <priority>${u.priority}</priority>
+  </url>`,
+  )
+  .join('\n')}
+</urlset>
+`;
+  await fs.writeFile(path.join(distDir, 'sitemap.xml'), xml, 'utf-8');
+  console.log(`✓ sitemap → dist/sitemap.xml`);
+}
+
 async function run() {
   const template = await fs.readFile(path.join(distDir, 'index.html'), 'utf-8');
   if (!template.includes('<div id="root"></div>')) {
@@ -110,6 +135,8 @@ async function run() {
       await fs.writeFile(filePath, out, 'utf-8');
       console.log(`✓ prerendered ${route} → ${path.relative(root, filePath)}`);
     }
+
+    await writeSitemap();
   } finally {
     await vite.close();
   }

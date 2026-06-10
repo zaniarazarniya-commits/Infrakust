@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { Link, useLocation } from 'react-router';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useScrollPosition } from '@/hooks/useScrollPosition';
@@ -7,8 +7,17 @@ import { Menu, X } from 'lucide-react';
 export function Navigation() {
   const scrollY = useScrollPosition();
   const [menuOpen, setMenuOpen] = useState(false);
+  const [hidden, setHidden] = useState(false);
+  const lastScrollY = useRef(0);
   const isScrolled =
     typeof window !== 'undefined' && scrollY > window.innerHeight * 0.5;
+
+  // Göm nav vid scroll ner, visa vid scroll upp
+  useEffect(() => {
+    const goingDown = scrollY > lastScrollY.current;
+    setHidden(goingDown && scrollY > 200 && !menuOpen);
+    lastScrollY.current = scrollY;
+  }, [scrollY, menuOpen]);
 
   useEffect(() => {
     if (menuOpen) {
@@ -37,7 +46,7 @@ export function Navigation() {
           isScrolled
             ? 'bg-bg-primary/85 backdrop-blur-xl'
             : 'bg-transparent'
-        }`}
+        } ${hidden ? '-translate-y-full' : 'translate-y-0'}`}
       >
         <div className="mx-auto flex h-[72px] items-center justify-between px-6 md:px-12 lg:px-20">
           {/* Logo */}

@@ -153,7 +153,7 @@ Fonts loaded via Google Fonts CDN in `index.html`:
 
 ## 8. Notes
 
-- **No custom cursor** — default system cursor throughout.
+- **Custom cursor** — guldring + punkt med spring-fysik (`CustomCursor.tsx`). Kontextlabels via `data-cursor="drag"` / `data-cursor="visit"`. Endast `pointer: fine`, av vid reduced motion.
 - **No 3D libraries** — pure 2D, typographically driven.
 - **Image strategy**: 4 images placed in `public/images/`. All are opaque JPGs.
 - **Performance**: All animations use `transform` + `opacity`. Apply `will-change` sparingly, remove after animation.

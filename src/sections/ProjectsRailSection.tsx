@@ -2,6 +2,7 @@ import { useCallback, useEffect, useRef, useState } from 'react';
 import { motion } from 'framer-motion';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { ScrollReveal } from '@/components/ScrollReveal';
+import { useReducedMotion } from '@/hooks/useReducedMotion';
 
 /**
  * ProjectsRailSection
@@ -75,10 +76,27 @@ const projects: Project[] = [
 
 export function ProjectsRailSection() {
   const railRef = useRef<HTMLDivElement>(null);
+  const reducedMotion = useReducedMotion();
   const [progress, setProgress] = useState(0);
   const [visibleFraction, setVisibleFraction] = useState(1);
   const [canPrev, setCanPrev] = useState(false);
   const [canNext, setCanNext] = useState(false);
+
+  // ---------- Intern bildparallax ----------
+  const applyParallax = useCallback(() => {
+    const rail = railRef.current;
+    if (!rail || reducedMotion) return;
+    const viewportCenter = window.innerWidth / 2;
+    rail
+      .querySelectorAll<HTMLElement>('[data-parallax]')
+      .forEach((el) => {
+        const rect = el.getBoundingClientRect();
+        const cardCenter = rect.left + rect.width / 2;
+        // -1..1 beroende på kortets position relativt viewportens mitt
+        const ratio = (cardCenter - viewportCenter) / window.innerWidth;
+        el.style.transform = `translateX(${ratio * -5}%) scale(1.1)`;
+      });
+  }, [reducedMotion]);
 
   // ---------- Progress / arrow state ----------
   const updateRail = useCallback(() => {
@@ -91,7 +109,8 @@ export function ProjectsRailSection() {
     setVisibleFraction(frac);
     setCanPrev(rail.scrollLeft > 4);
     setCanNext(rail.scrollLeft < max - 4);
-  }, []);
+    applyParallax();
+  }, [applyParallax]);
 
   useEffect(() => {
     updateRail();
@@ -104,6 +123,50 @@ export function ProjectsRailSection() {
       window.removeEventListener('resize', updateRail);
     };
   }, [updateRail]);
+
+  // ---------- Pointer-drag (mus) med klickskydd ----------
+  const dragState = useRef({
+    down: false,
+    startX: 0,
+    scrollLeft: 0,
+    moved: false,
+  });
+
+  const onPointerDown = (e: React.PointerEvent) => {
+    if (e.pointerType !== 'mouse') return;
+    const rail = railRef.current;
+    if (!rail) return;
+    dragState.current = {
+      down: true,
+      startX: e.clientX,
+      scrollLeft: rail.scrollLeft,
+      moved: false,
+    };
+    rail.style.scrollBehavior = 'auto';
+  };
+
+  const onPointerMove = (e: React.PointerEvent) => {
+    const state = dragState.current;
+    const rail = railRef.current;
+    if (!state.down || !rail) return;
+    const dx = e.clientX - state.startX;
+    if (Math.abs(dx) > 5) state.moved = true;
+    rail.scrollLeft = state.scrollLeft - dx;
+  };
+
+  const endDrag = () => {
+    const rail = railRef.current;
+    dragState.current.down = false;
+    if (rail) rail.style.scrollBehavior = 'smooth';
+  };
+
+  const onClickCapture = (e: React.MouseEvent) => {
+    if (dragState.current.moved) {
+      e.preventDefault();
+      e.stopPropagation();
+      dragState.current.moved = false;
+    }
+  };
 
   const step = (dir: -1 | 1) => {
     const rail = railRef.current;
@@ -155,13 +218,20 @@ export function ProjectsRailSection() {
       {/* Rail */}
       <div
         ref={railRef}
-        className="projects-rail flex gap-14 overflow-x-auto overflow-y-hidden px-6 pb-6 md:px-12 lg:px-20"
+        data-cursor="drag"
+        onPointerDown={onPointerDown}
+        onPointerMove={onPointerMove}
+        onPointerUp={endDrag}
+        onPointerLeave={endDrag}
+        onClickCapture={onClickCapture}
+        className="projects-rail flex touch-pan-x gap-14 overflow-x-auto overflow-y-hidden px-6 pb-6 md:px-12 lg:px-20"
         style={{ scrollbarWidth: 'none', scrollBehavior: 'smooth' }}
       >
         {projects.map((project, i) => (
           <a
             key={project.name}
             data-project-card
+            data-cursor="visit"
             href={project.url}
             target="_blank"
             rel="noopener noreferrer"
@@ -179,13 +249,23 @@ export function ProjectsRailSection() {
               }}
               className="relative aspect-[16/10] w-full overflow-hidden bg-bg-tertiary shadow-[0_20px_60px_rgba(0,0,0,0.3)]"
             >
-              <img
-                src={project.image}
-                alt={`${project.name} – webbprojekt av Infrakust`}
-                draggable={false}
-                loading="lazy"
-                className="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.04]"
-              />
+              {/* Parallax-lager (transform sätts via scroll-handler) */}
+              <div data-parallax className="h-full w-full will-change-transform">
+                <img
+                  src={project.image}
+                  alt={`${project.name} – webbprojekt av Infrakust`}
+                  draggable={false}
+                  loading="lazy"
+                  className="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.04]"
+                />
+              </div>
+
+              {/* Hover-overlay */}
+              <div className="pointer-events-none absolute inset-0 flex items-end bg-gradient-to-t from-bg-primary/85 via-transparent to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100">
+                <span className="translate-y-3 p-6 font-sans text-sm uppercase tracking-tag text-text-primary transition-transform duration-500 group-hover:translate-y-0 md:p-8">
+                  Besök webbplats <span className="text-accent-gold">↗</span>
+                </span>
+              </div>
             </motion.div>
 
             <div className="mt-9 grid gap-4 md:grid-cols-2 md:items-end md:gap-14">

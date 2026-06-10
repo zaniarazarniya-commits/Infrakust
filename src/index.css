@@ -40,6 +40,28 @@
     -moz-osx-font-smoothing: grayscale;
   }
 
+  /* Subtilt filmkorn över hela sidan */
+  body::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    z-index: 90;
+    pointer-events: none;
+    opacity: 0.04;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+
+  ::selection {
+    background: rgba(201, 169, 110, 0.35);
+    color: #f5f0eb;
+  }
+
+  /* Dölj systemcursorn när custom cursor är aktiv (desktop, fin pekare) */
+  .custom-cursor-active,
+  .custom-cursor-active * {
+    cursor: none !important;
+  }
+
   html {
     scroll-behavior: smooth;
   }
@@ -111,6 +133,51 @@
   }
   .gold-underline-center:hover::after {
     transform: scaleX(1);
+  }
+
+  /* Text som sveps i guld vänster→höger vid hover */
+  .text-fill-sweep {
+    background-image: linear-gradient(
+      to right,
+      #c9a96e,
+      #c9a96e 50%,
+      #f5f0eb 50%,
+      #f5f0eb
+    );
+    background-size: 200% 100%;
+    background-position: 100% 0;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+    transition: background-position 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .text-fill-sweep:hover {
+    background-position: 0% 0;
+  }
+
+  /* Konturtext i guld (marquee) */
+  .text-stroke-gold {
+    -webkit-text-stroke: 1px rgba(201, 169, 110, 0.7);
+    color: transparent;
+  }
+
+  /* Oändlig marquee — två identiska rader, loopa -50% */
+  .marquee-track {
+    animation: marquee 30s linear infinite;
+  }
+  .marquee-section:hover .marquee-track {
+    animation-play-state: paused;
+  }
+  @keyframes marquee {
+    to {
+      transform: translateX(-50%);
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .marquee-track {
+      animation: none;
+    }
   }
 }
 

@@ -3,6 +3,8 @@ import { BrowserRouter, Routes, Route, useLocation } from 'react-router';
 import Lenis from 'lenis';
 import { Navigation } from '@/components/Navigation';
 import { Footer } from '@/components/Footer';
+import { CustomCursor } from '@/components/CustomCursor';
+import { Marquee } from '@/components/Marquee';
 import { HeroSection } from '@/sections/HeroSection';
 import { WhatWeDoSection } from '@/sections/WhatWeDoSection';
 import { AppTeaserSection } from '@/sections/AppTeaserSection';
@@ -45,6 +47,7 @@ export function AppShell() {
   return (
     <>
       <ScrollToTop />
+      <CustomCursor />
       <Suspense fallback={<div className="min-h-screen bg-bg-primary" />}>
         <Routes>
           <Route path="/" element={<Home />} />
@@ -70,6 +73,7 @@ function Home() {
       <Navigation />
       <main>
         <HeroSection />
+        <Marquee />
         <WhatWeDoSection />
         <AppTeaserSection />
         <ProjectsRailSection />

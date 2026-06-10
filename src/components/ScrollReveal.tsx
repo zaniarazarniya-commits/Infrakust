@@ -1,4 +1,5 @@
-import { motion } from 'framer-motion';
+import { useRef, useState } from 'react';
+import { motion, useInView } from 'framer-motion';
 import { useReducedMotion } from '@/hooks/useReducedMotion';
 
 interface ScrollRevealProps {
@@ -9,38 +10,56 @@ interface ScrollRevealProps {
   className?: string;
 }
 
+const EASE_OUT_EXPO = [0.16, 1, 0.3, 1] as const;
+
+/**
+ * ScrollReveal — maskerad linje-reveal (editorial stil).
+ * 'up'/'down': innehållet glider ur en osynlig overflow-mask, ingen opacity-fade.
+ * Masken släpps när animationen är klar så hovers/underlines inte klipps.
+ * 'left'/'right': mjuk x-glidning med fade (för bildblock).
+ */
 export function ScrollReveal({
   children,
   delay = 0,
   direction = 'up',
-  duration = 0.7,
+  duration = 1,
   className = '',
 }: ScrollRevealProps) {
   const reducedMotion = useReducedMotion();
-
-  const directions = {
-    up: { y: 30, x: 0 },
-    down: { y: -30, x: 0 },
-    left: { x: 30, y: 0 },
-    right: { x: -30, y: 0 },
-  };
-
-  const offset = directions[direction];
+  const ref = useRef<HTMLDivElement>(null);
+  const inView = useInView(ref, { once: true, amount: 0.15 });
+  const [done, setDone] = useState(false);
 
   if (reducedMotion) {
     return <div className={className}>{children}</div>;
   }
 
+  if (direction === 'up' || direction === 'down') {
+    const from = direction === 'up' ? '110%' : '-110%';
+    return (
+      <div
+        ref={ref}
+        className={`${done ? '' : 'overflow-hidden'} ${className}`}
+      >
+        <motion.div
+          initial={{ y: from }}
+          animate={inView ? { y: '0%' } : undefined}
+          transition={{ duration, delay, ease: EASE_OUT_EXPO }}
+          onAnimationComplete={() => setDone(true)}
+        >
+          {children}
+        </motion.div>
+      </div>
+    );
+  }
+
+  const fromX = direction === 'left' ? 48 : -48;
   return (
     <motion.div
-      initial={{ opacity: 0, ...offset }}
-      whileInView={{ opacity: 1, x: 0, y: 0 }}
-      viewport={{ once: true, amount: 0.15 }}
-      transition={{
-        duration,
-        delay,
-        ease: [0.4, 0, 0.2, 1],
-      }}
+      ref={ref}
+      initial={{ opacity: 0, x: fromX }}
+      animate={inView ? { opacity: 1, x: 0 } : undefined}
+      transition={{ duration, delay, ease: EASE_OUT_EXPO }}
       className={className}
     >
       {children}

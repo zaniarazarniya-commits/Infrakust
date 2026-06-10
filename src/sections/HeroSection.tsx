@@ -20,7 +20,37 @@ const ROTATING_WORDS = [
 ];
 
 const EASE_OUT_EXPO = [0.16, 1, 0.3, 1] as const;
-const EASE_SMOOTH = [0.4, 0, 0.2, 1] as const;
+
+/** Maskerad reveal vid sidladdning — innehållet glider ur en osynlig ficka. */
+function MaskIn({
+  children,
+  delay = 0,
+  className = '',
+}: {
+  children: React.ReactNode;
+  delay?: number;
+  className?: string;
+}) {
+  const reducedMotion = useReducedMotion();
+  const [done, setDone] = useState(false);
+
+  if (reducedMotion) {
+    return <div className={className}>{children}</div>;
+  }
+
+  return (
+    <div className={`${done ? '' : 'overflow-hidden'} ${className}`}>
+      <motion.div
+        initial={{ y: '110%' }}
+        animate={{ y: '0%' }}
+        transition={{ duration: 1, delay, ease: EASE_OUT_EXPO }}
+        onAnimationComplete={() => setDone(true)}
+      >
+        {children}
+      </motion.div>
+    </div>
+  );
+}
 
 export function HeroSection() {
   const reducedMotion = useReducedMotion();
@@ -59,12 +89,6 @@ export function HeroSection() {
     );
     return () => clearInterval(id);
   }, [reducedMotion]);
-
-  const enter = (delay: number) => ({
-    initial: reducedMotion ? false : ({ opacity: 0, y: 40 } as const),
-    animate: { opacity: 1, y: 0 },
-    transition: { duration: 0.8, delay, ease: EASE_SMOOTH },
-  });
 
   return (
     <section
@@ -125,19 +149,16 @@ export function HeroSection() {
         </h1>
 
         {/* Tagline */}
-        <motion.p
-          {...enter(0.9)}
-          className="mt-6 font-sans text-[clamp(18px,2.5vw,28px)] font-normal leading-relaxed text-text-secondary"
-        >
-          Digital byrå från Lysekil.
-        </motion.p>
+        <MaskIn delay={0.85} className="mt-6">
+          <p className="font-sans text-[clamp(18px,2.5vw,28px)] font-normal leading-relaxed text-text-secondary">
+            Digital byrå från Lysekil.
+          </p>
+        </MaskIn>
 
         {/* Roterande ord */}
-        <motion.p
-          {...enter(1.1)}
-          className="mt-3 font-sans text-base text-text-muted"
-        >
-          Vi bygger{' '}
+        <MaskIn delay={1.0} className="mt-3">
+          <p className="font-sans text-base text-text-muted">
+            Vi bygger{' '}
           <span className="relative inline-block text-left" style={{ minWidth: '15ch' }}>
             <AnimatePresence mode="wait">
               <motion.span
@@ -159,17 +180,19 @@ export function HeroSection() {
                 {ROTATING_WORDS[wordIndex]}
               </motion.span>
             </AnimatePresence>
-          </span>
-        </motion.p>
+            </span>
+          </p>
+        </MaskIn>
 
         {/* CTA */}
-        <motion.a
-          {...enter(1.3)}
-          href="#projekt"
-          className="gold-underline mt-10 font-sans text-lg text-accent-gold transition-colors hover:text-accent-gold-hover"
-        >
-          Se våra projekt →
-        </motion.a>
+        <MaskIn delay={1.15} className="mt-10">
+          <a
+            href="#projekt"
+            className="gold-underline font-sans text-lg text-accent-gold transition-colors hover:text-accent-gold-hover"
+          >
+            Se våra projekt →
+          </a>
+        </MaskIn>
       </motion.div>
 
       {/* Scroll Indicator */}

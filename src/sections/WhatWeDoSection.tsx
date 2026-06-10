@@ -1,34 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
-import {
-  motion,
-  animate,
-  useInView,
-  useScroll,
-  useTransform,
-  type MotionValue,
-} from 'framer-motion';
+import { animate, useInView } from 'framer-motion';
 import { ScrollReveal } from '@/components/ScrollReveal';
 import { useReducedMotion } from '@/hooks/useReducedMotion';
-
-type Segment = { text: string; gold?: boolean };
-
-const LINE_1: Segment[] = 'Vi bygger hemsidor och appar för företag som vill växa.'
-  .split(' ')
-  .map((text) => ({ text }));
-
-const LINE_2: Segment[] = [
-  { text: 'SEO,', gold: true },
-  { text: 'digital' },
-  { text: 'infrastruktur', gold: true },
-  { text: 'och' },
-  { text: 'kompletta' },
-  { text: 'system' },
-  { text: '—' },
-  { text: 'från' },
-  { text: 'idé' },
-  { text: 'till' },
-  { text: 'drift.' },
-];
 
 // Redigerbara nyckeltal
 const STATS = [
@@ -36,68 +9,6 @@ const STATS = [
   { value: 2, suffix: '', label: 'Egenbyggda appsystem' },
   { value: 100, suffix: '%', label: 'Skräddarsytt' },
 ];
-
-function Word({
-  segment,
-  progress,
-  range,
-}: {
-  segment: Segment;
-  progress: MotionValue<number>;
-  range: [number, number];
-}) {
-  const opacity = useTransform(progress, range, [0.15, 1]);
-  return (
-    <motion.span
-      style={{ opacity }}
-      className={`inline-block ${
-        segment.gold ? 'italic text-accent-gold' : ''
-      }`}
-    >
-      {segment.text}&nbsp;
-    </motion.span>
-  );
-}
-
-function HighlightLine({
-  segments,
-  className,
-}: {
-  segments: Segment[];
-  className: string;
-}) {
-  const ref = useRef<HTMLParagraphElement>(null);
-  const reducedMotion = useReducedMotion();
-  const { scrollYProgress } = useScroll({
-    target: ref,
-    offset: ['start 0.85', 'start 0.4'],
-  });
-
-  if (reducedMotion) {
-    return (
-      <p className={className}>
-        {segments.map((s, i) => (
-          <span key={i} className={s.gold ? 'italic text-accent-gold' : ''}>
-            {s.text}{' '}
-          </span>
-        ))}
-      </p>
-    );
-  }
-
-  return (
-    <p ref={ref} className={className}>
-      {segments.map((segment, i) => (
-        <Word
-          key={i}
-          segment={segment}
-          progress={scrollYProgress}
-          range={[i / segments.length, (i + 1) / segments.length]}
-        />
-      ))}
-    </p>
-  );
-}
 
 function StatCounter({
   value,
@@ -151,14 +62,19 @@ export function WhatWeDoSection() {
         </ScrollReveal>
 
         <div className="space-y-6">
-          <HighlightLine
-            segments={LINE_1}
-            className="font-serif text-[clamp(24px,4vw,48px)] font-normal leading-[1.3] text-text-primary"
-          />
-          <HighlightLine
-            segments={LINE_2}
-            className="font-serif text-[clamp(24px,4vw,48px)] font-normal leading-[1.3] text-text-primary"
-          />
+          <ScrollReveal delay={0.15}>
+            <p className="font-serif text-[clamp(24px,4vw,48px)] font-normal leading-[1.3] text-text-primary">
+              Vi bygger hemsidor och appar för företag som vill växa.
+            </p>
+          </ScrollReveal>
+
+          <ScrollReveal delay={0.3}>
+            <p className="font-serif text-[clamp(24px,4vw,48px)] font-normal leading-[1.3] text-text-secondary">
+              <span className="italic text-accent-gold">SEO</span>, digital{' '}
+              <span className="italic text-accent-gold">infrastruktur</span> och kompletta system
+              — från idé till drift.
+            </p>
+          </ScrollReveal>
         </div>
 
         {/* Nyckeltal */}

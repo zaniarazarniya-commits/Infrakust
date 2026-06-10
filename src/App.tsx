@@ -4,7 +4,6 @@ import Lenis from 'lenis';
 import { Navigation } from '@/components/Navigation';
 import { Footer } from '@/components/Footer';
 import { CustomCursor } from '@/components/CustomCursor';
-import { Marquee } from '@/components/Marquee';
 import { HeroSection } from '@/sections/HeroSection';
 import { WhatWeDoSection } from '@/sections/WhatWeDoSection';
 import { AppTeaserSection } from '@/sections/AppTeaserSection';
@@ -73,7 +72,6 @@ function Home() {
       <Navigation />
       <main>
         <HeroSection />
-        <Marquee />
         <WhatWeDoSection />
         <AppTeaserSection />
         <ProjectsRailSection />

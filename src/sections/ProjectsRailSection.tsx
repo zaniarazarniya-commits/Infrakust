@@ -1,5 +1,4 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
-import { motion } from 'framer-motion';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { ScrollReveal } from '@/components/ScrollReveal';
 import { useReducedMotion } from '@/hooks/useReducedMotion';
@@ -227,7 +226,7 @@ export function ProjectsRailSection() {
         className="projects-rail flex touch-pan-x gap-14 overflow-x-auto overflow-y-hidden px-6 pb-6 md:px-12 lg:px-20"
         style={{ scrollbarWidth: 'none', scrollBehavior: 'smooth' }}
       >
-        {projects.map((project, i) => (
+        {projects.map((project) => (
           <a
             key={project.name}
             data-project-card
@@ -238,17 +237,7 @@ export function ProjectsRailSection() {
             className="group flex w-[min(1100px,86vw)] flex-shrink-0 snap-start flex-col"
             onDragStart={(e) => e.preventDefault()}
           >
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.2 }}
-              transition={{
-                duration: 0.7,
-                delay: i * 0.1,
-                ease: [0.4, 0, 0.2, 1],
-              }}
-              className="relative aspect-[16/10] w-full overflow-hidden bg-bg-tertiary shadow-[0_20px_60px_rgba(0,0,0,0.3)]"
-            >
+            <div className="relative aspect-[16/10] w-full overflow-hidden bg-bg-tertiary shadow-[0_20px_60px_rgba(0,0,0,0.3)]">
               {/* Parallax-lager (transform sätts via scroll-handler) */}
               <div data-parallax className="h-full w-full will-change-transform">
                 <img
@@ -266,7 +255,7 @@ export function ProjectsRailSection() {
                   Besök webbplats <span className="text-accent-gold">↗</span>
                 </span>
               </div>
-            </motion.div>
+            </div>
 
             <div className="mt-9 grid gap-4 md:grid-cols-2 md:items-end md:gap-14">
               <div>

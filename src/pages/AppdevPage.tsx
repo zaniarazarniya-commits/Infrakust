@@ -117,16 +117,17 @@ export default function AppdevPage() {
             <ScrollReveal delay={0.12}>
               <h2 className="mt-6 max-w-[740px] font-serif text-[clamp(32px,4.5vw,64px)] font-normal leading-[1.05] tracking-[-0.02em] text-text-primary">
                 Två <span className="text-accent-gold">appar.</span>{' '}
-                <em className="italic">Ett hotell.</em>
+                <em className="italic">Två hotell.</em>
               </h2>
             </ScrollReveal>
             <ScrollReveal delay={0.2}>
               <p className="mt-6 max-w-[60ch] font-sans text-lg leading-relaxed text-text-secondary">
                 För Grand Hotel Lysekil byggde vi ett ekosystem av två appar:
                 en gästportal (Zuve) som tar gästen från SMS till incheckning,
-                och ett housekeeping-system som synkar reception och städpersonal
-                i realtid. Resultatet: mindre pappersarbete, tydligare
-                kommunikation och bättre ordning varje dag.
+                och ett housekeeping-system som i dag driver både Grand och
+                Fjordhotellet — städ, uppgifter, frukostinköp, rumsbesiktning och
+                felanmälningar i realtid. Resultatet: mindre pappersarbete,
+                tydligare kommunikation och bättre ordning varje dag.
               </p>
             </ScrollReveal>
             <ScrollReveal delay={0.28}>

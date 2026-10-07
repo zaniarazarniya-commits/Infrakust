@@ -10,12 +10,13 @@ import { SEO } from '@/components/SEO';
 const caseJsonLd = {
   '@context': 'https://schema.org',
   '@type': 'CreativeWork',
-  name: 'Gästportal och housekeeping-app för hotell — Grand Hotel Lysekil',
-  description: 'Infrakust byggde ett ekosystem av två appar för Grand Hotel Lysekil: Zuve (gästportal från SMS till incheckning) och en housekeeping-app som synkar reception och städpersonal i realtid.',
+  name: 'Gästportal och driftsystem för hotell — Grand Hotel Lysekil och Fjordhotellet',
+  description: 'Infrakust byggde två appar för hotellen i Lysekil: Zuve (gästportal från SMS till incheckning) och en housekeeping-app som har vuxit till ett driftsystem för två hotell — städstatus, uppgifter, frukostinköp, rumsbesiktning och felanmälningar i realtid.',
   url: 'https://www.infrakust.se/case/grand-hotel',
   author: { '@type': 'Organization', name: 'Infrakust', url: 'https://www.infrakust.se' },
   datePublished: '2026-01-01',
-  keywords: ['gästportal hotell', 'housekeeping app', 'app hotell Sverige', 'digital infrastruktur hotell', 'webbutveckling Lysekil'],
+  dateModified: '2026-10-07',
+  keywords: ['gästportal hotell', 'housekeeping app', 'app hotell Sverige', 'felanmälan hotell', 'rumsbesiktning', 'digital infrastruktur hotell', 'webbutveckling Lysekil'],
   about: { '@type': 'Thing', name: 'Webbutveckling och app-utveckling för hospitality' },
 };
 
@@ -39,25 +40,58 @@ const zuveFlow = [
   { src: '/images/z7.jpg', label: 'Gästportal', desc: 'Startsida där gästen kan söka fram sin bokning med bokningsnummer.' },
 ];
 
+// Skärmdumparna är tagna mot en demokopia med påhittade gäster och personal.
 const hkFlow = [
-  { src: '/images/h1.jpg', label: 'Reception', desc: 'Reception ser exakt vilka rum som är klara och när.' },
-  { src: '/images/h2.jpg', label: 'Dagliga rutiner', desc: 'Checklistor och uppgifter för varje tidsblock under dagen.' },
-  { src: '/images/h3.jpg', label: 'Frukost & allergier', desc: 'Live frukostlista med allergier hämtade direkt från bokningen.' },
-  { src: '/images/h4.jpg', label: 'Statistik', desc: 'Produktivitetsstatistik och Excel-export för städpersonal.' },
+  { src: '/images/hk-rum.jpg', label: 'Rumsöversikt', desc: 'Städstatus per våning i realtid, synkad åt båda hållen med Sirvoy. Receptionen sätter prio när en gäst kommer tidigt.' },
+  { src: '/images/hk-rumkort.jpg', label: 'Rumskortet', desc: 'Anmälda fel, rummets uppgifter, när det senast städades och rum som behöver dammas av efter lång tomgång.' },
+  { src: '/images/hk-uppgifter.jpg', label: 'Uppgifter', desc: 'Dagens att göra i en lista: rutiner i tidsblock, rumsbyten, tillval från bokningen och det som blev kvar från igår.' },
+  { src: '/images/hk-frukost.jpg', label: 'Frukost', desc: 'Sju dagar framåt med antal gäster och allergier, hämtat direkt ur bokningarna.' },
+  { src: '/images/hk-inkop.jpg', label: 'Inköp & inventering', desc: 'Beställningar räknade på frukostgästerna, leveranser som scannas in och lager som inventeras med kameran.' },
+  { src: '/images/hk-runda.jpg', label: 'Rumsbesiktning', desc: 'Besiktningsrundor genom alla rum. Varje åtgärd går till städ eller hantverkare och följs tills den är klar.' },
+  { src: '/images/hk-fel.jpg', label: 'Fel & hantverkare', desc: 'Felanmälan med foto hamnar direkt i hantverkarens lista. Receptionen lämnar över iPaden i hantverkarläge.' },
+  { src: '/images/hk-fjord.jpg', label: 'Fjordhotellet', desc: 'Samma app för ett andra hotell, med eget tema, egna rum och veckostäd i stället för daglig städning.' },
+];
+
+const hkModules = [
+  {
+    title: 'Rum & städstatus',
+    desc: 'Tvåvägssynk med Sirvoy, prio från receptionen, stör ej-skylt, «spara rummet till imorgon» och refresh av rum som stått tomma länge.',
+  },
+  {
+    title: 'Uppgifter',
+    desc: 'Rutiner i tidsblock med «läst och förstått», rumsuppgifter med foto, brådska i tre nivåer och påminnelse om det som missades igår.',
+  },
+  {
+    title: 'Frukost & inköp',
+    desc: 'Sju dagars prognos med allergier. Beställning, leverans och inventering med streckkodsscanning. Grossistens inköpsrapport läses in med ett klick.',
+  },
+  {
+    title: 'Rumsbesiktning',
+    desc: 'Klagomål och besiktningsrundor med checklista. Åtgärderna går vidare till städ eller hantverkare och loggas tills de är gjorda.',
+  },
+  {
+    title: 'Fel & hantverkare',
+    desc: 'Felanmälningar med foto, tidslinje och «ur funktion». Hantverkaren får en egen läsplattevy med två val: Klart eller Kan inte lösas.',
+  },
+  {
+    title: 'Två hotell',
+    desc: 'Fjordhotellet med eget tema, lägenheter, hostelytor och veckostäd. Push-notiser går bara till rätt hotell och rätt roll.',
+  },
 ];
 
 const techStack = [
-  'Next.js', 'React', 'TypeScript', 'Tailwind CSS',
-  'Supabase', 'Express', 'Sirvoy API', 'Notion API',
-  '46elks SMS', 'Web Push', 'SSE', 'Excel-export',
+  'React', 'Next.js', 'TypeScript', 'Vite', 'Tailwind CSS',
+  'Node.js', 'Express', 'Supabase', 'Sirvoy', 'Notion API',
+  '46elks SMS', 'Web Push', 'SSE', 'PWA', 'Streckkodsscanning',
 ];
 
 const results = [
   'Färre samtal till receptionen om rutinsaker',
-  'Digitalt istället för papperslistor som var inaktuella',
-  'Reception ser exakt vilka rum som är klara och när',
-  'Tydligare kommunikation mellan reception och städpersonal',
-  'Statistik och spårbarhet — bättre ordning varje dag',
+  'Reception ser exakt vilka rum som är klara — på båda hotellen',
+  'Rutiner, uppgifter och rumsbyten på ett ställe i stället för papperslistor',
+  'Felanmälningar följs i appen tills hantverkaren trycker Klart',
+  'Frukostbeställningen räknas fram ur bokningarna, inte på känn',
+  'Besiktningar där varje åtgärd syns tills den är gjord',
   'Allt synkat i realtid mellan alla enheter',
 ];
 
@@ -179,8 +213,8 @@ export default function CaseGrandHotel() {
   return (
     <div className="min-h-screen bg-bg-primary">
       <SEO
-        title="Gästportal och housekeeping-app för hotell — Infrakust"
-        description="Hur Infrakust byggde två appar som ett ekosystem för Grand Hotel Lysekil: en gästportal och ett realtids-housekeeping-system."
+        title="Gästportal och driftsystem för hotell — Infrakust"
+        description="Hur Infrakust byggde en gästportal och ett driftsystem för Grand Hotel Lysekil och Fjordhotellet: städstatus, uppgifter, frukostinköp, rumsbesiktning och felanmälningar i realtid."
         canonical="https://www.infrakust.se/case/grand-hotel"
         jsonLd={caseJsonLd}
       />
@@ -209,7 +243,7 @@ export default function CaseGrandHotel() {
             <ScrollReveal delay={0.18}>
               <h1 className="mt-6 max-w-[920px] font-serif text-[clamp(48px,7vw,108px)] font-normal leading-[0.98] tracking-[-0.025em] text-text-primary">
                 Två <span className="text-accent-gold">appar.</span><br />
-                <em className="italic">Ett hotell.</em>
+                <em className="italic">Två hotell.</em>
               </h1>
             </ScrollReveal>
 
@@ -217,11 +251,11 @@ export default function CaseGrandHotel() {
               <dl className="mt-16 grid grid-cols-2 gap-x-8 gap-y-6 border-y border-text-muted/30 py-8 sm:grid-cols-4">
                 <div>
                   <dt className="font-sans text-[10px] uppercase tracking-section text-accent-gold">Klient</dt>
-                  <dd className="mt-2 font-sans text-sm font-medium text-text-primary">Grand Hotel Lysekil</dd>
+                  <dd className="mt-2 font-sans text-sm font-medium text-text-primary">Grand Hotel Lysekil · Fjordhotellet</dd>
                 </div>
                 <div>
                   <dt className="font-sans text-[10px] uppercase tracking-section text-accent-gold">Omfattning</dt>
-                  <dd className="mt-2 font-sans text-sm font-medium text-text-primary">Gästportal + städsystem</dd>
+                  <dd className="mt-2 font-sans text-sm font-medium text-text-primary">Gästportal + driftsystem</dd>
                 </div>
                 <div>
                   <dt className="font-sans text-[10px] uppercase tracking-section text-accent-gold">År</dt>
@@ -258,6 +292,14 @@ export default function CaseGrandHotel() {
                   gästen från SMS till incheckning. Housekeeping synkar reception,
                   städpersonal och frukostavdelning i realtid. Båda apparna pratar
                   med Sirvoy, Notion och varandra.
+                </p>
+              </ScrollReveal>
+              <ScrollReveal delay={0.3}>
+                <p>
+                  Sedan lanseringen har housekeeping-appen vuxit med hur hotellet
+                  faktiskt jobbar. I dag driver den även Fjordhotellet, och samlar
+                  frukostinköp, rumsbesiktningar och felanmälningar till
+                  hantverkarna på samma ställe som städet.
                 </p>
               </ScrollReveal>
             </div>
@@ -320,7 +362,7 @@ export default function CaseGrandHotel() {
             <div className="lg:order-1">
               <ScrollReveal>
                 <p className="font-sans text-xs uppercase tracking-section text-accent-gold">
-                  STÄDDASHBOARD
+                  DRIFTSYSTEM
                 </p>
               </ScrollReveal>
               <ScrollReveal delay={0.12}>
@@ -330,18 +372,19 @@ export default function CaseGrandHotel() {
               </ScrollReveal>
               <ScrollReveal delay={0.22}>
                 <p className="mt-6 font-sans text-lg leading-relaxed text-text-secondary">
-                  Inga papper, inga walkie-talkies. Reception och städpersonal ser
-                  samma data i realtid — vilka rum är klara, vilka behöver fokus,
-                  och hur många frukostgäster med allergier som kommer imorgon.
+                  Inga papper, inga walkie-talkies. Reception, städpersonal och
+                  hantverkare ser samma data i realtid — vilka rum är klara, vad
+                  som är trasigt, vad som ska göras idag och hur många
+                  frukostgäster med allergier som kommer imorgon.
                 </p>
               </ScrollReveal>
               <ScrollReveal delay={0.3}>
                 <ul className="mt-10 space-y-4">
                   {[
-                    'Rollbaserad åtkomst (städ, reception, admin)',
-                    'Bildbaserade felanmälningar med full spårbarhet',
-                    'Live frukostlista — antal gäster och allergier',
-                    'Produktivitetsstatistik och Excel-export',
+                    'Två hotell i samma app, med egna rum och eget tema',
+                    'Tvåvägssynk med Sirvoy — bokningar in, städstatus ut',
+                    'Roller för städ, reception, admin och hantverkare',
+                    'Push-notiser till rätt person när något händer',
                   ].map((item) => (
                     <li key={item} className="flex items-start gap-3">
                       <div className="mt-2.5 h-1 w-4 flex-shrink-0 bg-emerald-400" />
@@ -351,6 +394,44 @@ export default function CaseGrandHotel() {
                 </ul>
               </ScrollReveal>
             </div>
+          </div>
+        </section>
+
+        {/* Modules — what Housekeeping covers today */}
+        <section className="px-6 py-32 md:px-12 md:py-40 lg:px-20">
+          <div className="mx-auto max-w-[1280px]">
+            <ScrollReveal>
+              <p className="font-sans text-xs uppercase tracking-section text-accent-gold">
+                SEDAN LANSERINGEN
+              </p>
+            </ScrollReveal>
+            <ScrollReveal delay={0.12}>
+              <h2 className="mt-6 max-w-[860px] font-serif text-[clamp(36px,5vw,64px)] font-normal leading-[1.05] tracking-[-0.02em] text-text-primary">
+                Från städlista till <em className="italic">driftsystem.</em>
+              </h2>
+            </ScrollReveal>
+            <ScrollReveal delay={0.2}>
+              <p className="mt-4 max-w-[560px] font-sans text-base leading-relaxed text-text-secondary">
+                Varje del byggdes för ett problem personalen faktiskt hade — och
+                finns kvar för att den används varje dag.
+              </p>
+            </ScrollReveal>
+
+            <ul className="mt-14 grid gap-px overflow-hidden border border-text-muted/10 bg-text-muted/10 sm:grid-cols-2 lg:grid-cols-3">
+              {hkModules.map((m, i) => (
+                <li key={m.title} className="bg-bg-primary p-8 md:p-10">
+                  <span className="font-serif text-xl text-accent-gold/60">
+                    {String(i + 1).padStart(2, '0')}
+                  </span>
+                  <h3 className="mt-4 font-sans text-lg font-medium text-text-primary">
+                    {m.title}
+                  </h3>
+                  <p className="mt-3 font-sans text-sm leading-relaxed text-text-secondary">
+                    {m.desc}
+                  </p>
+                </li>
+              ))}
+            </ul>
           </div>
         </section>
 
@@ -369,7 +450,7 @@ export default function CaseGrandHotel() {
             </ScrollReveal>
             <ScrollReveal delay={0.2}>
               <p className="mt-4 max-w-[520px] font-sans text-base leading-relaxed text-text-secondary">
-                Sex konkreta förbättringar som personalen märker av varje dag.
+                Konkreta förbättringar som personalen märker av varje dag.
               </p>
             </ScrollReveal>
 

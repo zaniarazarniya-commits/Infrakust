@@ -28,10 +28,11 @@ const slides: Slide[] = [
   { app: 'Zuve', src: '/images/z5.jpg', label: 'Restauranger', desc: 'Lokala restauranger och vingårdar — bokas direkt i appen.' },
   { app: 'Zuve', src: '/images/z6.jpg', label: 'Utforska Lysekil', desc: 'Sevärdheter och utomhusaktiviteter handplockade åt gästen.' },
   { app: 'Zuve', src: '/images/z7.jpg', label: 'Gästportal', desc: 'Startsida där gästen söker fram sin bokning med bokningsnummer.' },
-  { app: 'Housekeeping', src: '/images/h1.jpg', label: 'Reception', desc: 'Reception ser exakt vilka rum som är klara och när.' },
-  { app: 'Housekeeping', src: '/images/h2.jpg', label: 'Dagliga rutiner', desc: 'Checklistor och uppgifter för varje tidsblock under dagen.' },
-  { app: 'Housekeeping', src: '/images/h3.jpg', label: 'Frukost & allergier', desc: 'Live frukostlista med allergier hämtade direkt från bokningen.' },
-  { app: 'Housekeeping', src: '/images/h4.jpg', label: 'Statistik', desc: 'Produktivitetsstatistik och Excel-export för städpersonal.' },
+  { app: 'Housekeeping', src: '/images/hk-rum.jpg', label: 'Rumsöversikt', desc: 'Reception ser exakt vilka rum som är klara och när — synkat med Sirvoy.' },
+  { app: 'Housekeeping', src: '/images/hk-uppgifter.jpg', label: 'Uppgifter', desc: 'Rutiner, rumsbyten och tillval från bokningen i en lista.' },
+  { app: 'Housekeeping', src: '/images/hk-frukost.jpg', label: 'Frukost & allergier', desc: 'Sju dagar framåt med antal gäster och allergier från bokningarna.' },
+  { app: 'Housekeeping', src: '/images/hk-fel.jpg', label: 'Fel & hantverkare', desc: 'Felanmälan med foto går direkt till hantverkarens lista.' },
+  { app: 'Housekeeping', src: '/images/hk-fjord.jpg', label: 'Fjordhotellet', desc: 'Samma app för ett andra hotell, med eget tema och veckostäd.' },
 ];
 
 export function AppTeaserSection() {
@@ -64,7 +65,7 @@ export function AppTeaserSection() {
 
           <ScrollReveal delay={0.12}>
             <h2 className="max-w-[640px] font-serif text-[clamp(36px,5.2vw,72px)] font-normal leading-[1.04] tracking-[-0.02em] text-text-primary">
-              Två <span className="text-accent-gold">appar.</span> <em className="italic">Ett hotell.</em>
+              Två <span className="text-accent-gold">appar.</span> <em className="italic">Två hotell.</em>
             </h2>
           </ScrollReveal>
 
@@ -75,7 +76,7 @@ export function AppTeaserSection() {
                   Klient
                 </dt>
                 <dd className="mt-2 font-sans text-sm font-medium text-text-primary">
-                  Grand Hotel Lysekil
+                  Grand Hotel Lysekil · Fjordhotellet
                 </dd>
               </div>
               <div>
@@ -83,7 +84,7 @@ export function AppTeaserSection() {
                   Omfattning
                 </dt>
                 <dd className="mt-2 font-sans text-sm font-medium text-text-primary">
-                  Gästportal + städsystem
+                  Gästportal + driftsystem
                 </dd>
               </div>
               <div>
@@ -100,8 +101,9 @@ export function AppTeaserSection() {
           <ScrollReveal delay={0.3}>
             <p className="mt-8 max-w-[520px] font-sans text-base leading-relaxed text-text-secondary">
               En gästportal som tar gästen från SMS till incheckning, och ett
-              städsystem som synkar reception och housekeeping i realtid.
-              Byggda som ett ekosystem — inte som två lösa appar.
+              driftsystem för två hotell — städ, uppgifter, frukostinköp och
+              felanmälningar i realtid. Byggda som ett ekosystem — inte som två
+              lösa appar.
             </p>
           </ScrollReveal>
 

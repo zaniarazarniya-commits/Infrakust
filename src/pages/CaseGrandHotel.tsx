@@ -52,30 +52,94 @@ const hkFlow = [
   { src: '/images/hk-fjord.jpg', label: 'Fjordhotellet', desc: 'Samma app för ett andra hotell, med eget tema, egna rum och veckostäd i stället för daglig städning.' },
 ];
 
+// Hela systemet, område för område — håll i synk med HK-appens AGENTS.md.
 const hkModules = [
   {
     title: 'Rum & städstatus',
-    desc: 'Tvåvägssynk med Sirvoy, prio från receptionen, stör ej-skylt, «spara rummet till imorgon» och refresh av rum som stått tomma länge.',
+    lede: 'Tavlan som hela hotellet utgår från.',
+    features: [
+      'Städstatus per våning, synkad i realtid mellan alla enheter',
+      'Tvåvägssynk med Sirvoy — bokningar in, städstatus ut',
+      'Incheckning, utcheckning, stanna-städ och rumsbyten räknas fram ur bokningarna',
+      'Prio från receptionen: gäst kommer tidigt eller rummet måste städas idag',
+      'Flera städare på samma rum, med signering när det är klart',
+      'Stör ej-skylt och «spara rummet till imorgon» med godkännande',
+      'Kontroll av extrasäng och babysäng innan rummet markeras rent',
+      'Refresh av rum som stått tomma, och när rummet senast städades',
+      'Historik 30 dagar bakåt',
+    ],
   },
   {
-    title: 'Uppgifter',
-    desc: 'Rutiner i tidsblock med «läst och förstått», rumsuppgifter med foto, brådska i tre nivåer och påminnelse om det som missades igår.',
+    title: 'Uppgifter & rutiner',
+    lede: 'Allt som ska göras idag, i en lista.',
+    features: [
+      'Rutiner i tidsblock — morgon, dag, kväll — med Nu-markering',
+      'Dagliga, veckovisa, månatliga och enstaka rutiner, med bild',
+      'Svar som bock, ja/nej, antal eller text, och medsignering',
+      '«Läst och förstått» och rapport när en instruktion är otydlig',
+      'Rumsuppgifter med foto, direkt från rumskortet',
+      'Automatiska uppgifter ur bokningens tillval: extrasäng, babysäng, hundrum, tidig in- och sen utcheckning',
+      'Brådska i tre nivåer, ångra-knapp och «kvar sedan igår»',
+      'Morgonpåminnelse om rutiner som missades',
+    ],
   },
   {
-    title: 'Frukost & inköp',
-    desc: 'Sju dagars prognos med allergier. Beställning, leverans och inventering med streckkodsscanning. Grossistens inköpsrapport läses in med ett klick.',
+    title: 'Frukost',
+    lede: 'Köket vet vad som väntar innan morgonen.',
+    features: [
+      'Antal frukostgäster sju dagar framåt',
+      'Allergier och anteckningar per dag, hämtade ur bokningen',
+      'Dagens frukostlista per rum, där serveringen prickas av',
+    ],
+  },
+  {
+    title: 'Inköp & lager',
+    lede: 'Från beställningslista till fyllt förråd.',
+    features: [
+      'Beställningsförslag räknat på frukostgästerna',
+      'Påminnelse dagen före leverans',
+      'Leveransen scannas in med mobilens kamera och stäms av mot beställningen',
+      'Inventering med scanning, samt svinn och uttag',
+      'Minibar: städet trycker «Snart slut», receptionen beställer',
+      'Returbackar och önskemål utanför listan',
+      'Grossistens inköpsrapport läses in med ett klick',
+    ],
   },
   {
     title: 'Rumsbesiktning',
-    desc: 'Klagomål och besiktningsrundor med checklista. Åtgärderna går vidare till städ eller hantverkare och loggas tills de är gjorda.',
+    lede: 'Klagomål och kvalitetskontroll som följs upp.',
+    features: [
+      'Klagomål med checklista och tidsgränser',
+      'Besiktningsrundor genom alla rum, våning för våning',
+      'Varje åtgärd går till städ eller hantverkare, med foto',
+      'Logg per ärende tills allt är gjort',
+    ],
   },
   {
     title: 'Fel & hantverkare',
-    desc: 'Felanmälningar med foto, tidslinje och «ur funktion». Hantverkaren får en egen läsplattevy med två val: Klart eller Kan inte lösas.',
+    lede: 'Felanmälan som inte försvinner på vägen.',
+    features: [
+      'Felanmälan med foto från rumskortet, med kategori och brådska',
+      '«Ur funktion» syns direkt på rummet',
+      'Hantverkarläge på iPaden: Klart eller Kan inte lösas',
+      'Receptionen placerar om ärendet eller bokar extern firma',
+      'Tidslinje per ärende och markering när något är försenat',
+      'Tips om när rummet är ledigt att gå in i',
+      '«Städa efter hantverkaren» blir en uppgift till städet',
+      'Kopia till Notion',
+    ],
   },
   {
-    title: 'Två hotell',
-    desc: 'Fjordhotellet med eget tema, lägenheter, hostelytor och veckostäd. Push-notiser går bara till rätt hotell och rätt roll.',
+    title: 'Två hotell & administration',
+    lede: 'Ett system, flera verksamheter.',
+    features: [
+      'Grand Hotel Lysekil och Fjordhotellet i samma app, med eget tema',
+      'Lägenheter, hostelytor och veckostäd på Fjordhotellet',
+      'Roller för städ, reception, admin och hantverkare',
+      'Push-notiser till rätt hotell och rätt roll',
+      'Inställningar för städregler, refresh-intervall, roller och systemstatus',
+      'Installeras som app på mobil och iPad',
+    ],
   },
 ];
 
@@ -86,13 +150,10 @@ const techStack = [
 ];
 
 const results = [
-  'Färre samtal till receptionen om rutinsaker',
   'Reception ser exakt vilka rum som är klara — på båda hotellen',
-  'Rutiner, uppgifter och rumsbyten på ett ställe i stället för papperslistor',
-  'Felanmälningar följs i appen tills hantverkaren trycker Klart',
-  'Frukostbeställningen räknas fram ur bokningarna, inte på känn',
-  'Besiktningar där varje åtgärd syns tills den är gjord',
-  'Allt synkat i realtid mellan alla enheter',
+  'Inga papperslistor: allt som ska göras idag finns på ett ställe',
+  'Felanmälningar följs tills hantverkaren trycker Klart',
+  'Färre samtal till receptionen om rutinsaker',
 ];
 
 interface FlowSlide {
@@ -378,21 +439,6 @@ export default function CaseGrandHotel() {
                   frukostgäster med allergier som kommer imorgon.
                 </p>
               </ScrollReveal>
-              <ScrollReveal delay={0.3}>
-                <ul className="mt-10 space-y-4">
-                  {[
-                    'Två hotell i samma app, med egna rum och eget tema',
-                    'Tvåvägssynk med Sirvoy — bokningar in, städstatus ut',
-                    'Roller för städ, reception, admin och hantverkare',
-                    'Push-notiser till rätt person när något händer',
-                  ].map((item) => (
-                    <li key={item} className="flex items-start gap-3">
-                      <div className="mt-2.5 h-1 w-4 flex-shrink-0 bg-emerald-400" />
-                      <span className="font-sans text-base text-text-secondary">{item}</span>
-                    </li>
-                  ))}
-                </ul>
-              </ScrollReveal>
             </div>
           </div>
         </section>
@@ -412,25 +458,38 @@ export default function CaseGrandHotel() {
             </ScrollReveal>
             <ScrollReveal delay={0.2}>
               <p className="mt-4 max-w-[560px] font-sans text-base leading-relaxed text-text-secondary">
-                Varje del byggdes för ett problem personalen faktiskt hade — och
-                finns kvar för att den används varje dag.
+                Ett heltäckande system för hotellets drift. Varje del byggdes för
+                ett problem personalen faktiskt hade — och finns kvar för att den
+                används varje dag.
               </p>
             </ScrollReveal>
 
-            <ul className="mt-14 grid gap-px overflow-hidden border border-text-muted/10 bg-text-muted/10 sm:grid-cols-2 lg:grid-cols-3">
-              {hkModules.map((m, i) => (
-                <li key={m.title} className="bg-bg-primary p-8 md:p-10">
-                  <span className="font-serif text-xl text-accent-gold/60">
-                    {String(i + 1).padStart(2, '0')}
-                  </span>
-                  <h3 className="mt-4 font-sans text-lg font-medium text-text-primary">
-                    {m.title}
-                  </h3>
-                  <p className="mt-3 font-sans text-sm leading-relaxed text-text-secondary">
-                    {m.desc}
-                  </p>
-                </li>
-              ))}
+            <ul className="mt-14 grid gap-px overflow-hidden border border-text-muted/10 bg-text-muted/10 md:grid-cols-2">
+              {hkModules.map((m, i) => {
+                // En udda sista ruta spänner hela bredden och delar listan i två spalter.
+                const wide = i === hkModules.length - 1 && hkModules.length % 2 === 1;
+                return (
+                  <li key={m.title} className={`bg-bg-primary p-8 md:p-10 ${wide ? 'md:col-span-2' : ''}`}>
+                    <span className="font-serif text-xl text-accent-gold/60">
+                      {String(i + 1).padStart(2, '0')}
+                    </span>
+                    <h3 className="mt-4 font-sans text-lg font-medium text-text-primary">
+                      {m.title}
+                    </h3>
+                    <p className="mt-2 font-sans text-sm leading-relaxed text-text-muted">
+                      {m.lede}
+                    </p>
+                    <ul className={`mt-6 ${wide ? 'md:columns-2 md:gap-10' : ''}`}>
+                      {m.features.map((f) => (
+                        <li key={f} className="flex break-inside-avoid items-start gap-3 pb-3">
+                          <div className="mt-2.5 h-px w-3 flex-shrink-0 bg-accent-gold" />
+                          <span className="font-sans text-sm leading-relaxed text-text-secondary">{f}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </li>
+                );
+              })}
             </ul>
           </div>
         </section>

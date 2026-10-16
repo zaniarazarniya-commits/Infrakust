@@ -124,6 +124,14 @@ test('statyn i 3D: stillbilden prerenderas och startsidan bär inte three', () =
     const kod = fs.readFileSync(path.join(DIST, src.replace(/^\//, '')), 'utf-8');
     assert.ok(!kod.includes('THREE.WebGLRenderer'), `${src} innehåller three`);
   }
+
+  // Positiv kontroll: markören finns i bygget, så testet blir inte tomt om minifieringen tappar den.
+  const tillgangar = path.join(DIST, 'assets');
+  const harMarkor = fs
+    .readdirSync(tillgangar)
+    .filter((f) => f.endsWith('.js'))
+    .some((f) => fs.readFileSync(path.join(tillgangar, f), 'utf-8').includes('THREE.WebGLRenderer'));
+  assert.ok(harMarkor, 'ingen fil i dist/assets innehåller THREE.WebGLRenderer, så markören är ur bruk');
 });
 
 test('övningarna: rubriken och sex klipp som rör sig prerenderas', () => {

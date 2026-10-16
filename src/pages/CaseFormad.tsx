@@ -21,8 +21,8 @@ const caseJsonLd = {
   url: CANONICAL,
   image: 'https://www.infrakust.se/formad/og.jpg',
   author: { '@type': 'Organization', name: 'Infrakust', url: 'https://www.infrakust.se' },
-  datePublished: '2026-10-17',
-  dateModified: '2026-10-17',
+  datePublished: '2026-10-16',
+  dateModified: '2026-10-16',
   keywords: ['app för skiftarbetare', 'dagsplanerare', 'app-utveckling', 'Android-app', 'Wear OS-app', 'Health Connect', 'träningsapp'],
   about: {
     '@type': 'SoftwareApplication',
@@ -409,7 +409,7 @@ export default function CaseFormad() {
                     blev aldrig rätt.
                   </p>
                   <p className="max-w-[60ch]">
-                    Orsaken var meshen själv: en skannad triangelmesh utan
+                    Orsaken var meshen själv: en genererad triangelmesh utan
                     kantslingor runt lederna. Så vi byggde om kroppen på en
                     animationsfärdig bas (MPFB2) och flyttade statyns form till den.
                   </p>
@@ -450,7 +450,7 @@ export default function CaseFormad() {
               <HerculesViewer still="/formad/herkules-still.webp" model="/formad/3d/herkules.glb" />
             </div>
             <p className="mt-6 font-sans text-sm text-text-muted">
-              Samma kropp som visar varje övning i appen.
+              Statyn som allt började med. Hans form lever kvar i kroppen som visar varje övning.
             </p>
           </div>
         </section>

@@ -219,7 +219,7 @@ export function AppTeaserSection() {
           </ScrollReveal>
 
           <ScrollReveal delay={0.22}>
-            <dl className="mt-10 grid grid-cols-3 gap-x-6 border-y border-text-muted/30 py-5 max-w-[520px]">
+            <dl className="mt-10 grid grid-cols-2 sm:grid-cols-3 gap-x-6 border-y border-text-muted/30 py-5 max-w-[520px]">
               <div>
                 <dt className="font-sans text-[10px] uppercase tracking-section text-accent-gold">
                   Plattformar

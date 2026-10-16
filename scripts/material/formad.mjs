@@ -1,6 +1,8 @@
 // Kopierar och konverterar Formad-caset:s material till public/formad/.
 // Körs om efter att källorna ändrats: node scripts/material/formad.mjs (skriver över).
 //
+// tel-pass.webp, tel-ovning.webp, tel-mentor.webp och klocka.webp är tagna för hand (lokal app med seedad data, och Wear OS-emulatorn) och tas om för hand; tel-mat.webp har eget skript tel-mat.cjs, 3D-stillbilden capture-still.cjs.
+//
 // Källor (allt ligger utanför detta repo, på den här datorn):
 //   SKIFTRUTIN  appens repo, ska stå på main och vara uppdaterat (git pull) före körning
 //   ANIM        Animation-projektet, riggen och förhandsbilderna
@@ -67,7 +69,8 @@ const TABELL = [
   // Klipp med muskelkarta, film och affisch
   ...['marklyft', 'knaboj', 'banpress', 'militarpress', 'skivstangsrodd', 'bicepscurl-hantel'].flatMap((namn) => [
     { from: klippkalla(`${namn}-muskler.mp4`), to: `klipp/${namn}-muskler.mp4` },
-    { from: klippkalla(`${namn}-muskler.webp`), to: `klipp/${namn}-muskler.webp` },
+    // Affischen tas ur filmens första ruta i filmens egen storlek (720x900)
+    { from: klippkalla(`${namn}-muskler.mp4`), to: `klipp/${namn}-muskler.webp`, frame: 0 },
   ]),
 ];
 

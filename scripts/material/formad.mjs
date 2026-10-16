@@ -49,11 +49,9 @@ const TABELL = [
   // Övrigt
   { from: path.join(SKIFTRUTIN, 'design', 'backe', 'vecka-herkules-appen.png'), to: 'sisyfos.webp', width: 1600 },
   { from: path.join(ANIM, 'production', 'previews', 'plot_joints2.png'), to: 'punktmoln.webp', width: 1800 },
-  // herkules-still.webp görs inte här: den är en bild av 3D-visaren själv
-  // (canvasen på casesidan i npm run preview, vinkel 0, 560 px bred vid
-  // deviceScaleFactor 2, filmkornet body::after dolt, beskuren till 1120×1494
-  // och sparad med libwebp -quality 85), så att övertoningen till modellen
-  // visar samma föremål.
+  // herkules-still.webp görs inte här: den tas ur 3D-visaren med
+  // scripts/material/capture-still.cjs (se huvudet där), så att övertoningen
+  // till modellen visar samma föremål.
 
   // Intro, åtta första uppslagen
   ...Array.from({ length: 8 }, (_, i) => {

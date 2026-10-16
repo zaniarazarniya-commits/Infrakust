@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { motion, AnimatePresence, useMotionValue, useSpring } from 'framer-motion';
 import { useReducedMotion } from '@/hooks/useReducedMotion';
+import { useMediaQuery } from '@/hooks/useMediaQuery';
 
 type CursorMode = 'default' | 'hover' | 'drag' | 'visit';
 
@@ -16,7 +17,7 @@ const LABELS: Partial<Record<CursorMode, string>> = {
  */
 export function CustomCursor() {
   const reducedMotion = useReducedMotion();
-  const [finePointer, setFinePointer] = useState(false);
+  const finePointer = useMediaQuery('(pointer: fine)');
   const [visible, setVisible] = useState(false);
   const [mode, setMode] = useState<CursorMode>('default');
 
@@ -24,14 +25,6 @@ export function CustomCursor() {
   const y = useMotionValue(-100);
   const ringX = useSpring(x, { stiffness: 350, damping: 35, mass: 0.6 });
   const ringY = useSpring(y, { stiffness: 350, damping: 35, mass: 0.6 });
-
-  useEffect(() => {
-    const mq = window.matchMedia('(pointer: fine)');
-    setFinePointer(mq.matches);
-    const handler = (e: MediaQueryListEvent) => setFinePointer(e.matches);
-    mq.addEventListener('change', handler);
-    return () => mq.removeEventListener('change', handler);
-  }, []);
 
   const active = finePointer && !reducedMotion;
 

@@ -80,6 +80,10 @@ test('casesidan prerenderas', () => {
   assert.ok(html.includes('Sluten beta i Google Play'), 'statusen saknas');
   assert.ok(html.includes('Passet är'), 'rubriken Dagen runt passet saknas');
   assert.ok(html.includes('src="/formad/sisyfos.webp"'), 'Sisyfos-bilden saknas');
+  assert.ok(html.includes('Vi hade kunnat köpa en 3D-modell'), 'rubriken Kropparna saknas');
+  assert.ok(html.includes('24 % för lång'), 'feltabellen saknas');
+  assert.ok(html.includes('src="/formad/punktmoln.webp"'), 'punktmolnet saknas');
+  assert.ok(html.includes('176 601 trianglar'), 'siffrorna saknas');
   const sitemap = fs.readFileSync(path.join(DIST, 'sitemap.xml'), 'utf-8');
   assert.ok(sitemap.includes('<loc>https://www.infrakust.se/case/formad</loc>'), 'sitemap saknar sidan');
 });

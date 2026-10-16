@@ -3,6 +3,8 @@ import { ArrowLeft } from 'lucide-react';
 import { Navigation } from '@/components/Navigation';
 import { Footer } from '@/components/Footer';
 import { SEO } from '@/components/SEO';
+import { JourneyStrip } from '@/components/formad/JourneyStrip';
+import { FaultTable } from '@/components/formad/FaultTable';
 
 const TITLE = 'Formad: från idé till app i Google Play — Infrakust';
 const DESCRIPTION =
@@ -44,6 +46,80 @@ const dagenRuntPasset = [
   'Ett nattpass delas i två block, så att idag betyder något klockan tre på natten',
   'Planen räknas om när ett pass flyttas',
   'Nya konton får en färdig startrutin',
+];
+
+const resan = [
+  {
+    src: '/formad/resa-01-block.webp',
+    alt: 'Ett ohugget marmorblock på en sockel, med prickade linjer inritade',
+    caption: 'Statyn finns redan där inne.',
+    width: 768,
+    height: 1152,
+  },
+  {
+    src: '/formad/resa-02-huggen.webp',
+    alt: 'Herkules halvvägs ute ur marmorblocket, överkroppen huggen och benen kvar i stenen',
+    caption: 'Formen kom ur en AI-skulptur av referensbilder.',
+    width: 768,
+    height: 1152,
+  },
+  {
+    src: '/formad/resa-03-gra.webp',
+    alt: 'Statyn som grå 3D-modell, med ena foten på en klippa',
+    caption: 'Statyn som mesh: 176 601 trianglar.',
+    width: 640,
+    height: 960,
+  },
+  {
+    src: '/formad/resa-04-tre-kroppar.webp',
+    alt: 'Tre grå kroppar bredvid varandra: statyn, den nya kroppen och den nya kroppen med statyns form',
+    caption: 'Statyn, den nya kroppen, och formen överförd.',
+    width: 1600,
+    height: 888,
+  },
+  {
+    src: '/formad/resa-05-muskelatlas.webp',
+    alt: 'Kroppen framifrån, bakifrån och från sidan med 23 muskler i var sin färg och en förklaring till höger',
+    caption: '23 muskler målade på kroppen.',
+    width: 2000,
+    height: 702,
+  },
+  {
+    src: '/formad/resa-06-marklyft.webp',
+    alt: 'Herkules i marklyft med rygg, säte och baksida lår färgade efter hur hårt de arbetar',
+    caption: 'Varje övning visar vad den tränar.',
+    width: 720,
+    height: 900,
+  },
+];
+
+const felen = [
+  {
+    saw: 'Utdragna armar, tunna handleder',
+    cause:
+      'Armlängderna mättes från axelspetsen, inte mellan ledcentra. Överarmen var 24 % för lång.',
+    fix: 'De Levas mått mellan ledcentra, hårda regler i passningen',
+  },
+  {
+    saw: 'Armbågen böjde fel i nästan varje klipp',
+    cause: 'IK-kedjan hade statyns gamla längder, så armbågen hamnade 5–10 cm från meshens.',
+    fix: 'IK-benen satta lika med deformbenen',
+  },
+  {
+    saw: 'Ansiktet sönderrivet',
+    cause: 'Projektion längs normalerna missade 46 % av punkterna.',
+    fix: 'ICP som bara fäster arm mot arm, bål mot bål',
+  },
+  {
+    saw: 'Axeln blev aldrig rätt',
+    cause: 'Riggen saknade skulderblad, så all rörelse kom ur en led.',
+    fix: 'Skulderbladsben som följer forskningens skulderrytm, efter sex kasserade försök',
+  },
+  {
+    saw: '15 klipp gick inte att spela till slutet',
+    cause: 'Två renderare skrev samma fil samtidigt.',
+    fix: 'Varje klipp avkodas i testet innan det går in i appen',
+  },
 ];
 
 /** Telefonram med guldkant, samma som i heron. */
@@ -228,7 +304,75 @@ export default function CaseFormad() {
             </figure>
           </div>
         </section>
-        <section>{/* Task 6: Kropparna */}</section>
+        {/* 4. Kropparna */}
+        <section className="bg-bg-secondary py-24 md:py-32">
+          <div className="px-6 md:px-12 lg:px-20">
+            <div className="mx-auto max-w-[1280px]">
+              <p className="font-sans text-xs uppercase tracking-section text-accent-gold">
+                KROPPARNA
+              </p>
+              <h2 className="mt-6 max-w-[860px] font-serif text-[clamp(36px,5vw,64px)] font-normal leading-[1.05] tracking-[-0.02em] text-text-primary">
+                Vi hade kunnat köpa en 3D-modell. Vi byggde en <em className="italic text-accent-gold">egen kropp.</em>
+              </h2>
+            </div>
+          </div>
+
+          <div className="mt-16 md:mt-20">
+            <JourneyStrip steps={resan} />
+          </div>
+
+          <div className="px-6 md:px-12 lg:px-20">
+            <div className="mx-auto max-w-[1280px]">
+              <p className="mt-16 max-w-[60ch] font-sans text-lg leading-relaxed text-text-secondary md:mt-20">
+                Statyns form skulpterades med ett AI-verktyg ur referensbilder. Den
+                var vacker och gick inte att böja. Allt efter det är vårt: riggen,
+                den nya kroppen, musklerna och klippen.
+              </p>
+
+              <div className="mt-24 grid gap-8 md:mt-32 lg:grid-cols-[1fr_2fr] lg:gap-24">
+                <h3 className="font-serif text-[clamp(28px,3.5vw,44px)] font-normal leading-[1.1] tracking-[-0.01em] text-text-primary">
+                  Den första kroppen gick inte att böja.
+                </h3>
+                <div className="space-y-6 font-sans text-lg leading-relaxed text-text-secondary">
+                  <p className="max-w-[60ch]">
+                    Vi satte ett skelett rakt in i statyn, målade vikter, delade de
+                    hopvuxna fingrarna, byggde korrektiv för armbågar och axlar, skrev
+                    en volymbevarande lösare och renderade 28 rörelser. Armarna såg
+                    utdragna ut, armbågarna böjde fel i nästan varje klipp, och axeln
+                    blev aldrig rätt.
+                  </p>
+                  <p className="max-w-[60ch]">
+                    Orsaken var meshen själv: en skannad triangelmesh utan
+                    kantslingor runt lederna. Så vi byggde om kroppen på en
+                    animationsfärdig bas (MPFB2) och flyttade statyns form till den.
+                  </p>
+                </div>
+              </div>
+
+              <div className="mt-16 md:mt-20">
+                <FaultTable rows={felen} />
+              </div>
+
+              <figure className="mt-24 md:mt-32">
+                <img
+                  src="/formad/punktmoln.webp"
+                  alt="Sex diagram där statyns fot, hand och huvud är punktmoln och lederna röda prickar"
+                  width={1470}
+                  height={980}
+                  loading="lazy"
+                  className="block h-auto w-full"
+                />
+                <figcaption className="mt-4 font-sans text-sm text-text-muted">
+                  Så här ser arbetet ut innan det blir snyggt.
+                </figcaption>
+              </figure>
+
+              <p className="mt-24 font-serif text-[clamp(18px,2.2vw,28px)] text-accent-gold md:mt-32">
+                176 601 trianglar · 23 muskler · 172 övningar · 344 klipp · ~2 min per klipp i renderkön · 19 MB totalt
+              </p>
+            </div>
+          </div>
+        </section>
         <section>{/* Task 7: Statyn i 3D */}</section>
         <section>{/* Task 8: Övningarna */}</section>
         <section>{/* Task 9: Mentorn */}</section>

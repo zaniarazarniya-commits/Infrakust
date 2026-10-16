@@ -25,7 +25,8 @@ export const FILER = [
   ['resa-04-tre-kroppar.webp', WEBP_MAX_STOR],
   ['resa-05-muskelatlas.webp', WEBP_MAX_STOR],
   ['resa-06-marklyft.webp', WEBP_MAX],
-  ['sisyfos.webp', WEBP_MAX],
+  ['sisyfos-bred.webp', WEBP_MAX],
+  ['sisyfos-smal.webp', WEBP_MAX],
   ['punktmoln.webp', WEBP_MAX_STOR],
   ['herkules-still.webp', WEBP_MAX],
   ['3d/herkules.glb', 3_000_000],
@@ -92,7 +93,9 @@ test('casesidan prerenderas', () => {
   assert.ok(html.includes('En app som vet'), 'rubriken saknas');
   assert.ok(html.includes('Sluten beta i Google Play'), 'statusen saknas');
   assert.ok(html.includes('Passet är'), 'rubriken Dagen runt passet saknas');
-  assert.ok(html.includes('src="/formad/sisyfos.webp"'), 'Sisyfos-bilden saknas');
+  assert.ok(html.includes('src="/formad/sisyfos-smal.webp"'), 'Sisyfos-bilden för telefoner saknas');
+  assert.ok(/<source[^>]*srcset="\/formad\/sisyfos-bred\.webp"/i.test(html), 'Sisyfos-bilden för bred skärm saknas');
+  assert.ok(!html.includes('/formad/sisyfos.webp'), 'den gamla Sisyfos-bilden används fortfarande');
   assert.ok(html.includes('Vi hade kunnat köpa en 3D-modell'), 'rubriken Kropparna saknas');
   assert.ok(html.includes('24 % för lång'), 'feltabellen saknas');
   assert.ok(html.includes('src="/formad/punktmoln.webp"'), 'punktmolnet saknas');

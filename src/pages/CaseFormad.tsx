@@ -348,14 +348,23 @@ export default function CaseFormad() {
             </div>
 
             <figure className="mx-auto mt-20 max-w-[960px] md:mt-28">
-              <img
-                src="/formad/sisyfos.webp"
-                alt="Veckan som Sisyfos: Herkules puttar stenen uppför veckan och är förgylld på söndagen"
-                width={1098}
-                height={1104}
-                loading="lazy"
-                className="block h-auto w-full"
-              />
+              {/* Tre kolumner från 768 px, två på telefoner så att staplarna går att läsa. */}
+              <picture>
+                <source
+                  media="(min-width: 768px)"
+                  srcSet="/formad/sisyfos-bred.webp"
+                  width={1106}
+                  height={1108}
+                />
+                <img
+                  src="/formad/sisyfos-smal.webp"
+                  alt="Veckan som Sisyfos: Herkules puttar stenen uppför veckan och är förgylld på söndagen"
+                  width={732}
+                  height={1670}
+                  loading="lazy"
+                  className="block h-auto w-full"
+                />
+              </picture>
               <figcaption className="mt-4 font-sans text-sm text-text-muted">
                 Varje hel dag lyfter han stenen lite högre. Sju dagar och han står i guld.
               </figcaption>
@@ -616,7 +625,9 @@ export default function CaseFormad() {
               <div className="mx-auto lg:mx-0">
                 <Phone
                   src="/formad/tel-mat.webp"
-                  alt="Formad, Mat-sidan med dagens kalorier i en marmorbåge och knappar för att söka och skanna"
+                  alt="Formad, Mat-sidan med dagens kalorier i en marmorbåge, makrona och knappar för att söka och skanna"
+                  width={1080}
+                  height={2338}
                 />
               </div>
             </div>

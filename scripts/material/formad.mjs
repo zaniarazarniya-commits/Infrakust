@@ -35,7 +35,8 @@ const TABELL = [
   { from: skarm('2-traning.png'), to: 'tel-traning.webp', width: 1080 },
   { from: skarm('1-idag.png'), to: 'tel-idag.webp', width: 1080 },
   { from: skarm('3-vecka.png'), to: 'tel-vecka.webp', width: 1080 },
-  { from: skarm('4-mat.png'), to: 'tel-mat.webp', width: 1080 },
+  // tel-mat.webp görs inte här: Play-bildens mål bröts över makrona, så den tas ur
+  // appen med mat loggad av scripts/material/tel-mat.cjs (se huvudet där).
 
   // Resan
   { from: statyn('steg-01.webp'), to: 'resa-01-block.webp' },
@@ -46,7 +47,8 @@ const TABELL = [
   { from: klippkalla('marklyft-muskler.mp4'), to: 'resa-06-marklyft.webp', frame: MARKLYFT_RUTA },
 
   // Övrigt
-  { from: path.join(SKIFTRUTIN, 'design', 'backe', 'vecka-herkules-appen.png'), to: 'sisyfos.webp', width: 1600 },
+  // sisyfos-bred.webp och sisyfos-smal.webp görs inte här: panelerna klipps ur
+  // appens veckobild och läggs om av scripts/material/sisyfos.mjs.
   { from: path.join(ANIM, 'production', 'previews', 'plot_joints2.png'), to: 'punktmoln.webp', width: 1800 },
   // herkules-still.webp görs inte här: den tas ur 3D-visaren med
   // scripts/material/capture-still.cjs (se huvudet där), så att övertoningen

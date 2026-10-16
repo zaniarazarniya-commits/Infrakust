@@ -133,6 +133,49 @@ const felen = [
   },
 ];
 
+const introt = [
+  {
+    src: '/formad/intro-01.webp',
+    alt: 'Ett ohugget marmorblock i ett tempel, i solljuset mellan pelarna',
+    caption: 'Blocket',
+  },
+  {
+    src: '/formad/intro-02.webp',
+    alt: 'Händer med hammare och mejsel hugger fram Herkules huvud och axlar ur blocket',
+    caption: 'Första huggen',
+  },
+  {
+    src: '/formad/intro-03.webp',
+    alt: 'Herkules överkropp har kommit fram, resten av kroppen är kvar i stenen',
+    caption: 'Formen syns',
+  },
+  {
+    src: '/formad/intro-04.webp',
+    alt: 'Hela statyn framhuggen på det som är kvar av blocket, framför en tempelgavel',
+    caption: 'Detaljerna',
+  },
+  {
+    src: '/formad/intro-05.webp',
+    alt: 'En tallrik med kyckling, ris och broccoli på marmor, under en båge med byggställningar',
+    caption: 'Fri ur stenen',
+  },
+  {
+    src: '/formad/intro-06.webp',
+    alt: 'Statyn står fri på en klippa medan en hand putsar axeln',
+    caption: 'Polerad',
+  },
+  {
+    src: '/formad/intro-07.webp',
+    alt: 'Den vita statyn bland djur i marmor, med de första stråken av guld på axlarna',
+    caption: 'Guldet börjar',
+  },
+  {
+    src: '/formad/intro-08.webp',
+    alt: 'Herkules helt i guld på en klippa av guld, i templets ljus',
+    caption: 'Förgylld',
+  },
+].map((step) => ({ ...step, width: 768, height: 1152 }));
+
 /** Telefonram med guldkant, samma som i heron. */
 function Phone({
   src,
@@ -445,9 +488,141 @@ export default function CaseFormad() {
             </div>
           </div>
         </section>
-        <section>{/* Task 9: Mentorn */}</section>
-        <section>{/* Task 9: Klockan */}</section>
-        <section>{/* Task 9: Formen */}</section>
+        {/* 7. Mentorn */}
+        <section className="px-6 py-24 md:px-12 md:py-32 lg:px-20">
+          <div className="mx-auto grid max-w-[1280px] items-center gap-16 lg:grid-cols-[1fr_auto] lg:gap-24">
+            <div>
+              <p className="font-sans text-xs uppercase tracking-section text-accent-gold">
+                MENTORN
+              </p>
+              <h2 className="mt-6 max-w-[860px] font-serif text-[clamp(36px,5vw,64px)] font-normal leading-[1.05] tracking-[-0.02em] text-text-primary">
+                En mentor vi fick <em className="italic text-accent-gold">uppfostra</em> innan den fick prata.
+              </h2>
+              <p className="mt-8 max-w-[60ch] font-sans text-lg leading-relaxed text-text-secondary">
+                Mentorn bygger på Anthropics modell och ser det appen ser: pass,
+                sömn, mat, vikt och träning. Maten loggas med foto, streckkod eller
+                sökning. De första versionerna var för pratiga, räknade fel på
+                avlastningar och bytte program tre gånger i samma samtal.
+              </p>
+              <h3 className="mt-16 font-serif text-[clamp(28px,3.5vw,44px)] font-normal leading-[1.1] tracking-[-0.01em] text-text-primary">
+                Hur vi tränade fram den.
+              </h3>
+              <div className="mt-6 space-y-6 font-sans text-lg leading-relaxed text-text-secondary">
+                <p className="max-w-[60ch]">
+                  Vi tränade den med AI-agenter som spelade användare. Varje agent
+                  fick ett liv: skiftarbetare efter ett nattpass, ledig dag, mitt i
+                  en viktnedgång, ny i gymmet, van lyftare. De tog samtalen med
+                  mentorn, och en bedömare gick igenom varje svar: vad hjälpte, vad
+                  irriterade, vad var fel.
+                </p>
+                <p className="max-w-[60ch]">
+                  Bedömningarna blev regler i prompten. Färre uppslag i taget. Inga
+                  frågor som lämnas hängande. Tider i timmar och minuter som i resten
+                  av appen. Mentorn tänker längre innan den svarar och säger mindre.
+                  Samtalen var simulerade, och det var poängen: mentorn gjorde sina
+                  misstag mot agenterna innan en riktig användare fick se dem. Sedan
+                  fick betatestarna ta över.
+                </p>
+              </div>
+            </div>
+
+            <figure className="mx-auto flex flex-col items-center lg:mx-0">
+              <Phone
+                src="/formad/tel-mentor.webp"
+                alt="Formad, Mentor-samtalet: en fråga om gårdagens marklyft och mentorns svar med vikt, RPE och nästa steg"
+                width={1080}
+                height={2338}
+              />
+              <figcaption className="mt-4 font-sans text-sm text-text-muted">
+                Demosamtal med påhittad data.
+              </figcaption>
+            </figure>
+          </div>
+        </section>
+
+        {/* 8. Klockan och kroppsdatan */}
+        <section className="bg-bg-secondary px-6 py-24 md:px-12 md:py-32 lg:px-20">
+          <div className="mx-auto grid max-w-[1280px] items-center gap-16 lg:grid-cols-2 lg:gap-24">
+            <div>
+              <p className="font-sans text-xs uppercase tracking-section text-accent-gold">
+                KLOCKAN OCH KROPPSDATAN
+              </p>
+              <h2 className="mt-6 max-w-[860px] font-serif text-[clamp(36px,5vw,64px)] font-normal leading-[1.05] tracking-[-0.02em] text-text-primary">
+                På handleden, och in från Samsung Health.
+              </h2>
+              <div className="mt-8 space-y-6 font-sans text-lg leading-relaxed text-text-secondary">
+                <p className="max-w-[60ch]">
+                  En egen Wear OS-app visar dagens rutin som en krans runt
+                  urtavlan, så nästa moment syns utan telefonen.
+                </p>
+                <p className="max-w-[60ch]">
+                  Health Connect hämtar steg, sömn, aktiva kalorier och vikt från
+                  vågen. Förbränningen räknas från vikttrenden mot det som loggats,
+                  inte från en tabell.
+                </p>
+              </div>
+            </div>
+
+            <div
+              className="mx-auto w-[min(360px,70vw)] overflow-hidden rounded-full border bg-bg-primary"
+              style={{
+                borderColor: `rgba(${GOLD},0.2)`,
+                boxShadow: `0 8px 40px rgba(${GOLD},0.12), 0 20px 60px rgba(0,0,0,0.5)`,
+              }}
+            >
+              <img
+                src="/formad/klocka.webp"
+                alt="Formad på klockan: Nu, Träning i 1 h 30 min, med en bock och lagerkransen runt urtavlan"
+                width={900}
+                height={900}
+                loading="lazy"
+                className="block h-auto w-full"
+              />
+            </div>
+          </div>
+        </section>
+
+        {/* 9. Formen */}
+        <section className="py-24 md:py-32">
+          <div className="px-6 md:px-12 lg:px-20">
+            <div className="mx-auto max-w-[1280px]">
+              <p className="font-sans text-xs uppercase tracking-section text-accent-gold">
+                FORMEN
+              </p>
+              <h2 className="mt-6 max-w-[860px] font-serif text-[clamp(36px,5vw,64px)] font-normal leading-[1.05] tracking-[-0.02em] text-text-primary">
+                Marmor, guld och ett <em className="italic text-accent-gold">stoiskt</em> lugn.
+              </h2>
+            </div>
+          </div>
+
+          <div className="mt-16 md:mt-20">
+            <JourneyStrip steps={introt} label="Statyn i åtta steg, från block till guld" />
+          </div>
+
+          <div className="px-6 md:px-12 lg:px-20">
+            <div className="mx-auto mt-16 grid max-w-[1280px] items-center gap-16 md:mt-20 lg:grid-cols-[1fr_auto] lg:gap-24">
+              <div className="space-y-6 font-sans text-lg leading-relaxed text-text-secondary">
+                <p className="max-w-[60ch]">
+                  Temat är inte dekor. Statyn i marmor är användarens egen vecka och
+                  förändras med den. Typografin och färgerna är lånade ur samma
+                  värld: Cinzel för de grekiska rubrikerna, EB Garamond och Hanken
+                  Grotesk.
+                </p>
+                <p className="max-w-[60ch]">
+                  Varje skärm är ritad för en tumme och den information som behövs
+                  just där. Det som ser enkelt ut tog längst tid.
+                </p>
+              </div>
+
+              <div className="mx-auto lg:mx-0">
+                <Phone
+                  src="/formad/tel-mat.webp"
+                  alt="Formad, Mat-sidan med dagens kalorier i en marmorbåge och knappar för att söka och skanna"
+                />
+              </div>
+            </div>
+          </div>
+        </section>
 
         {/* 10. Under huven */}
         <section className="bg-bg-secondary px-6 py-24 md:px-12 md:py-32 lg:px-20">

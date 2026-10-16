@@ -127,3 +127,15 @@ test('övningarna: rubriken och sex klipp som rör sig prerenderas', () => {
   assert.ok(html.includes('src="/formad/tel-pass.webp"'), 'passvyn saknas');
   assert.ok(html.includes('src="/formad/tel-ovning.webp"'), 'övningsvyn saknas');
 });
+
+test('mentorn, klockan och formen prerenderas, utan förbjudna ord', () => {
+  const DIST = path.join(path.dirname(fileURLToPath(import.meta.url)), '..', 'dist');
+  const html = fs.readFileSync(path.join(DIST, 'case', 'formad', 'index.html'), 'utf-8');
+  assert.ok(html.includes('AI-agenter som spelade användare'), 'mentorns träning saknas');
+  assert.ok(html.includes('Anthropics modell'), 'modellen bakom mentorn saknas');
+  assert.ok(html.includes('Health Connect'), 'Health Connect saknas');
+  assert.ok(html.includes('src="/formad/klocka.webp"'), 'klockbilden saknas');
+  assert.ok(html.includes('src="/formad/intro-08.webp"'), 'introbilderna saknas');
+  assert.ok(!/hevy/i.test(html), 'sidan nämner Hevy');
+  assert.ok(!/intervju/i.test(html), 'sidan säger intervju');
+});

@@ -3,6 +3,7 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { execFileSync } from 'node:child_process';
 
 const ROOT = path.join(path.dirname(fileURLToPath(import.meta.url)), '..', 'public', 'formad');
 
@@ -10,6 +11,7 @@ const KB = 1024;
 const WEBP_MAX = 400 * KB;
 const WEBP_MAX_STOR = 700 * KB;
 const MP4_MAX = 120 * KB;
+const OG_MAX = 300 * KB;
 
 const klipp = ['marklyft', 'knaboj', 'banpress', 'militarpress', 'skivstangsrodd', 'bicepscurl-hantel'];
 
@@ -32,6 +34,7 @@ export const FILER = [
     [`klipp/${n}-muskler.mp4`, MP4_MAX],
     [`klipp/${n}-muskler.webp`, WEBP_MAX],
   ]),
+  ['og.jpg', OG_MAX],
 ];
 
 test('material finns och är inom storleksgränserna', () => {
@@ -42,6 +45,15 @@ test('material finns och är inom storleksgränserna', () => {
     assert.ok(storlek > 0, `${namn} är tom`);
     assert.ok(storlek < max, `${namn} är ${storlek} byte, gränsen är ${max}`);
   }
+});
+
+test('og.jpg är 1200×630', () => {
+  const ut = execFileSync(
+    'ffprobe',
+    ['-v', 'error', '-show_entries', 'stream=width,height', '-of', 'csv=p=0', path.join(ROOT, 'og.jpg')],
+    { encoding: 'utf-8' },
+  );
+  assert.equal(ut.trim(), '1200,630');
 });
 
 test('prerenderade sidor har rätt og:image', () => {

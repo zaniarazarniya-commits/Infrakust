@@ -280,7 +280,7 @@ export function AppTeaserSection() {
                   boxShadow: '0 8px 40px rgba(201,169,110,0.12), 0 20px 60px rgba(0,0,0,0.5)',
                 }}
               >
-                <div className="relative aspect-[9/19.5] w-[260px] overflow-hidden bg-bg-primary sm:w-[280px]">
+                <div className="relative aspect-[9/16] w-[260px] overflow-hidden bg-bg-primary sm:w-[280px]">
                   <img
                     src="/formad/tel-traning.webp"
                     alt="Formad, Träning-sidan med lagerkransen"

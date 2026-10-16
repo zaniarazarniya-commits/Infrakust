@@ -24,7 +24,6 @@ const UT = path.join(path.dirname(fileURLToPath(import.meta.url)), '..', '..', '
 
 const skarm = (fil) => path.join(SKIFTRUTIN, 'design', 'play', 'skarmbilder', fil);
 const statyn = (fil) => path.join(SKIFTRUTIN, 'public', 'statyn', fil);
-const intro = (fil) => path.join(SKIFTRUTIN, 'public', 'intro', fil);
 const klippkalla = (fil) => path.join(SKIFTRUTIN, 'public', 'klipp', fil);
 const forhandsbild = (fil) => path.join(ANIM, 'production', 'base2', 'previews', fil);
 
@@ -53,11 +52,15 @@ const TABELL = [
   // scripts/material/capture-still.cjs (se huvudet där), så att övertoningen
   // till modellen visar samma föremål.
 
-  // Intro, åtta första uppslagen
-  ...Array.from({ length: 8 }, (_, i) => {
-    const nr = String(i + 1).padStart(2, '0');
-    return { from: intro(`${nr}.webp`), to: `intro-${nr}.webp` };
-  }),
+  // Formen: åtta steg ur appens huggningssekvens, från block till färdig staty
+  { from: statyn('steg-01.webp'), to: 'form-01.webp' },
+  { from: statyn('steg-04.webp'), to: 'form-02.webp' },
+  { from: statyn('steg-07.webp'), to: 'form-03.webp' },
+  { from: statyn('steg-10.webp'), to: 'form-04.webp' },
+  { from: statyn('steg-13.webp'), to: 'form-05.webp' },
+  { from: statyn('steg-16.webp'), to: 'form-06.webp' },
+  { from: statyn('steg-18.webp'), to: 'form-07.webp' },
+  { from: statyn('steg-20.webp'), to: 'form-08.webp' },
 
   // Klipp med muskelkarta, film och affisch
   ...['marklyft', 'knaboj', 'banpress', 'militarpress', 'skivstangsrodd', 'bicepscurl-hantel'].flatMap((namn) => [

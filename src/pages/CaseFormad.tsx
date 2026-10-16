@@ -133,46 +133,46 @@ const felen = [
   },
 ];
 
-const introt = [
+const formen = [
   {
-    src: '/formad/intro-01.webp',
-    alt: 'Ett ohugget marmorblock i ett tempel, i solljuset mellan pelarna',
+    src: '/formad/form-01.webp',
+    alt: 'Ett ohugget marmorblock på en sockel, med prickade linjer inritade där statyn ska fram',
     caption: 'Blocket',
   },
   {
-    src: '/formad/intro-02.webp',
-    alt: 'Händer med hammare och mejsel hugger fram Herkules huvud och axlar ur blocket',
+    src: '/formad/form-02.webp',
+    alt: 'Marmorblocket med de första huggen i överkanten och mejselspår över ytan',
     caption: 'Första huggen',
   },
   {
-    src: '/formad/intro-03.webp',
-    alt: 'Herkules överkropp har kommit fram, resten av kroppen är kvar i stenen',
+    src: '/formad/form-03.webp',
+    alt: 'Herkules huvud sticker upp ur blockets överkant, resten av honom är kvar i stenen',
+    caption: 'Huvudet fram',
+  },
+  {
+    src: '/formad/form-04.webp',
+    alt: 'Överkroppen är framhuggen med armarna över magen, benen är kvar i blocket',
     caption: 'Formen syns',
   },
   {
-    src: '/formad/intro-04.webp',
-    alt: 'Hela statyn framhuggen på det som är kvar av blocket, framför en tempelgavel',
+    src: '/formad/form-05.webp',
+    alt: 'Kroppen är framhuggen ner till låren, benen bryter fram ur det sista av blocket',
     caption: 'Detaljerna',
   },
   {
-    src: '/formad/intro-05.webp',
-    alt: 'En tallrik med kyckling, ris och broccoli på marmor, under en båge med byggställningar',
+    src: '/formad/form-06.webp',
+    alt: 'Statyn står fri med ena foten på en klippa, med mejselspår kvar på benen',
     caption: 'Fri ur stenen',
   },
   {
-    src: '/formad/intro-06.webp',
-    alt: 'Statyn står fri på en klippa medan en hand putsar axeln',
+    src: '/formad/form-07.webp',
+    alt: 'Statyn med ena foten på klippan, nästan slät, med lejonhuden över axeln',
     caption: 'Polerad',
   },
   {
-    src: '/formad/intro-07.webp',
-    alt: 'Den vita statyn bland djur i marmor, med de första stråken av guld på axlarna',
-    caption: 'Guldet börjar',
-  },
-  {
-    src: '/formad/intro-08.webp',
-    alt: 'Herkules helt i guld på en klippa av guld, i templets ljus',
-    caption: 'Förgylld',
+    src: '/formad/form-08.webp',
+    alt: 'Den färdiga statyn i polerad marmor, med ena foten på klippan och lejonhuden över axeln',
+    caption: 'Färdig',
   },
 ].map((step) => ({ ...step, width: 768, height: 1152 }));
 
@@ -596,7 +596,7 @@ export default function CaseFormad() {
           </div>
 
           <div className="mt-16 md:mt-20">
-            <JourneyStrip steps={introt} label="Statyn i åtta steg, från block till guld" />
+            <JourneyStrip steps={formen} label="Statyn i åtta steg, från block till färdig" />
           </div>
 
           <div className="px-6 md:px-12 lg:px-20">

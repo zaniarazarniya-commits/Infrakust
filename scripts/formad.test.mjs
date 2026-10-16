@@ -27,7 +27,7 @@ export const FILER = [
   ['punktmoln.webp', WEBP_MAX_STOR],
   ['herkules-still.webp', WEBP_MAX],
   ['3d/herkules.glb', 3_000_000],
-  ...Array.from({ length: 8 }, (_, i) => [`intro-${String(i + 1).padStart(2, '0')}.webp`, WEBP_MAX]),
+  ...Array.from({ length: 8 }, (_, i) => [`form-${String(i + 1).padStart(2, '0')}.webp`, WEBP_MAX]),
   ...klipp.flatMap((n) => [
     [`klipp/${n}-muskler.mp4`, MP4_MAX],
     [`klipp/${n}-muskler.webp`, WEBP_MAX],
@@ -135,7 +135,7 @@ test('mentorn, klockan och formen prerenderas, utan förbjudna ord', () => {
   assert.ok(html.includes('Anthropics modell'), 'modellen bakom mentorn saknas');
   assert.ok(html.includes('Health Connect'), 'Health Connect saknas');
   assert.ok(html.includes('src="/formad/klocka.webp"'), 'klockbilden saknas');
-  assert.ok(html.includes('src="/formad/intro-08.webp"'), 'introbilderna saknas');
+  assert.ok(html.includes('src="/formad/form-08.webp"'), 'formens remsa saknas');
   assert.ok(!/hevy/i.test(html), 'sidan nämner Hevy');
   assert.ok(!/intervju/i.test(html), 'sidan säger intervju');
 });

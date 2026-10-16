@@ -156,11 +156,11 @@ export default function AppdevPage() {
             </ScrollReveal>
             <ScrollReveal delay={0.2}>
               <p className="mt-6 max-w-[60ch] font-sans text-lg leading-relaxed text-text-secondary">
-                Vår egen app för skiftarbetare: dagsplan runt passen, träning
+                Min egen app för skiftarbetare: dagsplan runt passen, träning
                 med egna 3D-kroppar som visar vad varje övning tränar, en mentor
                 på Anthropics modell och en klockapp för Wear OS. Sluten beta i
-                Google Play sedan oktober 2026. Vi byggde den som vi bygger åt
-                kunder, och berättar hela vägen dit.
+                Google Play sedan oktober 2026. Jag byggde den som jag bygger åt
+                kunder, och berättar hela vägen dit, med det som gick sönder.
               </p>
             </ScrollReveal>
             <ScrollReveal delay={0.28}>

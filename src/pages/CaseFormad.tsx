@@ -86,7 +86,7 @@ const resan = [
   },
   {
     src: '/formad/resa-06-marklyft.webp',
-    alt: 'Herkules i marklyft med rygg, säte och baksida lår färgade efter hur hårt de arbetar',
+    alt: 'Herkules i marklyft med rygg och säte färgade efter sin roll i lyftet',
     caption: 'Varje övning visar vad den tränar.',
     width: 720,
     height: 900,
@@ -318,7 +318,7 @@ export default function CaseFormad() {
           </div>
 
           <div className="mt-16 md:mt-20">
-            <JourneyStrip steps={resan} />
+            <JourneyStrip steps={resan} label="Resan från marmorblock till marklyft" />
           </div>
 
           <div className="px-6 md:px-12 lg:px-20">

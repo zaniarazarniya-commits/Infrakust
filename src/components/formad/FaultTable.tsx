@@ -30,19 +30,24 @@ export function FaultTable({ rows }: { rows: Row[] }) {
       <tbody className="block divide-y divide-text-muted/10 border-t border-text-muted/30 md:table-row-group md:border-t-0">
         {rows.map((row) => (
           <tr key={row.saw} className="block py-8 md:table-row md:py-0">
-            {COLUMNS.map((col) => (
-              <td
-                key={col.key}
-                className={`block align-top md:table-cell md:py-8 md:pr-8 ${
-                  col.key === 'saw'
-                    ? 'font-serif text-xl leading-snug text-text-primary md:w-[28%]'
-                    : 'mt-5 font-sans text-base leading-relaxed text-text-secondary md:mt-0'
-                } ${col.key === 'cause' ? 'md:w-[38%]' : ''}`}
-              >
-                <span className={`mb-2 block md:hidden ${LABEL}`}>{col.label}</span>
-                {row[col.key]}
-              </td>
-            ))}
+            {COLUMNS.map((col) => {
+              // Första spalten är radens rubrik: <th scope="row">.
+              const Cell = col.key === 'saw' ? 'th' : 'td';
+              return (
+                <Cell
+                  key={col.key}
+                  scope={col.key === 'saw' ? 'row' : undefined}
+                  className={`block align-top md:table-cell md:py-8 md:pr-8 ${
+                    col.key === 'saw'
+                      ? 'font-serif text-xl font-normal leading-snug text-text-primary md:w-[28%]'
+                      : 'mt-5 font-sans text-base leading-relaxed text-text-secondary md:mt-0'
+                  } ${col.key === 'cause' ? 'md:w-[38%]' : ''}`}
+                >
+                  <span className={`mb-2 block md:hidden ${LABEL}`}>{col.label}</span>
+                  {row[col.key]}
+                </Cell>
+              );
+            })}
           </tr>
         ))}
       </tbody>

@@ -84,6 +84,8 @@ test('casesidan prerenderas', () => {
   assert.ok(html.includes('24 % för lång'), 'feltabellen saknas');
   assert.ok(html.includes('src="/formad/punktmoln.webp"'), 'punktmolnet saknas');
   assert.ok(html.includes('176 601 trianglar'), 'siffrorna saknas');
+  assert.ok(html.includes('Vi såg'), 'feltabellens rubriker saknas');
+  assert.equal(html.match(/src="\/formad\/resa-/g)?.length, 6, 'remsan ska ha sex bilder');
   const sitemap = fs.readFileSync(path.join(DIST, 'sitemap.xml'), 'utf-8');
   assert.ok(sitemap.includes('<loc>https://www.infrakust.se/case/formad</loc>'), 'sitemap saknar sidan');
 });

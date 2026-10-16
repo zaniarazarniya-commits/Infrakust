@@ -9,7 +9,7 @@ type Step = { src: string; alt: string; caption: string; width: number; height: 
  * En tunn guldlinje under bilderna binder ihop stegen. Mus-drag
  * enligt mönstret i ProjectsRailSection; touch scrollar nativt.
  */
-export function JourneyStrip({ steps }: { steps: Step[] }) {
+export function JourneyStrip({ steps, label }: { steps: Step[]; label?: string }) {
   const railRef = useRef<HTMLOListElement>(null);
 
   // ---------- Pointer-drag (mus) med klickskydd ----------
@@ -66,7 +66,7 @@ export function JourneyStrip({ steps }: { steps: Step[] }) {
     <ol
       ref={railRef}
       tabIndex={0}
-      aria-label="Resan från marmorblock till marklyft"
+      aria-label={label}
       data-cursor="drag"
       onPointerDown={onPointerDown}
       onPointerMove={onPointerMove}

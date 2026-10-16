@@ -140,3 +140,14 @@ test('mentorn, klockan och formen prerenderas, utan förbjudna ord', () => {
   assert.ok(!/intervju/i.test(html), 'sidan säger intervju');
   assert.ok(!/\bPED\b/.test(html), 'sidan nämner PED');
 });
+
+test('startsidan och App-utveckling pekar på Formad-caset', () => {
+  const DIST = path.join(path.dirname(fileURLToPath(import.meta.url)), '..', 'dist');
+  const start = fs.readFileSync(path.join(DIST, 'index.html'), 'utf-8');
+  assert.ok(start.includes('href="/case/formad"'), 'startsidan länkar inte till caset');
+  assert.ok(start.includes('EGEN PRODUKT'), 'startsidan saknar EGEN PRODUKT');
+  assert.ok(start.includes('src="/formad/tel-traning.webp"'), 'startsidan saknar telefonen');
+  const app = fs.readFileSync(path.join(DIST, 'tjanster', 'apputveckling', 'index.html'), 'utf-8');
+  assert.ok(app.includes('href="/case/formad"'), 'App-utveckling länkar inte till caset');
+  assert.ok(app.indexOf('EGEN PRODUKT') < app.indexOf('TEKNISK STACK'), 'Formad ska ligga före Tech stack');
+});

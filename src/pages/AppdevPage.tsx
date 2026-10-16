@@ -141,6 +141,39 @@ export default function AppdevPage() {
           </div>
         </section>
 
+        {/* Egen produkt: Formad */}
+        <section className="px-6 py-24 md:px-12 md:py-32 lg:px-20">
+          <div className="mx-auto max-w-[1280px]">
+            <ScrollReveal>
+              <p className="font-sans text-xs uppercase tracking-section text-accent-gold">
+                EGEN PRODUKT
+              </p>
+            </ScrollReveal>
+            <ScrollReveal delay={0.12}>
+              <h2 className="mt-6 max-w-[740px] font-serif text-[clamp(32px,4.5vw,64px)] font-normal leading-[1.05] tracking-[-0.02em] text-text-primary">
+                Formad
+              </h2>
+            </ScrollReveal>
+            <ScrollReveal delay={0.2}>
+              <p className="mt-6 max-w-[60ch] font-sans text-lg leading-relaxed text-text-secondary">
+                Vår egen app för skiftarbetare: dagsplan runt passen, träning
+                med egna 3D-kroppar som visar vad varje övning tränar, en mentor
+                på Anthropics modell och en klockapp för Wear OS. Sluten beta i
+                Google Play sedan oktober 2026. Vi byggde den som vi bygger åt
+                kunder, och berättar hela vägen dit.
+              </p>
+            </ScrollReveal>
+            <ScrollReveal delay={0.28}>
+              <Link
+                to="/case/formad"
+                className="gold-underline mt-8 inline-block font-sans text-lg text-accent-gold transition-colors hover:text-accent-gold-hover"
+              >
+                Läs hela caset →
+              </Link>
+            </ScrollReveal>
+          </div>
+        </section>
+
         {/* Tech stack */}
         <section className="bg-bg-secondary px-6 py-16 md:px-12 md:py-24 lg:px-20">
           <div className="mx-auto max-w-[1280px]">

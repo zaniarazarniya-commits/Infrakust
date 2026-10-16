@@ -133,48 +133,93 @@ const felen = [
   },
 ];
 
+// 3D-modellerna genom bygget. Bilderna är arbetsmapparnas egna renderingar; se scripts/material/formad.mjs.
 const formen = [
   {
-    src: '/formad/form-01.webp',
-    alt: 'Ett marmorblock på en sockel, med prickade linjer och de första linjerna inritade där statyn ska fram',
-    caption: 'Blocket',
+    src: '/formad/modell-01.webp',
+    alt: 'Herkules-statyn som grå 3D-modell, framifrån, med ena foten på en klippa',
+    caption: 'Statyn som den kom ur AI-verktyget. Vacker, och omöjlig att böja.',
+    width: 640,
+    height: 960,
   },
   {
-    src: '/formad/form-02.webp',
-    alt: 'Marmorblocket med de första huggen i överkanten och sprickor och linjer över ytan',
-    caption: 'Första huggen',
+    src: '/formad/modell-02.webp',
+    alt: 'Samma staty med varm marmoryta, framifrån',
+    caption: 'Marmorn räknas fram i appen, inte som en bild.',
+    width: 768,
+    height: 1152,
   },
   {
-    src: '/formad/form-03.webp',
-    alt: 'Herkules huvud sticker upp ur blockets överkant, resten av honom är kvar i stenen',
-    caption: 'Huvudet fram',
+    src: '/formad/modell-03.webp',
+    alt: 'Statyn riggad i viloläge med armarna ut från kroppen, grå, snett framifrån',
+    caption: 'Första riggen, rakt i statyn. Den som aldrig böjde rätt.',
+    width: 1200,
+    height: 1200,
   },
   {
-    src: '/formad/form-04.webp',
-    alt: 'Överkroppen är framhuggen med armarna över magen och lejonhuden över axeln, resten av kroppen är kvar i blocket',
-    caption: 'Formen syns',
+    src: '/formad/modell-04.webp',
+    alt: 'Den nya kroppen framifrån med armarna ut, grå, med Herkules huvud',
+    caption: 'Den nya kroppen på MPFB2, passad mot statyn.',
+    width: 540,
+    height: 900,
   },
   {
-    src: '/formad/form-05.webp',
-    alt: 'Kroppen är framhuggen ner till låren, benen bryter fram ur det sista av blocket',
-    caption: 'Detaljerna',
+    src: '/formad/modell-05.webp',
+    alt: 'Den nya kroppen med statyns yta överförd, armarna rödmarkerade',
+    caption: 'Statyns yta flyttad över på den nya kroppen.',
+    width: 540,
+    height: 900,
   },
   {
-    src: '/formad/form-06.webp',
-    alt: 'Statyn står fri med ena foten på en klippa, med mejselspår kvar på benen',
-    caption: 'Fri ur stenen',
+    src: '/formad/modell-06.webp',
+    alt: 'Herkules i vit marmor puttar ett stort klot upp på en marmorkub',
+    caption: 'Veckans Herkules med stenen, så som han står i appen.',
+    width: 1030,
+    height: 966,
   },
   {
-    src: '/formad/form-07.webp',
-    alt: 'Statyn med ena foten på klippan, nästan slät, med lejonhuden över axeln',
-    caption: 'Polerad',
+    src: '/formad/modell-07.webp',
+    alt: 'Statyn på klippan med troféer vid fötterna: ett vildsvinshuvud, horn, ett lejonhuvud och en kedja',
+    caption: 'Troféerna vid hans fötter, en för varje nivå.',
+    width: 800,
+    height: 1200,
   },
   {
-    src: '/formad/form-08.webp',
-    alt: 'Den färdiga statyn i polerad marmor, med ena foten på klippan och lejonhuden över axeln',
-    caption: 'Färdig',
+    src: '/formad/modell-08.webp',
+    alt: 'Ett marmorblock i en mörk hall med pelare, Herkules huvud sticker upp ur överkanten',
+    caption: 'Årets staty i 3D: blocket, med 52 nivåer att hugga.',
+    width: 900,
+    height: 1600,
   },
-].map((step) => ({ ...step, width: 768, height: 1152 }));
+  {
+    src: '/formad/modell-09.webp',
+    alt: 'Statyn fri ur blocket i vit marmor med ådror, i hallen',
+    caption: 'Fri ur blocket.',
+    width: 900,
+    height: 1600,
+  },
+  {
+    src: '/formad/modell-10.webp',
+    alt: 'Statyn i hallen, överkroppen förgylld och resten marmor, troféerna svävar runt klippan',
+    caption: 'Guldet börjar uppifrån, trofé för trofé.',
+    width: 900,
+    height: 1600,
+  },
+  {
+    src: '/formad/modell-11.webp',
+    alt: 'Hela statyn och alla troféer i guld, i hallen',
+    caption: 'Förgylld, med alla tolv troféer.',
+    width: 900,
+    height: 1600,
+  },
+  {
+    src: '/formad/modell-12.webp',
+    alt: 'En tallrik med skivad kyckling, ris, broccoli och en skål sås, renderad i 3D',
+    caption: 'Tallriken på Mat-sidan är också en modell.',
+    width: 640,
+    height: 640,
+  },
+];
 
 /** Telefonram med guldkant, samma som i heron. */
 function Phone({
@@ -620,17 +665,20 @@ export default function CaseFormad() {
           </div>
 
           <div className="mt-16 md:mt-20">
-            <JourneyStrip steps={formen} label="Statyn i åtta steg, från block till färdig staty" />
+            <JourneyStrip steps={formen} label="3D-modellerna genom bygget, från statyn ur AI-verktyget till den förgyllda i appen" />
           </div>
 
           <div className="px-6 md:px-12 lg:px-20">
             <div className="mx-auto mt-16 grid max-w-[1280px] items-center gap-16 md:mt-20 lg:grid-cols-[1fr_auto] lg:gap-24">
               <div className="space-y-6 font-sans text-lg leading-relaxed text-text-secondary">
                 <p className="max-w-[60ch]">
-                  Statyn i marmor är användarens egen vecka och förändras med den.
-                  Typografin och färgerna är lånade ur samma värld. Rubrikerna med
-                  grekisk prägel är satta i Cinzel, resten i EB Garamond och Hanken
-                  Grotesk.
+                  Allt i 3D i appen är mina egna modeller: statyn, veckans Herkules
+                  med stenen, troféerna, årets staty som huggs fram nivå för nivå,
+                  och tallriken på Mat-sidan. Remsan ovanför är de modellerna i den
+                  ordning de kom till. Statyn i marmor är användarens egen vecka och
+                  förändras med den. Typografin och färgerna är lånade ur samma
+                  värld. Rubrikerna med grekisk prägel är satta i Cinzel, resten i
+                  EB Garamond och Hanken Grotesk.
                 </p>
                 <p className="max-w-[60ch]">
                   Varje skärm är ritad för en tumme och den information som behövs

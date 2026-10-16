@@ -30,15 +30,52 @@ const caseJsonLd = {
 
 const underHuven = [
   'Webbapp och Android-app ur samma kodbas, och en egen Wear OS-app',
-  'Supabase för konton och data, funktionerna körs i Dublin bredvid databasen',
+  'Supabase för konton och data',
+  'Vercel för webbappen och funktionerna, i Dublin bredvid databasen',
   'Health Connect mot Samsung Health',
   'Anthropic bakom mentorn och matfotona',
   'Blender, MPFB2 och en egen renderkö för kropparna och klippen',
   'Stripe för Bas, Pro och Max på webben',
-  'Vercel för webbappen',
 ];
 
 const GOLD = '201,169,110';
+
+const dagenRuntPasset = [
+  'Ett nattpass delas i två block, så att idag betyder något klockan tre på natten',
+  'Planen räknas om när ett pass flyttas',
+  'Nya konton får en färdig startrutin',
+];
+
+/** Telefonram med guldkant, samma som i heron. */
+function Phone({
+  src,
+  alt,
+  eager = false,
+}: {
+  src: string;
+  alt: string;
+  eager?: boolean;
+}) {
+  return (
+    <div
+      className="overflow-hidden rounded-[2rem] border bg-bg-primary"
+      style={{
+        borderColor: `rgba(${GOLD},0.2)`,
+        boxShadow: `0 8px 40px rgba(${GOLD},0.12), 0 20px 60px rgba(0,0,0,0.5)`,
+      }}
+    >
+      <img
+        src={src}
+        alt={alt}
+        width={1080}
+        height={1920}
+        loading={eager ? 'eager' : 'lazy'}
+        fetchPriority={eager ? 'high' : undefined}
+        className="block h-auto w-[260px] sm:w-[280px]"
+      />
+    </div>
+  );
+}
 
 /**
  * CaseFormad
@@ -109,23 +146,11 @@ export default function CaseFormad() {
             </div>
 
             <div className="mx-auto lg:mx-0">
-              <div
-                className="overflow-hidden rounded-[2rem] border bg-bg-primary"
-                style={{
-                  borderColor: `rgba(${GOLD},0.2)`,
-                  boxShadow: `0 8px 40px rgba(${GOLD},0.12), 0 20px 60px rgba(0,0,0,0.5)`,
-                }}
-              >
-                <img
-                  src="/formad/tel-traning.webp"
-                  alt="Formad, Träning-sidan med lagerkransen"
-                  width={1080}
-                  height={1920}
-                  loading="eager"
-                  fetchPriority="high"
-                  className="block h-auto w-[260px] sm:w-[280px]"
-                />
-              </div>
+              <Phone
+                src="/formad/tel-traning.webp"
+                alt="Formad, Träning-sidan med lagerkransen"
+                eager
+              />
             </div>
           </div>
         </section>
@@ -157,7 +182,52 @@ export default function CaseFormad() {
           </div>
         </section>
 
-        <section>{/* Task 5: Dagen runt passet */}</section>
+        {/* 3. Dagen runt passet */}
+        <section className="px-6 py-24 md:px-12 md:py-32 lg:px-20">
+          <div className="mx-auto max-w-[1280px]">
+            <div className="grid items-center gap-16 lg:grid-cols-2 lg:gap-24">
+              <div>
+                <p className="font-sans text-xs uppercase tracking-section text-accent-gold">
+                  DAGEN RUNT PASSET
+                </p>
+                <h2 className="mt-6 max-w-[860px] font-serif text-[clamp(36px,5vw,64px)] font-normal leading-[1.05] tracking-[-0.02em] text-text-primary">
+                  Passet är <em className="italic text-accent-gold">axeln.</em> Allt annat snurrar runt det.
+                </h2>
+                <p className="mt-8 max-w-[60ch] font-sans text-lg leading-relaxed text-text-secondary">
+                  Dag-, kvälls- och nattpass läggs in först. Sedan lägger appen
+                  rutin, träning och måltider runt dem.
+                </p>
+                <ul className="mt-8 space-y-4">
+                  {dagenRuntPasset.map((item) => (
+                    <li key={item} className="flex items-start gap-3">
+                      <div className="mt-2.5 h-1 w-4 flex-shrink-0 bg-accent-gold" />
+                      <span className="font-sans text-base text-text-secondary">{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              <div className="flex flex-wrap justify-center gap-6 sm:gap-8">
+                <Phone src="/formad/tel-idag.webp" alt="Formad, Idag-sidan med dagen runt passet" />
+                <Phone src="/formad/tel-vecka.webp" alt="Formad, Kommande pass i veckan" />
+              </div>
+            </div>
+
+            <figure className="mt-20 md:mt-28">
+              <img
+                src="/formad/sisyfos.webp"
+                alt="Veckan som Sisyfos: Herkules puttar stenen uppför veckan och är förgylld på söndagen"
+                width={1098}
+                height={1104}
+                loading="lazy"
+                className="block h-auto w-full"
+              />
+              <figcaption className="mt-4 font-sans text-sm text-text-muted">
+                Varje hel dag lyfter han stenen lite högre. Sju dagar och han står i guld.
+              </figcaption>
+            </figure>
+          </div>
+        </section>
         <section>{/* Task 6: Kropparna */}</section>
         <section>{/* Task 7: Statyn i 3D */}</section>
         <section>{/* Task 8: Övningarna */}</section>

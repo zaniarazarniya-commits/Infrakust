@@ -78,6 +78,8 @@ test('casesidan prerenderas', () => {
   assert.equal(html.match(/<meta property="og:image:alt" content="([^"]*)"/)?.[1], titel);
   assert.ok(html.includes('En app som vet'), 'rubriken saknas');
   assert.ok(html.includes('Sluten beta i Google Play'), 'statusen saknas');
+  assert.ok(html.includes('Passet är'), 'rubriken Dagen runt passet saknas');
+  assert.ok(html.includes('src="/formad/sisyfos.webp"'), 'Sisyfos-bilden saknas');
   const sitemap = fs.readFileSync(path.join(DIST, 'sitemap.xml'), 'utf-8');
   assert.ok(sitemap.includes('<loc>https://www.infrakust.se/case/formad</loc>'), 'sitemap saknar sidan');
 });

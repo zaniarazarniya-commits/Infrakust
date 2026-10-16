@@ -21,7 +21,11 @@ export function ClipGrid({ clips }: { clips: Clip[] }) {
     const videos = videoRefs.current.filter((v): v is HTMLVideoElement => v !== null);
 
     // Hooken läser inställningen först efter första renderingen, så läs den direkt också.
-    if (reducedMotion || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    if (reducedMotion || window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      // Stäng av klipp som redan spelar om inställningen slås på medan sidan är öppen.
+      for (const v of videos) v?.pause();
+      return;
+    }
     if (typeof IntersectionObserver === 'undefined') return;
 
     const observer = new IntersectionObserver(

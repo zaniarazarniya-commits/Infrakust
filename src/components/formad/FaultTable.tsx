@@ -21,7 +21,7 @@ export function FaultTable({ rows }: { rows: Row[] }) {
       <thead className="hidden md:table-header-group">
         <tr className="border-b border-text-muted/30">
           {COLUMNS.map((col) => (
-            <th key={col.key} scope="col" className={`pb-4 pr-8 font-normal ${LABEL}`}>
+            <th key={col.key} scope="col" className={`pb-4 pr-8 text-left align-top font-normal ${LABEL}`}>
               {col.label}
             </th>
           ))}
@@ -37,7 +37,7 @@ export function FaultTable({ rows }: { rows: Row[] }) {
                 <Cell
                   key={col.key}
                   scope={col.key === 'saw' ? 'row' : undefined}
-                  className={`block align-top md:table-cell md:py-8 md:pr-8 ${
+                  className={`block text-left align-top md:table-cell md:py-8 md:pr-8 ${
                     col.key === 'saw'
                       ? 'font-serif text-xl font-normal leading-snug text-text-primary md:w-[28%]'
                       : 'mt-5 font-sans text-base leading-relaxed text-text-secondary md:mt-0'

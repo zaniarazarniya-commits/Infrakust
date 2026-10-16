@@ -136,12 +136,12 @@ const felen = [
 const formen = [
   {
     src: '/formad/form-01.webp',
-    alt: 'Ett ohugget marmorblock på en sockel, med prickade linjer inritade där statyn ska fram',
+    alt: 'Ett marmorblock på en sockel, med prickade linjer och de första linjerna inritade där statyn ska fram',
     caption: 'Blocket',
   },
   {
     src: '/formad/form-02.webp',
-    alt: 'Marmorblocket med de första huggen i överkanten och mejselspår över ytan',
+    alt: 'Marmorblocket med de första huggen i överkanten och sprickor och linjer över ytan',
     caption: 'Första huggen',
   },
   {
@@ -151,7 +151,7 @@ const formen = [
   },
   {
     src: '/formad/form-04.webp',
-    alt: 'Överkroppen är framhuggen med armarna över magen, benen är kvar i blocket',
+    alt: 'Överkroppen är framhuggen med armarna över magen och lejonhuden över axeln, resten av kroppen är kvar i blocket',
     caption: 'Formen syns',
   },
   {
@@ -519,9 +519,8 @@ export default function CaseFormad() {
                   Bedömningarna blev regler i prompten. Färre uppslag i taget. Inga
                   frågor som lämnas hängande. Tider i timmar och minuter som i resten
                   av appen. Mentorn tänker längre innan den svarar och säger mindre.
-                  Samtalen var simulerade, och det var poängen: mentorn gjorde sina
-                  misstag mot agenterna innan en riktig användare fick se dem. Sedan
-                  fick betatestarna ta över.
+                  Samtalen var simuleringar med AI-agenter, inte riktiga användare.
+                  Sedan fick betatestarna ta över.
                 </p>
               </div>
             </div>
@@ -596,7 +595,7 @@ export default function CaseFormad() {
           </div>
 
           <div className="mt-16 md:mt-20">
-            <JourneyStrip steps={formen} label="Statyn i åtta steg, från block till färdig" />
+            <JourneyStrip steps={formen} label="Statyn i åtta steg, från block till färdig staty" />
           </div>
 
           <div className="px-6 md:px-12 lg:px-20">
@@ -605,8 +604,8 @@ export default function CaseFormad() {
                 <p className="max-w-[60ch]">
                   Temat är inte dekor. Statyn i marmor är användarens egen vecka och
                   förändras med den. Typografin och färgerna är lånade ur samma
-                  värld: Cinzel för de grekiska rubrikerna, EB Garamond och Hanken
-                  Grotesk.
+                  värld. Rubrikerna med grekisk prägel är satta i Cinzel, resten i
+                  EB Garamond och Hanken Grotesk.
                 </p>
                 <p className="max-w-[60ch]">
                   Varje skärm är ritad för en tumme och den information som behövs

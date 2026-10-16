@@ -53,10 +53,10 @@ const TABELL = [
   // till modellen visar samma föremål.
 
   // Formen: åtta steg ur appens huggningssekvens, från block till färdig staty
-  { from: statyn('steg-01.webp'), to: 'form-01.webp' },
+  { from: statyn('steg-02.webp'), to: 'form-01.webp' },
   { from: statyn('steg-04.webp'), to: 'form-02.webp' },
   { from: statyn('steg-07.webp'), to: 'form-03.webp' },
-  { from: statyn('steg-10.webp'), to: 'form-04.webp' },
+  { from: statyn('steg-11.webp'), to: 'form-04.webp' },
   { from: statyn('steg-13.webp'), to: 'form-05.webp' },
   { from: statyn('steg-16.webp'), to: 'form-06.webp' },
   { from: statyn('steg-18.webp'), to: 'form-07.webp' },

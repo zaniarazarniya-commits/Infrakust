@@ -138,4 +138,5 @@ test('mentorn, klockan och formen prerenderas, utan förbjudna ord', () => {
   assert.ok(html.includes('src="/formad/form-08.webp"'), 'formens remsa saknas');
   assert.ok(!/hevy/i.test(html), 'sidan nämner Hevy');
   assert.ok(!/intervju/i.test(html), 'sidan säger intervju');
+  assert.ok(!/\bPED\b/.test(html), 'sidan nämner PED');
 });

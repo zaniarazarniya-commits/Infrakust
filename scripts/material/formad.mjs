@@ -21,6 +21,9 @@ import { fileURLToPath } from 'node:url';
 const SKIFTRUTIN = 'C:/Users/zania/dev/skiftrutin';
 const ANIM = 'C:/Users/zania/dev/Animation';
 const STATYN = 'C:/Users/zania/dev/statyn-work';
+const FORMAD_WORK = 'C:/Users/zania/dev/formad-work';
+const REKLAM = 'C:/Users/zania/dev/reklam-work';
+const MARMOR = 'C:/Users/zania/dev/scratch-marmor';
 
 const UT = path.join(path.dirname(fileURLToPath(import.meta.url)), '..', '..', 'public', 'formad');
 
@@ -28,6 +31,8 @@ const skarm = (fil) => path.join(SKIFTRUTIN, 'design', 'play', 'skarmbilder', fi
 const statyn = (fil) => path.join(SKIFTRUTIN, 'public', 'statyn', fil);
 const klippkalla = (fil) => path.join(SKIFTRUTIN, 'public', 'klipp', fil);
 const forhandsbild = (fil) => path.join(ANIM, 'production', 'base2', 'previews', fil);
+const riggbild = (fil) => path.join(ANIM, 'production', 'previews', fil);
+const aret = (ruta) => path.join(REKLAM, 'staty', 'aret', ruta + '.png');
 
 // Sekunder in i marklyft-klippet där stången är nere i bottenläget och muskelkartan lyser röd/orange.
 const MARKLYFT_RUTA = 1.4;
@@ -56,15 +61,21 @@ const TABELL = [
   // scripts/material/capture-still.cjs (se huvudet där), så att övertoningen
   // till modellen visar samma föremål.
 
-  // Formen: åtta steg ur appens huggningssekvens, från block till färdig staty
-  { from: statyn('steg-02.webp'), to: 'form-01.webp' },
-  { from: statyn('steg-04.webp'), to: 'form-02.webp' },
-  { from: statyn('steg-07.webp'), to: 'form-03.webp' },
-  { from: statyn('steg-11.webp'), to: 'form-04.webp' },
-  { from: statyn('steg-13.webp'), to: 'form-05.webp' },
-  { from: statyn('steg-16.webp'), to: 'form-06.webp' },
-  { from: statyn('steg-18.webp'), to: 'form-07.webp' },
-  { from: statyn('steg-20.webp'), to: 'form-08.webp' },
+  // Formen: 3D-modellerna genom bygget, från statyn ur AI-verktyget till den förgyllda i appen.
+  // Källorna är arbetsmapparnas egna renderingar (statyn-work, Animation, scratch-marmor,
+  // formad-work och reklam-work/staty/aret, som är årets staty i marmorhallen, 228 rutor).
+  { from: path.join(STATYN, 'look', 'fram.png'), to: 'modell-01.webp', width: 1200 },
+  { from: path.join(STATYN, 'marmor', 'fram.png'), to: 'modell-02.webp', width: 1200 },
+  { from: riggbild('rig_final_v7_vilopose_threequarter.png'), to: 'modell-03.webp', width: 1200 },
+  { from: forhandsbild('jamfor_v3_fram_bas.png'), to: 'modell-04.webp', width: 1200 },
+  { from: forhandsbild('jamfor_v3_fram_over.png'), to: 'modell-05.webp', width: 1200 },
+  { from: path.join(MARMOR, 'final.png'), to: 'modell-06.webp', width: 1200 },
+  { from: path.join(FORMAD_WORK, 'trofe-forslag', 'snett.png'), to: 'modell-07.webp', width: 1200 },
+  { from: aret('00010'), to: 'modell-08.webp', width: 900 },
+  { from: aret('00090'), to: 'modell-09.webp', width: 900 },
+  { from: aret('00170'), to: 'modell-10.webp', width: 900 },
+  { from: aret('00228'), to: 'modell-11.webp', width: 900 },
+  { from: path.join(FORMAD_WORK, 'tallrik-webb', 'tallrik.png'), to: 'modell-12.webp', width: 1200 },
 
   // Klipp med muskelkarta, film och affisch
   ...['marklyft', 'knaboj', 'banpress', 'militarpress', 'skivstangsrodd', 'bicepscurl-hantel'].flatMap((namn) => [

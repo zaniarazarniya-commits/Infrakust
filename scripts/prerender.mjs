@@ -17,6 +17,7 @@ const routes = [
   '/tjanster/webbutveckling',
   '/tjanster/apputveckling',
   '/case/grand-hotel',
+  '/case/formad',
   '/404',
 ];
 
@@ -25,6 +26,7 @@ const sitemapMeta = [
   { path: '/tjanster/webbutveckling', priority: '0.9', changefreq: 'monthly' },
   { path: '/tjanster/apputveckling', priority: '0.9', changefreq: 'monthly' },
   { path: '/case/grand-hotel', priority: '0.8', changefreq: 'monthly' },
+  { path: '/case/formad', priority: '0.8', changefreq: 'monthly' },
   { path: '/om-oss', priority: '0.7', changefreq: 'monthly' },
 ];
 

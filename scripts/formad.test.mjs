@@ -47,14 +47,37 @@ test('prerenderade sidor har rätt og:image', () => {
   const DIST = path.join(path.dirname(fileURLToPath(import.meta.url)), '..', 'dist');
   const meta = (html, kind, key) =>
     html.match(new RegExp(`<meta ${kind}="${key}" content="([^"]*)"`))?.[1];
-  // Rad per sida: [fil, förväntad og:image]. Task 4 lägger till /case/formad.
+  // Rad per sida: [fil, förväntad og:image].
   const SIDOR = [
     ['index.html', 'https://www.infrakust.se/og-image.png'],
     ['case/grand-hotel/index.html', 'https://www.infrakust.se/og-image.png'],
+    ['case/formad/index.html', 'https://www.infrakust.se/formad/og.jpg'],
   ];
   for (const [fil, bild] of SIDOR) {
     const html = fs.readFileSync(path.join(DIST, fil), 'utf-8');
     assert.equal(meta(html, 'property', 'og:image'), bild, `${fil}: og:image`);
     assert.equal(meta(html, 'name', 'twitter:image'), bild, `${fil}: twitter:image`);
   }
+});
+
+test('casesidan prerenderas', () => {
+  const DIST = path.join(path.dirname(fileURLToPath(import.meta.url)), '..', 'dist');
+  const fil = path.join(DIST, 'case', 'formad', 'index.html');
+  assert.ok(fs.existsSync(fil), 'dist/case/formad/index.html saknas');
+  const html = fs.readFileSync(fil, 'utf-8');
+  const titel = 'Formad: från idé till app i Google Play — Infrakust';
+  assert.equal(html.match(/<title>([^<]*)<\/title>/)?.[1], titel);
+  assert.equal(
+    html.match(/<link rel="canonical" href="([^"]*)"/)?.[1],
+    'https://www.infrakust.se/case/formad',
+  );
+  assert.equal(
+    html.match(/<meta property="og:image" content="([^"]*)"/)?.[1],
+    'https://www.infrakust.se/formad/og.jpg',
+  );
+  assert.equal(html.match(/<meta property="og:image:alt" content="([^"]*)"/)?.[1], titel);
+  assert.ok(html.includes('En app som vet'), 'rubriken saknas');
+  assert.ok(html.includes('Sluten beta i Google Play'), 'statusen saknas');
+  const sitemap = fs.readFileSync(path.join(DIST, 'sitemap.xml'), 'utf-8');
+  assert.ok(sitemap.includes('<loc>https://www.infrakust.se/case/formad</loc>'), 'sitemap saknar sidan');
 });

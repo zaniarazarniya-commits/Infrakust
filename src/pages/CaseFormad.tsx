@@ -208,12 +208,12 @@ export default function CaseFormad() {
               </div>
 
               <div className="flex flex-wrap justify-center gap-6 sm:gap-8">
-                <Phone src="/formad/tel-idag.webp" alt="Formad, Idag-sidan med dagen runt passet" />
+                <Phone src="/formad/tel-idag.webp" alt="Formad, Idag-sidan med dagens pass och plan" />
                 <Phone src="/formad/tel-vecka.webp" alt="Formad, Kommande pass i veckan" />
               </div>
             </div>
 
-            <figure className="mt-20 md:mt-28">
+            <figure className="mx-auto mt-20 max-w-[960px] md:mt-28">
               <img
                 src="/formad/sisyfos.webp"
                 alt="Veckan som Sisyfos: Herkules puttar stenen uppför veckan och är förgylld på söndagen"

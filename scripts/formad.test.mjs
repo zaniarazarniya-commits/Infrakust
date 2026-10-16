@@ -110,3 +110,19 @@ test('statyn i 3D: stillbilden prerenderas och startsidan bär inte three', () =
     assert.ok(!kod.includes('THREE.WebGLRenderer'), `${src} innehåller three`);
   }
 });
+
+test('övningarna: rubriken och sex klipp som rör sig prerenderas', () => {
+  const DIST = path.join(path.dirname(fileURLToPath(import.meta.url)), '..', 'dist');
+  const html = fs.readFileSync(path.join(DIST, 'case', 'formad', 'index.html'), 'utf-8');
+  assert.ok(html.includes('Varje övning är ett klipp'), 'rubriken Övningarna saknas');
+  const videor = html.match(/<video[^>]*>/g) ?? [];
+  assert.equal(videor.length, 6, 'rutnätet ska ha sex <video>');
+  for (const n of klipp) {
+    assert.ok(
+      videor.some((v) => v.includes(`/formad/klipp/${n}-muskler.mp4`) && v.includes(`/formad/klipp/${n}-muskler.webp`)),
+      `${n}: video med källa och poster saknas`,
+    );
+  }
+  assert.ok(html.includes('src="/formad/tel-pass.webp"'), 'passvyn saknas');
+  assert.ok(html.includes('src="/formad/tel-ovning.webp"'), 'övningsvyn saknas');
+});

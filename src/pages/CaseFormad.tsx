@@ -6,6 +6,7 @@ import { SEO } from '@/components/SEO';
 import { JourneyStrip } from '@/components/formad/JourneyStrip';
 import { FaultTable } from '@/components/formad/FaultTable';
 import { HerculesViewer } from '@/components/formad/HerculesViewer';
+import { ClipGrid } from '@/components/formad/ClipGrid';
 
 const TITLE = 'Formad: från idé till app i Google Play — Infrakust';
 const DESCRIPTION =
@@ -42,6 +43,15 @@ const underHuven = [
 ];
 
 const GOLD = '201,169,110';
+
+const klippen = [
+  { name: 'marklyft', label: 'Marklyft' },
+  { name: 'knaboj', label: 'Knäböj' },
+  { name: 'banpress', label: 'Bänkpress' },
+  { name: 'militarpress', label: 'Militärpress' },
+  { name: 'skivstangsrodd', label: 'Skivstångsrodd' },
+  { name: 'bicepscurl-hantel', label: 'Hantelcurl' },
+];
 
 const dagenRuntPasset = [
   'Ett nattpass delas i två block, så att idag betyder något klockan tre på natten',
@@ -127,10 +137,14 @@ const felen = [
 function Phone({
   src,
   alt,
+  width = 1080,
+  height = 1920,
   eager = false,
 }: {
   src: string;
   alt: string;
+  width?: number;
+  height?: number;
   eager?: boolean;
 }) {
   return (
@@ -144,8 +158,8 @@ function Phone({
       <img
         src={src}
         alt={alt}
-        width={1080}
-        height={1920}
+        width={width}
+        height={height}
         loading={eager ? 'eager' : 'lazy'}
         fetchPriority={eager ? 'high' : undefined}
         className="block h-auto w-[260px] sm:w-[280px]"
@@ -388,7 +402,49 @@ export default function CaseFormad() {
             </p>
           </div>
         </section>
-        <section>{/* Task 8: Övningarna */}</section>
+        {/* 6. Övningarna */}
+        <section className="bg-bg-secondary px-6 py-24 md:px-12 md:py-32 lg:px-20">
+          <div className="mx-auto max-w-[1280px]">
+            <p className="font-sans text-xs uppercase tracking-section text-accent-gold">
+              ÖVNINGARNA
+            </p>
+            <h2 className="mt-6 max-w-[860px] font-serif text-[clamp(36px,5vw,64px)] font-normal leading-[1.05] tracking-[-0.02em] text-text-primary">
+              Varje övning är ett klipp ur samma kropp.
+            </h2>
+            <div className="mt-12 grid gap-8 font-sans text-lg leading-relaxed text-text-secondary md:grid-cols-2 md:gap-16">
+              <p className="max-w-[60ch]">
+                Vi renderar övningsklippen ur riggen här ovanför. Kroppen som visar
+                marklyftet är samma kropp som lyser i heatmapen. Omkring 40
+                rörelseklasser med parametrar för grepp, redskap, bänkvinkel och en
+                eller två armar täcker 172 övningar.
+              </p>
+              <p className="max-w-[60ch]">
+                Passet loggas set för set med RPE, dropset och set till failure.
+                Superset körs övning efter övning utan vila. Vilan kommer efter
+                varvet.
+              </p>
+            </div>
+
+            <div className="mt-16 md:mt-20">
+              <ClipGrid clips={klippen} />
+            </div>
+
+            <div className="mt-24 flex flex-wrap justify-center gap-6 sm:gap-8 md:mt-32">
+              <Phone
+                src="/formad/tel-pass.webp"
+                alt="Formad, passvyn med set och RPE"
+                width={1080}
+                height={2338}
+              />
+              <Phone
+                src="/formad/tel-ovning.webp"
+                alt="Formad, en övning med musklerna markerade"
+                width={1080}
+                height={2338}
+              />
+            </div>
+          </div>
+        </section>
         <section>{/* Task 9: Mentorn */}</section>
         <section>{/* Task 9: Klockan */}</section>
         <section>{/* Task 9: Formen */}</section>

@@ -89,3 +89,25 @@ test('casesidan prerenderas', () => {
   const sitemap = fs.readFileSync(path.join(DIST, 'sitemap.xml'), 'utf-8');
   assert.ok(sitemap.includes('<loc>https://www.infrakust.se/case/formad</loc>'), 'sitemap saknar sidan');
 });
+
+test('statyn i 3D: modellen är packad och startsidan bär inte three', () => {
+  const HERE = path.dirname(fileURLToPath(import.meta.url));
+  const DIST = path.join(HERE, '..', 'dist');
+
+  const glb = path.join(ROOT, '3d', 'herkules.glb');
+  assert.ok(fs.existsSync(glb), '3d/herkules.glb saknas');
+  const storlek = fs.statSync(glb).size;
+  assert.ok(storlek < 3_000_000, `3d/herkules.glb är ${storlek} byte, gränsen är 3 000 000`);
+
+  const casesida = fs.readFileSync(path.join(DIST, 'case', 'formad', 'index.html'), 'utf-8');
+  assert.ok(casesida.includes('src="/formad/herkules-still.webp"'), 'stillbilden av statyn saknas');
+  assert.ok(casesida.includes('DRA RUNT HONOM'), 'rubriken Dra runt honom saknas');
+
+  const start = fs.readFileSync(path.join(DIST, 'index.html'), 'utf-8');
+  const skript = [...start.matchAll(/<script[^>]*\ssrc="([^"]+\.js)"/g)].map((m) => m[1]);
+  assert.ok(skript.length > 0, 'startsidan refererar inga skript');
+  for (const src of skript) {
+    const kod = fs.readFileSync(path.join(DIST, src.replace(/^\//, '')), 'utf-8');
+    assert.ok(!kod.includes('THREE.WebGLRenderer'), `${src} innehåller three`);
+  }
+});

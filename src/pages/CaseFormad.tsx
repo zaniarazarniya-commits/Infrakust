@@ -5,6 +5,7 @@ import { Footer } from '@/components/Footer';
 import { SEO } from '@/components/SEO';
 import { JourneyStrip } from '@/components/formad/JourneyStrip';
 import { FaultTable } from '@/components/formad/FaultTable';
+import { HerculesViewer } from '@/components/formad/HerculesViewer';
 
 const TITLE = 'Formad: från idé till app i Google Play — Infrakust';
 const DESCRIPTION =
@@ -373,7 +374,20 @@ export default function CaseFormad() {
             </div>
           </div>
         </section>
-        <section>{/* Task 7: Statyn i 3D */}</section>
+        {/* 5. Statyn i 3D */}
+        <section className="px-6 py-24 md:px-12 md:py-32 lg:px-20">
+          <div className="mx-auto max-w-[560px] text-center">
+            <p className="font-sans text-xs uppercase tracking-section text-accent-gold">
+              DRA RUNT HONOM
+            </p>
+            <div className="mt-10">
+              <HerculesViewer still="/formad/herkules-still.webp" model="/formad/3d/herkules.glb" />
+            </div>
+            <p className="mt-6 font-sans text-sm text-text-muted">
+              Samma kropp som visar varje övning i appen.
+            </p>
+          </div>
+        </section>
         <section>{/* Task 8: Övningarna */}</section>
         <section>{/* Task 9: Mentorn */}</section>
         <section>{/* Task 9: Klockan */}</section>

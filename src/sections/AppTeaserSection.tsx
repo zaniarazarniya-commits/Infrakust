@@ -201,6 +201,101 @@ export function AppTeaserSection() {
           </div>
         </ScrollReveal>
       </div>
+
+      {/* Egen produkt: Formad */}
+      <div className="mx-auto mt-32 grid max-w-[1280px] items-center gap-16 md:mt-40 lg:grid-cols-[1fr_auto] lg:gap-24">
+        {/* Copy column */}
+        <div>
+          <ScrollReveal>
+            <p className="mb-6 font-sans text-xs uppercase tracking-section text-accent-gold">
+              EGEN PRODUKT
+            </p>
+          </ScrollReveal>
+
+          <ScrollReveal delay={0.12}>
+            <h2 className="max-w-[640px] font-serif text-[clamp(36px,5.2vw,72px)] font-normal leading-[1.04] tracking-[-0.02em] text-text-primary">
+              En app som vet <em className="italic">när du jobbar.</em>
+            </h2>
+          </ScrollReveal>
+
+          <ScrollReveal delay={0.22}>
+            <dl className="mt-10 grid grid-cols-2 sm:grid-cols-3 gap-x-6 border-y border-text-muted/30 py-5 max-w-[520px]">
+              <div>
+                <dt className="font-sans text-[10px] uppercase tracking-section text-accent-gold">
+                  Plattformar
+                </dt>
+                <dd className="mt-2 font-sans text-sm font-medium text-text-primary">
+                  Webb · Android · Wear OS
+                </dd>
+              </div>
+              <div>
+                <dt className="font-sans text-[10px] uppercase tracking-section text-accent-gold">
+                  Status
+                </dt>
+                <dd className="mt-2 font-sans text-sm font-medium text-text-primary">
+                  Sluten beta i Google Play
+                </dd>
+              </div>
+              <div>
+                <dt className="font-sans text-[10px] uppercase tracking-section text-accent-gold">
+                  År
+                </dt>
+                <dd className="mt-2 font-sans text-sm font-medium text-text-primary">
+                  2026
+                </dd>
+              </div>
+            </dl>
+          </ScrollReveal>
+
+          <ScrollReveal delay={0.3}>
+            <p className="mt-8 max-w-[520px] font-sans text-base leading-relaxed text-text-secondary">
+              En dagsplanerare för skiftarbetare med egna 3D-kroppar, en mentor
+              på Anthropics modell och en klockapp. Vi byggde den för att vi
+              behövde den själva.
+            </p>
+          </ScrollReveal>
+
+          <ScrollReveal delay={0.4}>
+            <Link
+              to="/case/formad"
+              className="gold-underline mt-10 inline-block font-sans text-lg text-accent-gold transition-colors hover:text-accent-gold-hover"
+            >
+              Läs hela caset →
+            </Link>
+          </ScrollReveal>
+        </div>
+
+        {/* Phone column: stilla, guldaccent */}
+        <ScrollReveal delay={0.2} direction="left">
+          <div className="relative flex flex-col items-center">
+            <div
+              className="pointer-events-none absolute inset-x-[-60px] inset-y-[-40px] -z-0 rounded-full blur-[80px]"
+              style={{ backgroundColor: 'rgba(201,169,110,0.06)' }}
+            />
+            <div className="relative z-10">
+              <div
+                className="relative overflow-hidden rounded-[2rem] border bg-bg-primary"
+                style={{
+                  borderColor: 'rgba(201,169,110,0.2)',
+                  boxShadow: '0 8px 40px rgba(201,169,110,0.12), 0 20px 60px rgba(0,0,0,0.5)',
+                }}
+              >
+                <div className="relative aspect-[9/16] w-[260px] overflow-hidden bg-bg-primary sm:w-[280px]">
+                  <img
+                    src="/formad/tel-traning.webp"
+                    alt="Formad, Träning-sidan med lagerkransen"
+                    width={1080}
+                    height={1920}
+                    loading="lazy"
+                    className="absolute inset-0 h-full w-full object-cover object-top"
+                    draggable={false}
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </ScrollReveal>
+      </div>
     </section>
   );
 }

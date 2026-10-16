@@ -10,6 +10,7 @@ import { ProjectsRailSection } from './sections/ProjectsRailSection';
 import { ContactSection } from './sections/ContactSection';
 import { SEO } from './components/SEO';
 import CaseGrandHotel from './pages/CaseGrandHotel';
+import CaseFormad from './pages/CaseFormad';
 import AboutPage from './pages/AboutPage';
 import WebdevPage from './pages/WebdevPage';
 import AppdevPage from './pages/AppdevPage';
@@ -44,6 +45,7 @@ function PrerenderApp() {
     <Routes>
       <Route path="/" element={<Home />} />
       <Route path="/case/grand-hotel" element={<CaseGrandHotel />} />
+      <Route path="/case/formad" element={<CaseFormad />} />
       <Route path="/om-oss" element={<AboutPage />} />
       <Route path="/tjanster/webbutveckling" element={<WebdevPage />} />
       <Route path="/tjanster/apputveckling" element={<AppdevPage />} />

@@ -13,6 +13,7 @@ import { SEO } from '@/components/SEO';
 import { Analytics } from '@vercel/analytics/react';
 
 const CaseGrandHotel = lazy(() => import('@/pages/CaseGrandHotel'));
+const CaseFormad = lazy(() => import('@/pages/CaseFormad'));
 const AboutPage = lazy(() => import('@/pages/AboutPage'));
 const WebdevPage = lazy(() => import('@/pages/WebdevPage'));
 const AppdevPage = lazy(() => import('@/pages/AppdevPage'));
@@ -51,6 +52,7 @@ export function AppShell() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/case/grand-hotel" element={<CaseGrandHotel />} />
+          <Route path="/case/formad" element={<CaseFormad />} />
           <Route path="/om-oss" element={<AboutPage />} />
           <Route path="/tjanster/webbutveckling" element={<WebdevPage />} />
           <Route path="/tjanster/apputveckling" element={<AppdevPage />} />

@@ -17,6 +17,7 @@ const routes = [
   '/tjanster/webbutveckling',
   '/tjanster/apputveckling',
   '/case/grand-hotel',
+  '/case/formad',
   '/404',
 ];
 
@@ -25,6 +26,7 @@ const sitemapMeta = [
   { path: '/tjanster/webbutveckling', priority: '0.9', changefreq: 'monthly' },
   { path: '/tjanster/apputveckling', priority: '0.9', changefreq: 'monthly' },
   { path: '/case/grand-hotel', priority: '0.8', changefreq: 'monthly' },
+  { path: '/case/formad', priority: '0.8', changefreq: 'monthly' },
   { path: '/om-oss', priority: '0.7', changefreq: 'monthly' },
 ];
 
@@ -71,6 +73,11 @@ function applyHead(html, head, { noindex } = {}) {
     html = setMeta(html, 'property', 'og:url', head.canonical);
     html = setMeta(html, 'name', 'twitter:title', head.title);
     html = setMeta(html, 'name', 'twitter:description', head.description);
+    if (head.image) {
+      html = setMeta(html, 'property', 'og:image', head.image);
+      html = setMeta(html, 'name', 'twitter:image', head.image);
+      html = setMeta(html, 'property', 'og:image:alt', head.title);
+    }
     html = setCanonical(html, head.canonical);
     html = injectPageJsonLd(html, head.jsonLd);
   }

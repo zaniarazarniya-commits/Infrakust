@@ -1,11 +1,11 @@
 import { useContext, useEffect } from 'react';
 import { ServerHeadContext, type HeadData } from '@/lib/head';
 
-export function SEO({ title, description, canonical, jsonLd }: HeadData) {
+export function SEO({ title, description, canonical, image, jsonLd }: HeadData) {
   // Server-side (SSG): samla head-data så prerender-skriptet kan baka in den.
   const sink = useContext(ServerHeadContext);
   if (sink) {
-    sink.push({ title, description, canonical, jsonLd });
+    sink.push({ title, description, canonical, image, jsonLd });
   }
 
   // Klient-side: uppdatera document.head vid route-byten i SPA:t.
@@ -27,6 +27,10 @@ export function SEO({ title, description, canonical, jsonLd }: HeadData) {
     setMeta('meta[property="og:url"]', 'content', canonical);
     setMeta('meta[name="twitter:title"]', 'content', title);
     setMeta('meta[name="twitter:description"]', 'content', description);
+    if (image) {
+      setMeta('meta[property="og:image"]', 'content', image);
+      setMeta('meta[name="twitter:image"]', 'content', image);
+    }
 
     let canonicalEl = document.querySelector<HTMLLinkElement>('link[rel="canonical"]');
     if (!canonicalEl) {
@@ -49,7 +53,7 @@ export function SEO({ title, description, canonical, jsonLd }: HeadData) {
     } else if (ldScript) {
       ldScript.remove();
     }
-  }, [title, description, canonical, jsonLd]);
+  }, [title, description, canonical, image, jsonLd]);
 
   return null;
 }

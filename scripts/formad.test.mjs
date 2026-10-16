@@ -15,7 +15,8 @@ const klipp = ['marklyft', 'knaboj', 'banpress', 'militarpress', 'skivstangsrodd
 
 // Alla filer under public/formad/ och deras storleksgräns i byte. Senare uppgifter lägger till rader här.
 export const FILER = [
-  ...['traning', 'idag', 'vecka', 'mat'].map((n) => [`tel-${n}.webp`, WEBP_MAX]),
+  ...['traning', 'idag', 'vecka', 'mat', 'pass', 'ovning', 'mentor'].map((n) => [`tel-${n}.webp`, WEBP_MAX]),
+  ['klocka.webp', WEBP_MAX],
   ['resa-01-block.webp', WEBP_MAX],
   ['resa-02-huggen.webp', WEBP_MAX],
   ['resa-03-gra.webp', WEBP_MAX],

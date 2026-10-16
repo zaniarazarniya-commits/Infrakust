@@ -34,12 +34,13 @@ export function HerculesViewer({ still, model }: { still: string; model: string 
         import('three/examples/jsm/loaders/GLTFLoader.js'),
         import('three/examples/jsm/libs/meshopt_decoder.module.js'),
       ]);
+      if (cancelled) return () => {};
 
       // Canvasen skapas här och tas bort i städningen, så att en ny
       // körning av effekten aldrig ärver en förlorad WebGL-kontext.
       const canvas = document.createElement('canvas');
       canvas.className =
-        'absolute inset-0 h-full w-full cursor-grab touch-pan-y opacity-0 transition-opacity duration-700 ease-out active:cursor-grabbing';
+        'absolute inset-0 h-full w-full cursor-grab opacity-0 [touch-action:pan-y_pinch-zoom] transition-opacity duration-700 ease-out active:cursor-grabbing';
       canvas.setAttribute('aria-hidden', 'true');
 
       const cleanups: Array<() => void> = [];
@@ -58,8 +59,10 @@ export function HerculesViewer({ still, model }: { still: string; model: string 
         renderer.setClearColor(0x000000, 0);
 
         const scene = new THREE.Scene();
-        scene.add(new THREE.AmbientLight(0xffffff, 0.6));
-        const sun = new THREE.DirectionalLight(0xffffff, 1.2);
+        // three r170 räknar ljus i fysiska enheter; de här värdena ger
+        // samma nästan vita marmor som stillbilden.
+        scene.add(new THREE.AmbientLight(0xffffff, 1.9));
+        const sun = new THREE.DirectionalLight(0xffffff, 3.8);
         sun.position.set(1.5, 3, 2.5); // snett ovanifrån, framifrån
         scene.add(sun);
 
@@ -218,12 +221,16 @@ export function HerculesViewer({ still, model }: { still: string; model: string 
   }, [model, reducedMotion]);
 
   return (
-    <div ref={wrapRef} className="relative aspect-[3/4] w-full overflow-hidden">
+    <div
+      ref={wrapRef}
+      data-ready={ready ? 'true' : undefined}
+      className="relative aspect-[3/4] w-full overflow-hidden"
+    >
       <img
         src={still}
         alt="Herkules-statyn i vit marmor, med foten på en klippa och lejonhuden över axeln"
-        width={640}
-        height={960}
+        width={1120}
+        height={1494}
         loading="lazy"
         className={`absolute inset-0 h-full w-full object-cover transition-opacity duration-700 ease-out ${
           ready ? 'opacity-0' : 'opacity-100'

@@ -117,6 +117,7 @@ test('övningarna: rubriken och sex klipp som rör sig prerenderas', () => {
   assert.ok(html.includes('Varje övning är ett klipp'), 'rubriken Övningarna saknas');
   const videor = html.match(/<video[^>]*>/g) ?? [];
   assert.equal(videor.length, 6, 'rutnätet ska ha sex <video>');
+  assert.ok(videor.every((v) => !/autoplay/i.test(v)), 'ingen <video> ska ha autoplay (reduced motion)');
   for (const n of klipp) {
     assert.ok(
       videor.some((v) => v.includes(`/formad/klipp/${n}-muskler.mp4`) && v.includes(`/formad/klipp/${n}-muskler.webp`)),

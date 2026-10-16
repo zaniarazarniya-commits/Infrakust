@@ -10,7 +10,7 @@ import { ClipGrid } from '@/components/formad/ClipGrid';
 
 const TITLE = 'Formad: från idé till app i Google Play — Infrakust';
 const DESCRIPTION =
-  'Formad är vår egen produkt: en dagsplanerare för skiftarbetare. Här är berättelsen om hur vi byggde den, från idé till app i Google Play, med kropparna, mentorn och klockan.';
+  'Formad är min egen app: en dagsplanerare för skiftarbetare. Här är hur jag byggde den, från idé till app i Google Play, med det som gick sönder på vägen: kropparna, mentorn och klockan.';
 const CANONICAL = 'https://www.infrakust.se/case/formad';
 
 const caseJsonLd = {
@@ -257,10 +257,10 @@ export default function CaseFormad() {
               </h1>
 
               <p className="mt-8 max-w-[560px] font-sans text-lg leading-relaxed text-text-secondary">
-                Formad är vår egen produkt. En dagsplanerare för skiftarbetare som
-                lägger rutin, träning och mat runt passen, med en mentor som läser
-                hela dagen. Vi byggde den för att vi behövde den själva. Så här gick
-                det till.
+                Formad är min egen app. Jag jobbar skift och ville ha rutin,
+                träning och mat på ett ställe som vet när passen ligger. Infrakust
+                är en person, och det här är hur jag byggde den: vad jag ville, vad
+                som gick sönder på vägen och hur det löste sig.
               </p>
 
               <dl className="mt-16 grid grid-cols-2 gap-x-8 gap-y-6 border-y border-text-muted/30 py-8 sm:grid-cols-3">
@@ -296,21 +296,21 @@ export default function CaseFormad() {
               VARFÖR
             </p>
             <h2 className="mt-6 max-w-[860px] font-serif text-[clamp(36px,5vw,64px)] font-normal leading-[1.05] tracking-[-0.02em] text-text-primary">
-              Fem appar, en AI och ett schema som aldrig var detsamma.
+              Det började med att ingenting passade ihop.
             </h2>
             <div className="mt-12 grid gap-8 font-sans text-lg leading-relaxed text-text-secondary md:grid-cols-2 md:gap-16">
               <p className="max-w-[60ch]">
-                Skiftjobb gör vanliga hälsoappar meningslösa. De antar att dagen
-                börjar på morgonen. Rutinen låg i en app, träningen i en annan och
-                maten i en tredje. Utanför alltihop fanns en AI-assistent som inte
-                visste något om passen. Vi ville ha ett ställe som visste när vi
-                jobbade och planerade resten.
+                Jag jobbar skift. Vanliga hälsoappar antar att dagen börjar på
+                morgonen, och min gjorde inte det. Rutinen låg i en app, träningen
+                i en annan, maten i en tredje, och en AI-assistent utanför alltihop
+                som inte visste när jag jobbade. Jag ville ha ett ställe som visste
+                det och planerade resten.
               </p>
               <p className="max-w-[60ch]">
-                Tonen kom från ett intresse vi delar för stoikerna, Iliaden, Sokrates
-                och Marcus Aurelius. Ordning utan pekpinnar. Det blev appens hållning
-                och till slut dess utseende: lagerkransen, ΓΥΜΝΑΣΙΟΝ över träningen
-                och romerska siffror i passen.
+                Tonen kom från det jag läser: stoikerna, Iliaden, Sokrates och
+                Marcus Aurelius. Ordning utan pekpinnar. Det blev appens hållning
+                och till slut dess utseende, med lagerkransen, ΓΥΜΝΑΣΙΟΝ över
+                träningen och romerska siffror i passen.
               </p>
             </div>
           </div>
@@ -325,11 +325,14 @@ export default function CaseFormad() {
                   DAGEN RUNT PASSET
                 </p>
                 <h2 className="mt-6 max-w-[860px] font-serif text-[clamp(36px,5vw,64px)] font-normal leading-[1.05] tracking-[-0.02em] text-text-primary">
-                  Passet är <em className="italic text-accent-gold">axeln.</em> Allt annat snurrar runt det.
+                  Först passen. Sedan allt annat <em className="italic text-accent-gold">runt dem.</em>
                 </h2>
                 <p className="mt-8 max-w-[60ch] font-sans text-lg leading-relaxed text-text-secondary">
-                  Dag-, kvälls- och nattpass läggs in först. Sedan lägger appen
-                  rutin, träning och måltider runt dem.
+                  Jag lägger in dag-, kvälls- och nattpass först. Sedan lägger appen
+                  rutin, träning och måltider runt dem. Det låter enkelt, men
+                  nattpasset tog tid att få rätt. Ett pass som börjar klockan 22 och
+                  slutar klockan 06 hör till två dagar, och appen måste veta vad
+                  idag betyder klockan tre på natten.
                 </p>
                 <ul className="mt-8 space-y-4">
                   {dagenRuntPasset.map((item) => (
@@ -379,7 +382,7 @@ export default function CaseFormad() {
                 KROPPARNA
               </p>
               <h2 className="mt-6 max-w-[860px] font-serif text-[clamp(36px,5vw,64px)] font-normal leading-[1.05] tracking-[-0.02em] text-text-primary">
-                Vi hade kunnat köpa en 3D-modell. Vi byggde en <em className="italic text-accent-gold">egen kropp.</em>
+                Jag ville att appen skulle visa vad en övning tränar. Det krävde en <em className="italic text-accent-gold">egen kropp.</em>
               </h2>
             </div>
           </div>
@@ -392,8 +395,9 @@ export default function CaseFormad() {
             <div className="mx-auto max-w-[1280px]">
               <p className="mt-16 max-w-[60ch] font-sans text-lg leading-relaxed text-text-secondary md:mt-20">
                 Statyns form skulpterades med ett AI-verktyg ur referensbilder. Den
-                var vacker och gick inte att böja. Allt efter det är vårt: riggen,
-                den nya kroppen, musklerna och klippen.
+                var vacker, och den gick inte att böja. Allt efter det gjorde jag
+                själv: riggen, den nya kroppen, musklerna och klippen. Det tog
+                betydligt längre tid än jag trodde.
               </p>
 
               <div className="mt-24 grid gap-8 md:mt-32 lg:grid-cols-[1fr_2fr] lg:gap-24">
@@ -402,21 +406,28 @@ export default function CaseFormad() {
                 </h3>
                 <div className="space-y-6 font-sans text-lg leading-relaxed text-text-secondary">
                   <p className="max-w-[60ch]">
-                    Vi satte ett skelett rakt in i statyn, målade vikter, delade de
-                    hopvuxna fingrarna, byggde korrektiv för armbågar och axlar, skrev
-                    en volymbevarande lösare och renderade 28 rörelser. Armarna såg
-                    utdragna ut, armbågarna böjde fel i nästan varje klipp, och axeln
-                    blev aldrig rätt.
+                    Första försöket var att rigga statyn direkt. Jag satte ett
+                    skelett i den, målade vikter, delade de hopvuxna fingrarna,
+                    byggde korrektiv för armbågar och axlar, skrev en volymbevarande
+                    lösare och renderade 28 rörelser. Armarna såg utdragna ut,
+                    armbågarna böjde fel i nästan varje klipp och axeln blev aldrig
+                    rätt, hur mycket jag än la på den.
                   </p>
                   <p className="max-w-[60ch]">
-                    Orsaken var meshen själv: en genererad triangelmesh utan
-                    kantslingor runt lederna. Så vi byggde om kroppen på en
-                    animationsfärdig bas (MPFB2) och flyttade statyns form till den.
+                    Orsaken satt i meshen själv: en genererad triangelmesh utan
+                    kantslingor runt lederna. Ingen mängd handpåläggning hade löst
+                    det. Så jag började om, byggde kroppen på en animationsfärdig
+                    bas (MPFB2) och flyttade statyns form över på den. Det kändes
+                    som att kasta bort allt jag gjort. Det var rätt beslut.
                   </p>
                 </div>
               </div>
 
-              <div className="mt-16 md:mt-20">
+              <p className="mt-16 max-w-[60ch] font-sans text-lg leading-relaxed text-text-secondary md:mt-20">
+                Det här är fel jag såg med egna ögon i bilderna, vad de berodde
+                på och vad jag gjorde åt dem.
+              </p>
+              <div className="mt-8">
                 <FaultTable rows={felen} />
               </div>
 
@@ -430,7 +441,7 @@ export default function CaseFormad() {
                   className="block h-auto w-full"
                 />
                 <figcaption className="mt-4 font-sans text-sm text-text-muted">
-                  Så här ser arbetet ut innan det blir snyggt.
+                  Så här såg det ut mest hela tiden: punktmoln och ledmarkörer, inte marmor.
                 </figcaption>
               </figure>
 
@@ -465,14 +476,16 @@ export default function CaseFormad() {
             </h2>
             <div className="mt-12 grid gap-8 font-sans text-lg leading-relaxed text-text-secondary md:grid-cols-2 md:gap-16">
               <p className="max-w-[60ch]">
-                Vi renderar övningsklippen ur riggen här ovanför. Kroppen som visar
-                marklyftet är samma kropp som lyser i heatmapen. Omkring 40
-                rörelseklasser med parametrar för grepp, redskap, bänkvinkel och en
-                eller två armar täcker 172 övningar.
+                Övningsklippen renderas ur riggen här ovanför, så kroppen som visar
+                marklyftet är samma kropp som lyser i heatmapen. Jag skrev omkring
+                40 rörelseklasser med parametrar för grepp, redskap, bänkvinkel och
+                en eller två armar. De täcker 172 övningar.
               </p>
               <p className="max-w-[60ch]">
+                Tre renderare körde parallellt, ungefär två minuter per klipp, och
+                jag granskade varje omgång mot kontaktark innan den gick in i appen.
                 Passet loggas set för set med RPE, dropset och set till failure.
-                Superset körs övning efter övning utan vila. Vilan kommer efter
+                Superset körs övning efter övning utan vila, och vilan kommer efter
                 varvet.
               </p>
             </div>
@@ -505,20 +518,21 @@ export default function CaseFormad() {
                 MENTORN
               </p>
               <h2 className="mt-6 max-w-[860px] font-serif text-[clamp(36px,5vw,64px)] font-normal leading-[1.05] tracking-[-0.02em] text-text-primary">
-                En mentor vi fick <em className="italic text-accent-gold">uppfostra</em> innan den fick prata.
+                Mentorn var <em className="italic text-accent-gold">dålig</em> i början.
               </h2>
               <p className="mt-8 max-w-[60ch] font-sans text-lg leading-relaxed text-text-secondary">
                 Mentorn bygger på Anthropics modell och ser det appen ser: pass,
                 sömn, mat, vikt och träning. Maten loggas med foto, streckkod eller
                 sökning. De första versionerna var för pratiga, räknade fel på
-                avlastningar och bytte program tre gånger i samma samtal.
+                avlastningar och bytte program tre gånger i samma samtal. Jag hade
+                inte velat betala för den.
               </p>
               <h3 className="mt-16 font-serif text-[clamp(28px,3.5vw,44px)] font-normal leading-[1.1] tracking-[-0.01em] text-text-primary">
-                Hur vi tränade fram den.
+                Hur jag tränade fram den.
               </h3>
               <div className="mt-6 space-y-6 font-sans text-lg leading-relaxed text-text-secondary">
                 <p className="max-w-[60ch]">
-                  Vi tränade den med AI-agenter som spelade användare. Varje agent
+                  Jag tränade den med AI-agenter som spelade användare. Varje agent
                   fick ett liv: skiftarbetare efter ett nattpass, ledig dag, mitt i
                   en viktnedgång, ny i gymmet, van lyftare. De tog samtalen med
                   mentorn, och en bedömare gick igenom varje svar: vad hjälpte, vad
@@ -529,7 +543,8 @@ export default function CaseFormad() {
                   frågor som lämnas hängande. Tider i timmar och minuter som i resten
                   av appen. Mentorn tänker längre innan den svarar och säger mindre.
                   Samtalen var simuleringar med AI-agenter, inte riktiga användare.
-                  Sedan fick betatestarna ta över.
+                  Sedan fick betatestarna ta över, och deras samtal rättade det som
+                  simuleringarna missade.
                 </p>
               </div>
             </div>
@@ -560,13 +575,14 @@ export default function CaseFormad() {
               </h2>
               <div className="mt-8 space-y-6 font-sans text-lg leading-relaxed text-text-secondary">
                 <p className="max-w-[60ch]">
-                  En egen Wear OS-app visar dagens rutin som en krans runt
-                  urtavlan, så nästa moment syns utan telefonen.
+                  Jag ville slippa ta fram telefonen mellan momenten, så jag byggde
+                  en egen Wear OS-app som visar dagens rutin som en krans runt
+                  urtavlan.
                 </p>
                 <p className="max-w-[60ch]">
                   Health Connect hämtar steg, sömn, aktiva kalorier och vikt från
                   vågen. Förbränningen räknas från vikttrenden mot det som loggats,
-                  inte från en tabell.
+                  inte från en tabell, för tabellen stämde aldrig på mig.
                 </p>
               </div>
             </div>
@@ -598,7 +614,7 @@ export default function CaseFormad() {
                 FORMEN
               </p>
               <h2 className="mt-6 max-w-[860px] font-serif text-[clamp(36px,5vw,64px)] font-normal leading-[1.05] tracking-[-0.02em] text-text-primary">
-                Marmor, guld och ett <em className="italic text-accent-gold">stoiskt</em> lugn.
+                Marmorn är inte <em className="italic text-accent-gold">pynt.</em>
               </h2>
             </div>
           </div>
@@ -611,14 +627,15 @@ export default function CaseFormad() {
             <div className="mx-auto mt-16 grid max-w-[1280px] items-center gap-16 md:mt-20 lg:grid-cols-[1fr_auto] lg:gap-24">
               <div className="space-y-6 font-sans text-lg leading-relaxed text-text-secondary">
                 <p className="max-w-[60ch]">
-                  Temat är inte dekor. Statyn i marmor är användarens egen vecka och
-                  förändras med den. Typografin och färgerna är lånade ur samma
-                  värld. Rubrikerna med grekisk prägel är satta i Cinzel, resten i
-                  EB Garamond och Hanken Grotesk.
+                  Statyn i marmor är användarens egen vecka och förändras med den.
+                  Typografin och färgerna är lånade ur samma värld. Rubrikerna med
+                  grekisk prägel är satta i Cinzel, resten i EB Garamond och Hanken
+                  Grotesk.
                 </p>
                 <p className="max-w-[60ch]">
                   Varje skärm är ritad för en tumme och den information som behövs
-                  just där. Det som ser enkelt ut tog längst tid.
+                  just där. Det som ser enkelt ut tog längst tid, och det mesta av
+                  det gjorde jag om flera gånger.
                 </p>
               </div>
 
@@ -642,7 +659,7 @@ export default function CaseFormad() {
                 UNDER HUVEN
               </p>
               <h2 className="mt-6 font-serif text-[clamp(36px,5vw,64px)] font-normal leading-[1.05] tracking-[-0.02em] text-text-primary">
-                Ett team, hela kedjan.
+En person, hela kedjan.
               </h2>
             </div>
             <ul className="space-y-4 lg:pt-12">
@@ -660,9 +677,9 @@ export default function CaseFormad() {
         <section className="px-6 py-32 md:px-12 md:py-40 lg:px-20">
           <div className="mx-auto max-w-[860px] text-center">
             <p className="font-serif text-[clamp(28px,3.5vw,44px)] font-normal leading-[1.2] tracking-[-0.01em] text-text-primary">
-              Vi byggde Formad för att vi behövde den. Det är samma sätt vi bygger
-              åt andra: från ett riktigt problem, hela vägen till en app folk har i
-              fickan.
+              Jag byggde Formad för att jag behövde den. Infrakust är jag, och det
+              är så här jag bygger åt andra också: från ett riktigt problem, hela
+              vägen till en app folk har i fickan.
             </p>
             <a
               href="mailto:hello@infrakust.se"

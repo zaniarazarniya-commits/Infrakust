@@ -250,8 +250,9 @@ export function AppTeaserSection() {
           <ScrollReveal delay={0.3}>
             <p className="mt-8 max-w-[520px] font-sans text-base leading-relaxed text-text-secondary">
               En dagsplanerare för skiftarbetare med egna 3D-kroppar, en mentor
-              på Anthropics modell och en klockapp. Vi byggde den för att vi
-              behövde den själva.
+              på Anthropics modell och en klockapp. Jag byggde den för att jag
+              behövde den själv, och det här är hela vägen dit, med det som gick
+              fel.
             </p>
           </ScrollReveal>
 

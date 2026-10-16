@@ -92,11 +92,13 @@ test('casesidan prerenderas', () => {
   assert.equal(html.match(/<meta property="og:image:alt" content="([^"]*)"/)?.[1], titel);
   assert.ok(html.includes('En app som vet'), 'rubriken saknas');
   assert.ok(html.includes('Sluten beta i Google Play'), 'statusen saknas');
-  assert.ok(html.includes('Passet är'), 'rubriken Dagen runt passet saknas');
+  assert.ok(html.includes('Först passen'), 'rubriken Dagen runt passet saknas');
   assert.ok(html.includes('src="/formad/sisyfos-smal.webp"'), 'Sisyfos-bilden för telefoner saknas');
   assert.ok(/<source[^>]*srcset="\/formad\/sisyfos-bred\.webp"/i.test(html), 'Sisyfos-bilden för bred skärm saknas');
   assert.ok(!html.includes('/formad/sisyfos.webp'), 'den gamla Sisyfos-bilden används fortfarande');
-  assert.ok(html.includes('Vi hade kunnat köpa en 3D-modell'), 'rubriken Kropparna saknas');
+  assert.ok(html.includes('Det krävde en'), 'rubriken Kropparna saknas');
+  assert.ok(html.includes('Infrakust är en person'), 'sidan säger inte att Infrakust är en person');
+  assert.ok(!/\bvi\b/i.test(html.replace(/<[^>]+>/g, ' ').replace(/Vi såg/g, '')), 'sidan är skriven i jag-form; inget "vi" utom feltabellens rubrik');
   assert.ok(html.includes('24 % för lång'), 'feltabellen saknas');
   assert.ok(html.includes('src="/formad/punktmoln.webp"'), 'punktmolnet saknas');
   assert.ok(html.includes('176 601 trianglar'), 'siffrorna saknas');

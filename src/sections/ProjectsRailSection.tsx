@@ -112,6 +112,8 @@ export function ProjectsRailSection() {
   }, [applyParallax]);
 
   useEffect(() => {
+    // Mäter railens layout i DOM:en vid montering; det är synk mot ett externt system.
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     updateRail();
     const rail = railRef.current;
     if (!rail) return;

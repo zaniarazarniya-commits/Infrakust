@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useScrollPosition } from '@/hooks/useScrollPosition';
@@ -8,16 +8,15 @@ export function Navigation() {
   const scrollY = useScrollPosition();
   const [menuOpen, setMenuOpen] = useState(false);
   const [hidden, setHidden] = useState(false);
-  const lastScrollY = useRef(0);
+  const [prev, setPrev] = useState({ scrollY: 0, menuOpen: false });
   const isScrolled =
     typeof window !== 'undefined' && scrollY > window.innerHeight * 0.5;
 
   // Göm nav vid scroll ner, visa vid scroll upp
-  useEffect(() => {
-    const goingDown = scrollY > lastScrollY.current;
-    setHidden(goingDown && scrollY > 200 && !menuOpen);
-    lastScrollY.current = scrollY;
-  }, [scrollY, menuOpen]);
+  if (prev.scrollY !== scrollY || prev.menuOpen !== menuOpen) {
+    setPrev({ scrollY, menuOpen });
+    setHidden(scrollY > prev.scrollY && scrollY > 200 && !menuOpen);
+  }
 
   useEffect(() => {
     if (menuOpen) {

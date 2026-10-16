@@ -42,3 +42,19 @@ test('material finns och är inom storleksgränserna', () => {
     assert.ok(storlek < max, `${namn} är ${storlek} byte, gränsen är ${max}`);
   }
 });
+
+test('prerenderade sidor har rätt og:image', () => {
+  const DIST = path.join(path.dirname(fileURLToPath(import.meta.url)), '..', 'dist');
+  const meta = (html, kind, key) =>
+    html.match(new RegExp(`<meta ${kind}="${key}" content="([^"]*)"`))?.[1];
+  // Rad per sida: [fil, förväntad og:image]. Task 4 lägger till /case/formad.
+  const SIDOR = [
+    ['index.html', 'https://www.infrakust.se/og-image.png'],
+    ['case/grand-hotel/index.html', 'https://www.infrakust.se/og-image.png'],
+  ];
+  for (const [fil, bild] of SIDOR) {
+    const html = fs.readFileSync(path.join(DIST, fil), 'utf-8');
+    assert.equal(meta(html, 'property', 'og:image'), bild, `${fil}: og:image`);
+    assert.equal(meta(html, 'name', 'twitter:image'), bild, `${fil}: twitter:image`);
+  }
+});

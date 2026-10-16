@@ -71,6 +71,11 @@ function applyHead(html, head, { noindex } = {}) {
     html = setMeta(html, 'property', 'og:url', head.canonical);
     html = setMeta(html, 'name', 'twitter:title', head.title);
     html = setMeta(html, 'name', 'twitter:description', head.description);
+    if (head.image) {
+      html = setMeta(html, 'property', 'og:image', head.image);
+      html = setMeta(html, 'name', 'twitter:image', head.image);
+      html = setMeta(html, 'property', 'og:image:alt', head.title);
+    }
     html = setCanonical(html, head.canonical);
     html = injectPageJsonLd(html, head.jsonLd);
   }

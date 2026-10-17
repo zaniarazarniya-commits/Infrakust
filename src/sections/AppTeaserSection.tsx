@@ -214,7 +214,7 @@ export function AppTeaserSection() {
 
           <ScrollReveal delay={0.12}>
             <h2 className="max-w-[640px] font-serif text-[clamp(36px,5.2vw,72px)] font-normal leading-[1.04] tracking-[-0.02em] text-text-primary">
-              En app som vet <em className="italic">när du jobbar.</em>
+              Vanor, träning och mat, <em className="italic">med en coach som förstår allt.</em>
             </h2>
           </ScrollReveal>
 
@@ -249,10 +249,10 @@ export function AppTeaserSection() {
 
           <ScrollReveal delay={0.3}>
             <p className="mt-8 max-w-[520px] font-sans text-base leading-relaxed text-text-secondary">
-              En dagsplanerare för skiftarbetare med egna 3D-kroppar, en mentor
-              på Anthropics modell och en klockapp. Jag byggde den för att jag
-              behövde den själv, och det här är hela vägen dit, med det som gick
-              fel.
+              Vanorna, träningen och maten på ett ställe som vet när passen
+              ligger, med egna 3D-kroppar, en coach på Anthropics Claude och en
+              klockapp. Jag byggde den för att jag behövde den själv, och det här
+              är hela vägen dit, med det som gick fel.
             </p>
           </ScrollReveal>
 

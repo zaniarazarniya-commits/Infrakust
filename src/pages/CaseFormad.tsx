@@ -10,7 +10,7 @@ import { ClipGrid } from '@/components/formad/ClipGrid';
 
 const TITLE = 'Formad: från idé till app i Google Play — Infrakust';
 const DESCRIPTION =
-  'Formad är min egen app: en dagsplanerare för skiftarbetare. Här är hur jag byggde den, från idé till app i Google Play, med det som gick sönder på vägen: kropparna, mentorn och klockan.';
+  'Formad är min egen app: vanor, träning och mat för skiftarbetare, med en coach på Anthropics Claude. Här är hur jag byggde den, från idé till app i Google Play, med det som gick sönder på vägen: kropparna, mentorn och klockan.';
 const CANONICAL = 'https://www.infrakust.se/case/formad';
 
 const caseJsonLd = {
@@ -309,15 +309,17 @@ export default function CaseFormad() {
               </p>
 
               <h1 className="mt-6 max-w-[920px] font-serif text-[clamp(48px,7vw,108px)] font-normal leading-[0.98] tracking-[-0.025em] text-text-primary">
-                En app som vet<br />
-                när du <em className="italic text-accent-gold">jobbar.</em>
+                Vanor, träning och mat,<br />
+                med en <em className="italic text-accent-gold">coach</em> som förstår allt.
               </h1>
 
               <p className="mt-8 max-w-[560px] font-sans text-lg leading-relaxed text-text-secondary">
-                Formad är min egen app. Jag jobbar skift och ville ha rutin,
-                träning och mat på ett ställe som vet när passen ligger. Infrakust
-                är en person, och det här är hur jag byggde den: vad jag ville, vad
-                som gick sönder på vägen och hur det löste sig.
+                Formad är min egen app. Jag jobbar skift och ville ha vanorna,
+                träningen och maten på ett ställe som vet när passen ligger, med en
+                coach byggd på Anthropics Claude som läser allt jag loggar och säger
+                som det är. Infrakust är en person, och det här är hur jag byggde
+                den: vad jag ville, vad som gick sönder på vägen och hur det löste
+                sig.
               </p>
 
               <dl className="mt-16 grid grid-cols-2 gap-x-8 gap-y-6 border-y border-text-muted/30 py-8 sm:grid-cols-3">

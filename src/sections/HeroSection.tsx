@@ -9,6 +9,7 @@ import {
 } from 'framer-motion';
 import { useReducedMotion } from '@/hooks/useReducedMotion';
 import { ChevronDown } from 'lucide-react';
+import { NewProjectBadge } from './NewProjectBadge';
 
 const TITLE = 'Infrakust';
 
@@ -193,6 +194,17 @@ export function HeroSection() {
             Se våra projekt →
           </a>
         </MaskIn>
+
+        {/* Nytt projekt, i flödet under lg */}
+        <NewProjectBadge className="mt-16 lg:hidden" />
+      </motion.div>
+
+      {/* Nytt projekt, i nedre vänstra hörnet från lg */}
+      <motion.div
+        style={reducedMotion ? undefined : { opacity: contentOpacity }}
+        className="absolute bottom-12 left-12 hidden lg:block xl:left-20"
+      >
+        <NewProjectBadge />
       </motion.div>
 
       {/* Scroll Indicator */}

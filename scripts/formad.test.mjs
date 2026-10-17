@@ -19,6 +19,7 @@ const klipp = ['marklyft', 'knaboj', 'banpress', 'militarpress', 'skivstangsrodd
 export const FILER = [
   ...['traning', 'idag', 'vecka', 'mat', 'pass', 'ovning', 'mentor'].map((n) => [`tel-${n}.webp`, WEBP_MAX]),
   ...Array.from({ length: 8 }, (_, i) => [`klocka-${String(i + 1).padStart(2, '0')}.webp`, WEBP_MAX]),
+  ['lagerkrans.webp', 60_000],
   ['resa-01-block.webp', WEBP_MAX],
   ['resa-02-huggen.webp', WEBP_MAX],
   ['resa-03-gra.webp', WEBP_MAX],
@@ -177,6 +178,11 @@ test('startsidan och App-utveckling pekar på Formad-caset', () => {
   const start = fs.readFileSync(path.join(DIST, 'index.html'), 'utf-8');
   assert.ok(start.includes('href="/case/formad"'), 'startsidan länkar inte till caset');
   assert.ok(start.includes('EGEN PRODUKT'), 'startsidan saknar EGEN PRODUKT');
+  // Rutan i heron: länk till caset med emblemet, före resten av sidan.
+  const hero = start.slice(0, start.indexOf('id="appar"'));
+  assert.ok(hero.includes('Nytt projekt'), 'heron saknar rutan Nytt projekt');
+  assert.ok(hero.includes('href="/case/formad"'), 'heron länkar inte till caset');
+  assert.ok(hero.includes('src="/formad/lagerkrans.webp"'), 'heron saknar emblemet');
   assert.ok(start.includes('src="/formad/tel-traning.webp"'), 'startsidan saknar telefonen');
   const app = fs.readFileSync(path.join(DIST, 'tjanster', 'apputveckling', 'index.html'), 'utf-8');
   assert.ok(app.includes('href="/case/formad"'), 'App-utveckling länkar inte till caset');

@@ -1,7 +1,7 @@
 // Kopierar och konverterar Formad-caset:s material till public/formad/.
 // Körs om efter att källorna ändrats: node scripts/material/formad.mjs (skriver över).
 //
-// tel-pass.webp, tel-ovning.webp och tel-mentor.webp är tagna för hand (lokal app med seedad data) och tas om för hand; tel-mat.webp har eget skript tel-mat.cjs, 3D-stillbilden capture-still.cjs. Klockbilderna klocka-01..08 är emulatorbilder ur Formads Play-mapp (Downloads/formad-1.8-klocka), skiftrutin/design/klocka/emulator och urtavlans Play-mapp.
+// tel-pass.webp, tel-ovning.webp och tel-mentor.webp är tagna för hand (lokal app med seedad data) och tas om för hand; tel-idag, tel-traning, tel-vecka och tel-mat är hela sidor ur appen, tagna av tel-sidor.cjs, 3D-stillbilden capture-still.cjs. Klockbilderna klocka-01..08 är emulatorbilder ur Formads Play-mapp (Downloads/formad-1.8-klocka), skiftrutin/design/klocka/emulator och urtavlans Play-mapp.
 //
 // Källor (allt ligger utanför detta repo, på den här datorn):
 //   SKIFTRUTIN  appens repo, ska stå på main och vara uppdaterat (git pull) före körning
@@ -29,7 +29,6 @@ const URTAVLA = 'C:/Users/zania/Downloads/formad-urtavla-1.0';
 
 const UT = path.join(path.dirname(fileURLToPath(import.meta.url)), '..', '..', 'public', 'formad');
 
-const skarm = (fil) => path.join(SKIFTRUTIN, 'design', 'play', 'skarmbilder', fil);
 const statyn = (fil) => path.join(SKIFTRUTIN, 'public', 'statyn', fil);
 const klippkalla = (fil) => path.join(SKIFTRUTIN, 'public', 'klipp', fil);
 const forhandsbild = (fil) => path.join(ANIM, 'production', 'base2', 'previews', fil);
@@ -41,11 +40,8 @@ const MARKLYFT_RUTA = 1.4;
 
 const TABELL = [
   // Telefonbilder (appens skärmbilder för Play)
-  { from: skarm('2-traning.png'), to: 'tel-traning.webp', width: 1080 },
-  { from: skarm('1-idag.png'), to: 'tel-idag.webp', width: 1080 },
-  { from: skarm('3-vecka.png'), to: 'tel-vecka.webp', width: 1080 },
-  // tel-mat.webp görs inte här: Play-bildens mål bröts över makrona, så den tas ur
-  // appen med mat loggad av scripts/material/tel-mat.cjs (se huvudet där).
+  // tel-idag, tel-traning, tel-vecka och tel-mat görs inte här: de är hela sidor ur
+  // appen, höga bilder som rullar i telefonramen, tagna av scripts/material/tel-sidor.cjs.
 
   // Resan
   { from: statyn('steg-01.webp'), to: 'resa-01-block.webp' },

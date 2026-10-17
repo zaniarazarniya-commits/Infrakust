@@ -755,9 +755,9 @@ En person, hela kedjan.
         <section className="px-6 py-32 md:px-12 md:py-40 lg:px-20">
           <div className="mx-auto max-w-[860px] text-center">
             <p className="font-serif text-[clamp(28px,3.5vw,44px)] font-normal leading-[1.2] tracking-[-0.01em] text-text-primary">
-              Jag byggde Formad för att jag behövde den. Infrakust är jag, och det
-              är så här jag bygger åt andra också: från ett riktigt problem, hela
-              vägen till en app folk har i fickan.
+              Jag byggde Formad för att jag behövde den. Jag använder den varje dag,
+              och den är inte klar än. Infrakust är jag, och det är så här jag
+              jobbar.
             </p>
             <a
               href="mailto:hello@infrakust.se"

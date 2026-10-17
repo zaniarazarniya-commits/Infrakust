@@ -133,6 +133,17 @@ const felen = [
   },
 ];
 
+// Det appen loggar och mentorn får läsa. Hämtat ur coachens underlag (coach/COACH.md och coach-basis.js i Formad).
+const mentornsData = [
+  'Skiften, direkt från schemat, och timmarna hemifrån från stämpelklockan',
+  'Varje moment i rutinen med klockslaget det bockades: tillskott, måltider, vatten, läggdags',
+  'Varje pass med varje set: kg, reps, RPE, dropset och set till failure',
+  'Maten måltid för måltid, varje livsmedel med mängd, kcal och makron',
+  'Från klockan via Health Connect: steg, aktiva kalorier, sömn med stadier, vilopuls, HRV, vikt, fettprocent och VO2max',
+  'Dagsformen: energi, stress, motivation, ryggen och träningsvärken',
+  'Förbränningen, räknad ur vikttrenden mot det jag ätit, inte ur en tabell',
+];
+
 // Klockans sidor, som emulatorbilder (454×454). Ordningen är ett varv genom appen.
 const klockan = [
   { src: '/formad/klocka-01.webp', alt: 'Klockan: Nu, ett glas vatten med magnesium, med bock, skippa och dagen', caption: 'Idag: nästa moment, bocka av eller skippa.' },
@@ -316,8 +327,9 @@ export default function CaseFormad() {
               <p className="mt-8 max-w-[560px] font-sans text-lg leading-relaxed text-text-secondary">
                 Formad är min egen app. Jag jobbar skift och ville ha vanorna,
                 träningen och maten på ett ställe som vet när passen ligger, med en
-                coach byggd på Anthropics Claude som läser allt jag loggar och ger
-                råd utifrån det. Infrakust är en person, och det här är hur jag byggde
+                coach byggd på Anthropics Claude som läser allt jag loggar, från
+                varje set till varje natts sömn, och ger råd utifrån det. Infrakust
+                är en person, och det här är hur jag byggde
                 den: vad jag ville, vad som gick sönder på vägen och hur det löste
                 sig.
               </p>
@@ -577,18 +589,47 @@ export default function CaseFormad() {
                 MENTORN
               </p>
               <h2 className="mt-6 max-w-[860px] font-serif text-[clamp(36px,5vw,64px)] font-normal leading-[1.05] tracking-[-0.02em] text-text-primary">
-                Mentorn var <em className="italic text-accent-gold">dålig</em> i början.
+                Coachen har alla mina <em className="italic text-accent-gold">siffror</em> framför sig.
               </h2>
               <p className="mt-8 max-w-[60ch] font-sans text-lg leading-relaxed text-text-secondary">
-                Mentorn bygger på Anthropics modell och ser det appen ser: pass,
-                sömn, mat, vikt och träning. Maten loggas med foto, streckkod eller
-                sökning. De första versionerna var för pratiga, räknade fel på
-                avlastningar och bytte program tre gånger i samma samtal. Jag hade
-                inte velat betala för den.
+                Mentorn bygger på Anthropics modell, Claude. Det som gör den till
+                något annat än en chatt är hur mycket appen vet om min dag. Allt
+                det här finns loggat, dag för dag, upp till tio veckor bakåt:
               </p>
+              <ul className="mt-8 space-y-3">
+                {mentornsData.map((rad) => (
+                  <li key={rad} className="flex items-start gap-3">
+                    <div className="mt-2.5 h-1 w-4 flex-shrink-0 bg-accent-gold" />
+                    <span className="font-sans text-base text-text-secondary">{rad}</span>
+                  </li>
+                ))}
+              </ul>
+              <div className="mt-10 space-y-6 font-sans text-lg leading-relaxed text-text-secondary">
+                <p className="max-w-[60ch]">
+                  Med varje fråga får mentorn det appen kallar Läget nu: i dag och i
+                  går i sin helhet, senaste veckan i siffror, energibalansen över
+                  fyra veckor och det som sticker ut. Vikterna till nästa pass räknar
+                  appen fram ur mina loggade set, inte modellen, så siffrorna stämmer.
+                  Föreslår den ett nytt pass eller en måltid blir det ett kort under
+                  svaret som jag sparar med ett tryck. Under varje svar står vilket
+                  underlag den använde: hur många dagar, nätter och vägningar, räknat
+                  av appen.
+                </p>
+                <p className="max-w-[60ch]">
+                  Det den lär sig om mig står under Det Mentor minns om mig, där jag
+                  kan rätta eller ta bort. Den skriver dagens, veckans och månadens
+                  rapport, och säger till när jag bockar av i efterhand eller tappar
+                  ett moment, även om jag inte frågat.
+                </p>
+              </div>
               <h3 className="mt-16 font-serif text-[clamp(28px,3.5vw,44px)] font-normal leading-[1.1] tracking-[-0.01em] text-text-primary">
-                Hur jag tränade fram den.
+                Den var dålig i början.
               </h3>
+              <p className="mt-6 max-w-[60ch] font-sans text-lg leading-relaxed text-text-secondary">
+                De första versionerna var för pratiga, räknade fel på avlastningar
+                och bytte program tre gånger i samma samtal. Jag hade inte velat
+                betala för den.
+              </p>
               <div className="mt-6 space-y-6 font-sans text-lg leading-relaxed text-text-secondary">
                 <p className="max-w-[60ch]">
                   Jag tränade den med AI-agenter som spelade användare. Varje agent

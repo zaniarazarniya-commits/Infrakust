@@ -159,6 +159,8 @@ test('mentorn, klockan och formen prerenderas, utan förbjudna ord', () => {
   const html = fs.readFileSync(path.join(DIST, 'case', 'formad', 'index.html'), 'utf-8');
   assert.ok(html.includes('AI-agenter som spelade användare'), 'mentorns träning saknas');
   assert.ok(html.includes('Anthropics modell'), 'modellen bakom mentorn saknas');
+  assert.ok(html.includes('Läget nu'), 'vad mentorn får med varje fråga saknas');
+  assert.ok(html.includes('vilopuls, HRV'), 'listan över datan saknas');
   assert.ok(html.includes('Health Connect'), 'Health Connect saknas');
   assert.equal(html.match(/src="\/formad\/klocka-/g)?.length, 8, 'klockan ska visa åtta sidor');
   assert.ok(!html.includes('/formad/klocka.webp'), 'den gamla klockbilden används fortfarande');

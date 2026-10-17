@@ -90,7 +90,8 @@ test('casesidan prerenderas', () => {
     'https://www.infrakust.se/formad/og.jpg',
   );
   assert.equal(html.match(/<meta property="og:image:alt" content="([^"]*)"/)?.[1], titel);
-  assert.ok(html.includes('En app som vet'), 'rubriken saknas');
+  assert.ok(html.includes('Vanor, träning och mat'), 'rubriken saknas');
+  assert.ok(html.includes('som förstår allt'), 'rubrikens andra rad saknas');
   assert.ok(html.includes('Sluten beta i Google Play'), 'statusen saknas');
   assert.ok(html.includes('Först passen'), 'rubriken Dagen runt passet saknas');
   assert.ok(html.includes('src="/formad/sisyfos-smal.webp"'), 'Sisyfos-bilden för telefoner saknas');

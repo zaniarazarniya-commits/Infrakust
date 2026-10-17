@@ -628,6 +628,13 @@ export default function CaseFormad() {
 
             <div className="mt-24 flex flex-wrap justify-center gap-6 sm:gap-8 md:mt-32">
               <Phone
+                src="/formad/tel-pass-pagar.webp"
+                alt="Formad, ett pass som pågår: klockan på 23 minuter, marklyft med tre set bockade och toppsetet näst på tur, knäböj och bänkpress med målen från rutinen, och vilan som räknar ner längst ner"
+                width={1080}
+                height={5234}
+                scroll
+              />
+              <Phone
                 src="/formad/tel-pass.webp"
                 alt="Formad, passvyn med set och RPE"
                 width={1080}

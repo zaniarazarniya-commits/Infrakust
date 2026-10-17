@@ -1,5 +1,7 @@
+import { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router';
 import { ArrowLeft } from 'lucide-react';
+import { useReducedMotion } from '@/hooks/useReducedMotion';
 import { Navigation } from '@/components/Navigation';
 import { Footer } from '@/components/Footer';
 import { SEO } from '@/components/SEO';
@@ -126,11 +128,6 @@ const felen = [
     cause: 'Riggen saknade skulderblad, så all rörelse kom ur en led.',
     fix: 'Skulderbladsben som följer forskningens skulderrytm, efter sex kasserade försök',
   },
-  {
-    saw: '15 klipp gick inte att spela till slutet',
-    cause: 'Två renderare skrev samma fil samtidigt.',
-    fix: 'Varje klipp avkodas i testet innan det går in i appen',
-  },
 ];
 
 // Det appen loggar och mentorn får läsa. Hämtat ur coachens underlag (coach/COACH.md och coach-basis.js i Formad).
@@ -245,36 +242,85 @@ const formen = [
 ];
 
 /** Telefonram med guldkant, samma som i heron. */
+// En telefon i ram. Med `scroll` är bilden hela appsidan (mycket högre än skärmen) och rullar
+// långsamt upp och ner inne i ramen medan den är i bild, så att besökaren ser allt som finns på
+// sidan. Vid reduced motion står den stilla och går att rulla för hand. Ramen är en
+// storlekscontainer så att keyframen tel-rulla i index.css kan räkna slutläget ur dess höjd.
 function Phone({
   src,
   alt,
   width = 1080,
   height = 1920,
   eager = false,
+  scroll = false,
 }: {
   src: string;
   alt: string;
   width?: number;
   height?: number;
   eager?: boolean;
+  scroll?: boolean;
 }) {
+  const ram = useRef<HTMLDivElement>(null);
+  const reducedMotion = useReducedMotion();
+  const [iBild, setIBild] = useState(false);
+  useEffect(() => {
+    if (!scroll || reducedMotion || typeof IntersectionObserver === 'undefined') return;
+    const el = ram.current;
+    if (!el) return;
+    // Flera trösklar: första mätningen kan komma innan typsnitt och bilder satt sig, och med
+    // en enda tröskel kommer ingen ny signal förrän den korsas.
+    const io = new IntersectionObserver(([e]) => setIBild(e.isIntersecting && e.intersectionRatio >= 0.25), {
+      threshold: [0, 0.25, 0.5, 0.75, 1],
+    });
+    io.observe(el);
+    return () => io.disconnect();
+  }, [scroll, reducedMotion]);
+
+  const frame = {
+    borderColor: `rgba(${GOLD},0.2)`,
+    boxShadow: `0 8px 40px rgba(${GOLD},0.12), 0 20px 60px rgba(0,0,0,0.5)`,
+  };
+  const bild = (
+    <img
+      src={src}
+      alt={alt}
+      width={width}
+      height={height}
+      loading={eager ? 'eager' : 'lazy'}
+      fetchPriority={eager ? 'high' : undefined}
+      className="block h-auto w-full"
+    />
+  );
+
+  if (!scroll) {
+    return (
+      <div className="w-[260px] overflow-hidden rounded-[2rem] border bg-bg-primary sm:w-[280px]" style={frame}>
+        {bild}
+      </div>
+    );
+  }
+
+  // Rullningstiden följer sidans längd: ungefär fyra sekunder per skärmhöjd, minst tolv.
+  const sekunder = Math.max(12, Math.round((height / width) * 4));
   return (
     <div
-      className="overflow-hidden rounded-[2rem] border bg-bg-primary"
-      style={{
-        borderColor: `rgba(${GOLD},0.2)`,
-        boxShadow: `0 8px 40px rgba(${GOLD},0.12), 0 20px 60px rgba(0,0,0,0.5)`,
-      }}
+      ref={ram}
+      className={`relative aspect-[9/19.5] w-[260px] rounded-[2rem] border bg-bg-primary [container-type:size] sm:w-[280px] ${
+        reducedMotion ? 'overflow-y-auto overflow-x-hidden' : 'overflow-hidden'
+      }`}
+      style={frame}
     >
-      <img
-        src={src}
-        alt={alt}
-        width={width}
-        height={height}
-        loading={eager ? 'eager' : 'lazy'}
-        fetchPriority={eager ? 'high' : undefined}
-        className="block h-auto w-[260px] sm:w-[280px]"
-      />
+      <div
+        className={reducedMotion ? '' : 'absolute inset-x-0 top-0 will-change-transform'}
+        style={
+          reducedMotion
+            ? undefined
+            : { animation: `tel-rulla ${sekunder}s ease-in-out infinite alternate`, animationPlayState: iBild ? 'running' : 'paused' }
+        }
+      >
+        {bild}
+      </div>
     </div>
   );
 }
@@ -353,8 +399,11 @@ export default function CaseFormad() {
             <div className="mx-auto lg:mx-0">
               <Phone
                 src="/formad/tel-traning.webp"
-                alt="Formad, Träning-sidan med lagerkransen"
+                alt="Formad, hela Träning-sidan: veckans lagerkrans, steg och förbränning, morgonvikten och programmen att välja"
+                width={1080}
+                height={7596}
                 eager
+                scroll
               />
             </div>
           </div>
@@ -416,8 +465,20 @@ export default function CaseFormad() {
               </div>
 
               <div className="flex flex-wrap justify-center gap-6 sm:gap-8">
-                <Phone src="/formad/tel-idag.webp" alt="Formad, Idag-sidan med dagens pass och plan" />
-                <Phone src="/formad/tel-vecka.webp" alt="Formad, Kommande pass i veckan" />
+                <Phone
+                  src="/formad/tel-idag.webp"
+                  alt="Formad, hela Idag-sidan: vattnet, nästa moment, dagens tempel, dagens pass och att göra-listan för morgonen, dagen och kvällen"
+                  width={1080}
+                  height={7372}
+                  scroll
+                />
+                <Phone
+                  src="/formad/tel-vecka.webp"
+                  alt="Formad, hela Vecka-sidan: arbetstimmarna, planera veckan och veckans Herkules"
+                  width={1080}
+                  height={5758}
+                  scroll
+                />
               </div>
             </div>
 
@@ -761,9 +822,10 @@ export default function CaseFormad() {
               <div className="mx-auto lg:mx-0">
                 <Phone
                   src="/formad/tel-mat.webp"
-                  alt="Formad, Mat-sidan med dagens kalorier i en marmorbåge, makrona och knappar för att söka och skanna"
+                  alt="Formad, hela Mat-sidan: dagens kalorier i en marmorbåge, makrona, knappar för att söka och skanna, och dagens måltider"
                   width={1080}
-                  height={2338}
+                  height={5328}
+                  scroll
                 />
               </div>
             </div>

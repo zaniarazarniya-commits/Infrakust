@@ -162,3 +162,10 @@
 .projects-rail::-webkit-scrollbar {
   display: none;
 }
+
+/* Telefonerna på Formad-caset: hela appsidan rullar långsamt inne i ramen när den är i bild.
+   100cqh är ramens höjd (ramen är en storlekscontainer), 100 % bildens egen höjd. */
+@keyframes tel-rulla {
+  0%, 12% { transform: translateY(0); }
+  88%, 100% { transform: translateY(calc(100cqh - 100%)); }
+}

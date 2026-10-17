@@ -301,8 +301,8 @@ function Phone({
     );
   }
 
-  // Rullningstiden följer sidans längd: ungefär fyra sekunder per skärmhöjd, minst tolv.
-  const sekunder = Math.max(12, Math.round((height / width) * 4));
+  // Rullningstiden följer sidans längd: ungefär 1,6 sekunder per skärmhöjd, minst sex.
+  const sekunder = Math.max(6, Math.round((height / width) * 1.6));
   return (
     <div
       ref={ram}

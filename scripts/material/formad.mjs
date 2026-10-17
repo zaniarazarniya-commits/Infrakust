@@ -59,6 +59,9 @@ const TABELL = [
   // scripts/material/capture-still.cjs (se huvudet där), så att övertoningen
   // till modellen visar samma föremål.
 
+  // Startsidans ruta "Nytt projekt": appens emblem, Herkules med lagerkransen.
+  { from: path.join(SKIFTRUTIN, 'design', 'ikon', 'lagerkrans.webp'), to: 'lagerkrans.webp', width: 320 },
+
   // Klockan: alla sidor i Wear OS-appen (454×454 ur emulatorn), rutan och urtavlan.
   { from: path.join(KLOCKA, '1-idag.png'), to: 'klocka-01.webp' },
   { from: path.join(SKIFTRUTIN, 'design', 'klocka', 'emulator', 'idag', '2-scroll.png'), to: 'klocka-02.webp' },

@@ -270,8 +270,8 @@ function Phone({
     if (!el) return;
     // Flera trösklar: första mätningen kan komma innan typsnitt och bilder satt sig, och med
     // en enda tröskel kommer ingen ny signal förrän den korsas.
-    const io = new IntersectionObserver(([e]) => setIBild(e.isIntersecting && e.intersectionRatio >= 0.25), {
-      threshold: [0, 0.25, 0.5, 0.75, 1],
+    const io = new IntersectionObserver(([e]) => setIBild(e.isIntersecting && e.intersectionRatio >= 0.1), {
+      threshold: [0, 0.1, 0.25, 0.5, 0.75, 1],
     });
     io.observe(el);
     return () => io.disconnect();
@@ -316,7 +316,7 @@ function Phone({
         style={
           reducedMotion
             ? undefined
-            : { animation: `tel-rulla ${sekunder}s ease-in-out infinite alternate`, animationPlayState: iBild ? 'running' : 'paused' }
+            : { animation: `tel-rulla ${sekunder}s cubic-bezier(0.2, 0.6, 0.35, 1) infinite alternate`, animationPlayState: iBild ? 'running' : 'paused' }
         }
       >
         {bild}

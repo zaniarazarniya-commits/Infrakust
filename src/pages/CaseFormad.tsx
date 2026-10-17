@@ -133,6 +133,18 @@ const felen = [
   },
 ];
 
+// Klockans sidor, som emulatorbilder (454×454). Ordningen är ett varv genom appen.
+const klockan = [
+  { src: '/formad/klocka-01.webp', alt: 'Klockan: Nu, ett glas vatten med magnesium, med bock, skippa och dagen', caption: 'Idag: nästa moment, bocka av eller skippa.' },
+  { src: '/formad/klocka-02.webp', alt: 'Klockan: vattnet 1,3 av 2,5 liter med glas- och flaskknapp, och Morgonen med 8 kvar', caption: 'Dagen som lista. Vattnet loggas med ett tryck.' },
+  { src: '/formad/klocka-03.webp', alt: 'Klockan: Nästa, Pass 2 Rygg, 3 övningar 10 min, med startknapp', caption: 'Träning: nästa pass, start med ett tryck.' },
+  { src: '/formad/klocka-04.webp', alt: 'Klockan: Axelpress med hantlar, set 1 av 2, kg och reps med minus och plus, puls 100', caption: 'Varje set: kg, reps och pulsen längs kanten.' },
+  { src: '/formad/klocka-05.webp', alt: 'Klockan: Vila 2:42 med guldbåge runt kanten, nästa 8 reps, plus 30 sekunder och hoppa över', caption: 'Vilan räknar ner som en guldbåge och surrar när det är dags.' },
+  { src: '/formad/klocka-06.webp', alt: 'Klockan: Mat, 0 av 1 850 kcal, favoriterna Min frukost och Proteinshake', caption: 'Mat: favoriterna loggas med ett tryck.' },
+  { src: '/formad/klocka-07.webp', alt: 'Rutan: Nu, ett glas vatten med magnesium, 2 av 20 klara, bock och nästa pass', caption: 'Rutan, ett svep från urtavlan: bocka av utan att öppna appen.' },
+  { src: '/formad/klocka-08.webp', alt: 'Formad-urtavlan: 7:44, lördag 17 okt, Nu: ett glas vatten med magnesium, puls 89 och 800 steg', caption: 'Formad-urtavlan: tiden, Nu, dagens båge, puls och steg.' },
+].map((s) => ({ ...s, width: 454, height: 454 }));
+
 // 3D-modellerna genom bygget. Bilderna är arbetsmapparnas egna renderingar; se scripts/material/formad.mjs.
 const formen = [
   {
@@ -610,19 +622,26 @@ export default function CaseFormad() {
 
         {/* 8. Klockan och kroppsdatan */}
         <section className="bg-bg-secondary px-6 py-24 md:px-12 md:py-32 lg:px-20">
-          <div className="mx-auto grid max-w-[1280px] items-center gap-16 lg:grid-cols-2 lg:gap-24">
-            <div>
-              <p className="font-sans text-xs uppercase tracking-section text-accent-gold">
-                KLOCKAN OCH KROPPSDATAN
-              </p>
-              <h2 className="mt-6 max-w-[860px] font-serif text-[clamp(36px,5vw,64px)] font-normal leading-[1.05] tracking-[-0.02em] text-text-primary">
-                På handleden, och in från Samsung Health.
-              </h2>
-              <div className="mt-8 space-y-6 font-sans text-lg leading-relaxed text-text-secondary">
+          <div className="mx-auto max-w-[1280px]">
+            <div className="grid gap-12 lg:grid-cols-[1fr_1fr] lg:gap-24">
+              <div>
+                <p className="font-sans text-xs uppercase tracking-section text-accent-gold">
+                  KLOCKAN OCH KROPPSDATAN
+                </p>
+                <h2 className="mt-6 max-w-[860px] font-serif text-[clamp(36px,5vw,64px)] font-normal leading-[1.05] tracking-[-0.02em] text-text-primary">
+                  På handleden, och in från Samsung Health.
+                </h2>
+              </div>
+              <div className="space-y-6 font-sans text-lg leading-relaxed text-text-secondary lg:pt-12">
                 <p className="max-w-[60ch]">
                   Jag ville slippa ta fram telefonen mellan momenten, så jag byggde
-                  en egen Wear OS-app som visar dagens rutin som en krans runt
-                  urtavlan.
+                  en egen Wear OS-app. Den gör det jag gör mest under en dag: bockar
+                  av momenten, loggar vattnet, kör passet set för set med vilan som
+                  en nedräkning på handleden, och loggar favoritmåltiderna med ett
+                  tryck. En ruta ett svep från urtavlan, och en egen urtavla med Nu
+                  och dagens båge. Det mesta av formspråket fick göras om när jag
+                  såg det på den runda skärmen: det som funkade på telefonen klipptes
+                  av cirkeln.
                 </p>
                 <p className="max-w-[60ch]">
                   Health Connect hämtar steg, sömn, aktiva kalorier och vikt från
@@ -632,22 +651,31 @@ export default function CaseFormad() {
               </div>
             </div>
 
-            <div
-              className="mx-auto w-[min(360px,70vw)] overflow-hidden rounded-full border bg-bg-primary"
-              style={{
-                borderColor: `rgba(${GOLD},0.2)`,
-                boxShadow: `0 8px 40px rgba(${GOLD},0.12), 0 20px 60px rgba(0,0,0,0.5)`,
-              }}
-            >
-              <img
-                src="/formad/klocka.webp"
-                alt="Formad på klockan: Nu, Träning i 1 h 30 min, med en bock och lagerkransen runt urtavlan"
-                width={900}
-                height={900}
-                loading="lazy"
-                className="block h-auto w-full"
-              />
-            </div>
+            <ul className="mt-16 grid grid-cols-2 gap-x-6 gap-y-10 md:mt-20 md:grid-cols-4 md:gap-x-8">
+              {klockan.map((sida) => (
+                <li key={sida.src} className="flex flex-col items-center text-center">
+                  <div
+                    className="w-full max-w-[260px] overflow-hidden rounded-full border bg-bg-primary"
+                    style={{
+                      borderColor: `rgba(${GOLD},0.2)`,
+                      boxShadow: `0 8px 40px rgba(${GOLD},0.12), 0 20px 60px rgba(0,0,0,0.5)`,
+                    }}
+                  >
+                    <img
+                      src={sida.src}
+                      alt={sida.alt}
+                      width={sida.width}
+                      height={sida.height}
+                      loading="lazy"
+                      className="block h-auto w-full"
+                    />
+                  </div>
+                  <p className="mt-4 max-w-[26ch] font-sans text-sm leading-relaxed text-text-muted">
+                    {sida.caption}
+                  </p>
+                </li>
+              ))}
+            </ul>
           </div>
         </section>
 

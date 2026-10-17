@@ -1,7 +1,7 @@
 // Kopierar och konverterar Formad-caset:s material till public/formad/.
 // Körs om efter att källorna ändrats: node scripts/material/formad.mjs (skriver över).
 //
-// tel-pass.webp, tel-ovning.webp, tel-mentor.webp och klocka.webp är tagna för hand (lokal app med seedad data, och Wear OS-emulatorn) och tas om för hand; tel-mat.webp har eget skript tel-mat.cjs, 3D-stillbilden capture-still.cjs.
+// tel-pass.webp, tel-ovning.webp och tel-mentor.webp är tagna för hand (lokal app med seedad data) och tas om för hand; tel-mat.webp har eget skript tel-mat.cjs, 3D-stillbilden capture-still.cjs. Klockbilderna klocka-01..08 är emulatorbilder ur Formads Play-mapp (Downloads/formad-1.8-klocka), skiftrutin/design/klocka/emulator och urtavlans Play-mapp.
 //
 // Källor (allt ligger utanför detta repo, på den här datorn):
 //   SKIFTRUTIN  appens repo, ska stå på main och vara uppdaterat (git pull) före körning
@@ -24,6 +24,8 @@ const STATYN = 'C:/Users/zania/dev/statyn-work';
 const FORMAD_WORK = 'C:/Users/zania/dev/formad-work';
 const REKLAM = 'C:/Users/zania/dev/reklam-work';
 const MARMOR = 'C:/Users/zania/dev/scratch-marmor';
+const KLOCKA = 'C:/Users/zania/Downloads/formad-1.8-klocka/skarmbilder-klocka';
+const URTAVLA = 'C:/Users/zania/Downloads/formad-urtavla-1.0';
 
 const UT = path.join(path.dirname(fileURLToPath(import.meta.url)), '..', '..', 'public', 'formad');
 
@@ -60,6 +62,16 @@ const TABELL = [
   // herkules-still.webp görs inte här: den tas ur 3D-visaren med
   // scripts/material/capture-still.cjs (se huvudet där), så att övertoningen
   // till modellen visar samma föremål.
+
+  // Klockan: alla sidor i Wear OS-appen (454×454 ur emulatorn), rutan och urtavlan.
+  { from: path.join(KLOCKA, '1-idag.png'), to: 'klocka-01.webp' },
+  { from: path.join(SKIFTRUTIN, 'design', 'klocka', 'emulator', 'idag', '2-scroll.png'), to: 'klocka-02.webp' },
+  { from: path.join(KLOCKA, '2-traning.png'), to: 'klocka-03.webp' },
+  { from: path.join(KLOCKA, '3-set.png'), to: 'klocka-04.webp' },
+  { from: path.join(KLOCKA, '4-vila.png'), to: 'klocka-05.webp' },
+  { from: path.join(KLOCKA, '5-mat.png'), to: 'klocka-06.webp' },
+  { from: path.join(KLOCKA, '6-ruta.png'), to: 'klocka-07.webp' },
+  { from: path.join(URTAVLA, 'skarmbild-urtavla.png'), to: 'klocka-08.webp' },
 
   // Formen: 3D-modellerna genom bygget, från statyn ur AI-verktyget till den förgyllda i appen.
   // Källorna är arbetsmapparnas egna renderingar (statyn-work, Animation, scratch-marmor,

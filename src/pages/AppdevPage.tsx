@@ -159,8 +159,8 @@ export default function AppdevPage() {
                 Min egen app för skiftarbetare: dagsplan runt passen, träning
                 med egna 3D-kroppar som visar vad varje övning tränar, en mentor
                 på Anthropics modell och en klockapp för Wear OS. Sluten beta i
-                Google Play sedan oktober 2026. Jag byggde den som jag bygger åt
-                kunder, och berättar hela vägen dit, med det som gick sönder.
+                Google Play sedan oktober 2026. Jag använder den varje dag, och
+                på casesidan står hela vägen dit, med det som gick sönder.
               </p>
             </ScrollReveal>
             <ScrollReveal delay={0.28}>

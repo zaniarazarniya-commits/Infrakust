@@ -214,7 +214,7 @@ export function AppTeaserSection() {
 
           <ScrollReveal delay={0.12}>
             <h2 className="max-w-[640px] font-serif text-[clamp(36px,5.2vw,72px)] font-normal leading-[1.04] tracking-[-0.02em] text-text-primary">
-              Vanor, träning och mat, <em className="italic">med en coach som förstår allt.</em>
+              Vanor, träning och mat, <em className="italic">med en coach som läser allt jag loggar.</em>
             </h2>
           </ScrollReveal>
 

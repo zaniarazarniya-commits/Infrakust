@@ -10,7 +10,7 @@ import { ClipGrid } from '@/components/formad/ClipGrid';
 
 const TITLE = 'Formad: från idé till app i Google Play — Infrakust';
 const DESCRIPTION =
-  'Formad är min egen app: vanor, träning och mat för skiftarbetare, med en coach på Anthropics Claude. Här är hur jag byggde den, från idé till app i Google Play, med det som gick sönder på vägen: kropparna, mentorn och klockan.';
+  'Formad är min egen app: vanor, träning och mat för skiftarbetare, med en coach på Anthropics Claude som läser allt jag loggar. Här är hur jag byggde den, från idé till app i Google Play, med det som gick sönder på vägen: kropparna, mentorn och klockan.';
 const CANONICAL = 'https://www.infrakust.se/case/formad';
 
 const caseJsonLd = {
@@ -63,7 +63,7 @@ const resan = [
   {
     src: '/formad/resa-01-block.webp',
     alt: 'Ett ohugget marmorblock på en sockel, med prickade linjer inritade',
-    caption: 'Statyn finns redan där inne.',
+    caption: 'Marmorblocket, startbilden i appen.',
     width: 768,
     height: 1152,
   },
@@ -310,14 +310,14 @@ export default function CaseFormad() {
 
               <h1 className="mt-6 max-w-[920px] font-serif text-[clamp(48px,7vw,108px)] font-normal leading-[0.98] tracking-[-0.025em] text-text-primary">
                 Vanor, träning och mat,<br />
-                med en <em className="italic text-accent-gold">coach</em> som förstår allt.
+                med en <em className="italic text-accent-gold">coach</em> som läser allt jag loggar.
               </h1>
 
               <p className="mt-8 max-w-[560px] font-sans text-lg leading-relaxed text-text-secondary">
                 Formad är min egen app. Jag jobbar skift och ville ha vanorna,
                 träningen och maten på ett ställe som vet när passen ligger, med en
-                coach byggd på Anthropics Claude som läser allt jag loggar och säger
-                som det är. Infrakust är en person, och det här är hur jag byggde
+                coach byggd på Anthropics Claude som läser allt jag loggar och ger
+                råd utifrån det. Infrakust är en person, och det här är hur jag byggde
                 den: vad jag ville, vad som gick sönder på vägen och hur det löste
                 sig.
               </p>
@@ -367,7 +367,7 @@ export default function CaseFormad() {
               </p>
               <p className="max-w-[60ch]">
                 Tonen kom från det jag läser: stoikerna, Iliaden, Sokrates och
-                Marcus Aurelius. Ordning utan pekpinnar. Det blev appens hållning
+                Marcus Aurelius. Jag ville ha ordning utan att bli tjatad på. Det blev appens hållning
                 och till slut dess utseende, med lagerkransen, ΓΥΜΝΑΣΙΟΝ över
                 träningen och romerska siffror i passen.
               </p>
@@ -477,7 +477,7 @@ export default function CaseFormad() {
                     kantslingor runt lederna. Ingen mängd handpåläggning hade löst
                     det. Så jag började om, byggde kroppen på en animationsfärdig
                     bas (MPFB2) och flyttade statyns form över på den. Det kändes
-                    som att kasta bort allt jag gjort. Det var rätt beslut.
+                    som att kasta bort allt jag gjort, men det var det som behövdes.
                   </p>
                 </div>
               </div>
@@ -520,7 +520,7 @@ export default function CaseFormad() {
               <HerculesViewer still="/formad/herkules-still.webp" model="/formad/3d/herkules.glb" />
             </div>
             <p className="mt-6 font-sans text-sm text-text-muted">
-              Statyn som allt började med. Hans form lever kvar i kroppen som visar varje övning.
+              Statyn som allt började med. Kroppen i övningsklippen är byggd efter hans form.
             </p>
           </div>
         </section>
@@ -689,7 +689,7 @@ export default function CaseFormad() {
                 FORMEN
               </p>
               <h2 className="mt-6 max-w-[860px] font-serif text-[clamp(36px,5vw,64px)] font-normal leading-[1.05] tracking-[-0.02em] text-text-primary">
-                Marmorn är inte <em className="italic text-accent-gold">pynt.</em>
+                Varför det ser ut <em className="italic text-accent-gold">så här.</em>
               </h2>
             </div>
           </div>
@@ -737,7 +737,7 @@ export default function CaseFormad() {
                 UNDER HUVEN
               </p>
               <h2 className="mt-6 font-serif text-[clamp(36px,5vw,64px)] font-normal leading-[1.05] tracking-[-0.02em] text-text-primary">
-En person, hela kedjan.
+Det jag byggt den med.
               </h2>
             </div>
             <ul className="space-y-4 lg:pt-12">

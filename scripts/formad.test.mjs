@@ -17,7 +17,7 @@ const klipp = ['marklyft', 'knaboj', 'banpress', 'militarpress', 'skivstangsrodd
 
 // Alla filer under public/formad/ och deras storleksgräns i byte. Senare uppgifter lägger till rader här.
 export const FILER = [
-  ...['traning', 'idag', 'vecka', 'mat', 'pass', 'ovning', 'mentor'].map((n) => [`tel-${n}.webp`, WEBP_MAX]),
+  ...['traning', 'idag', 'vecka', 'mat', 'pass', 'pass-pagar', 'ovning', 'mentor'].map((n) => [`tel-${n}.webp`, WEBP_MAX]),
   ...Array.from({ length: 8 }, (_, i) => [`klocka-${String(i + 1).padStart(2, '0')}.webp`, WEBP_MAX]),
   ['lagerkrans.webp', 60_000],
   ['resa-01-block.webp', WEBP_MAX],
@@ -152,6 +152,7 @@ test('övningarna: rubriken och sex klipp som rör sig prerenderas', () => {
     );
   }
   assert.ok(html.includes('src="/formad/tel-pass.webp"'), 'passvyn saknas');
+  assert.ok(html.includes('src="/formad/tel-pass-pagar.webp"'), 'passet som pågår saknas');
   assert.ok(html.includes('src="/formad/tel-ovning.webp"'), 'övningsvyn saknas');
 });
 

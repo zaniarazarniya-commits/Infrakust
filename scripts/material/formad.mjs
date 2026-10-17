@@ -1,7 +1,7 @@
 // Kopierar och konverterar Formad-caset:s material till public/formad/.
 // Körs om efter att källorna ändrats: node scripts/material/formad.mjs (skriver över).
 //
-// tel-pass.webp, tel-ovning.webp och tel-mentor.webp är tagna för hand (lokal app med seedad data) och tas om för hand; tel-idag, tel-traning, tel-vecka och tel-mat är hela sidor ur appen, tagna av tel-sidor.cjs, 3D-stillbilden capture-still.cjs. Klockbilderna klocka-01..08 är emulatorbilder ur Formads Play-mapp (Downloads/formad-1.8-klocka), skiftrutin/design/klocka/emulator och urtavlans Play-mapp.
+// tel-pass.webp, tel-ovning.webp och tel-mentor.webp är tagna för hand (lokal app med seedad data) och tas om för hand; tel-idag, tel-traning, tel-vecka och tel-mat är hela sidor ur appen, tagna av tel-sidor.cjs; tel-pass-pagar av tel-pass-pagar.cjs, 3D-stillbilden capture-still.cjs. Klockbilderna klocka-01..08 är emulatorbilder ur Formads Play-mapp (Downloads/formad-1.8-klocka), skiftrutin/design/klocka/emulator och urtavlans Play-mapp.
 //
 // Källor (allt ligger utanför detta repo, på den här datorn):
 //   SKIFTRUTIN  appens repo, ska stå på main och vara uppdaterat (git pull) före körning

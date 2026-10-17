@@ -18,7 +18,7 @@ const klipp = ['marklyft', 'knaboj', 'banpress', 'militarpress', 'skivstangsrodd
 // Alla filer under public/formad/ och deras storleksgräns i byte. Senare uppgifter lägger till rader här.
 export const FILER = [
   ...['traning', 'idag', 'vecka', 'mat', 'pass', 'ovning', 'mentor'].map((n) => [`tel-${n}.webp`, WEBP_MAX]),
-  ['klocka.webp', WEBP_MAX],
+  ...Array.from({ length: 8 }, (_, i) => [`klocka-${String(i + 1).padStart(2, '0')}.webp`, WEBP_MAX]),
   ['resa-01-block.webp', WEBP_MAX],
   ['resa-02-huggen.webp', WEBP_MAX],
   ['resa-03-gra.webp', WEBP_MAX],
@@ -159,7 +159,8 @@ test('mentorn, klockan och formen prerenderas, utan förbjudna ord', () => {
   assert.ok(html.includes('AI-agenter som spelade användare'), 'mentorns träning saknas');
   assert.ok(html.includes('Anthropics modell'), 'modellen bakom mentorn saknas');
   assert.ok(html.includes('Health Connect'), 'Health Connect saknas');
-  assert.ok(html.includes('src="/formad/klocka.webp"'), 'klockbilden saknas');
+  assert.equal(html.match(/src="\/formad\/klocka-/g)?.length, 8, 'klockan ska visa åtta sidor');
+  assert.ok(!html.includes('/formad/klocka.webp'), 'den gamla klockbilden används fortfarande');
   assert.ok(html.includes('src="/formad/modell-12.webp"'), 'formens remsa saknas');
   assert.equal(html.match(/src="\/formad\/modell-/g)?.length, 12, 'formens remsa ska ha tolv modeller');
   assert.ok(!html.includes('/formad/form-'), 'den gamla huggsekvensen används fortfarande');
